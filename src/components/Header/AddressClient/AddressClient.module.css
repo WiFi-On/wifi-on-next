@@ -1,0 +1,37 @@
+.main {
+  max-height: 40px;
+  max-width: 400px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  border-radius: 20px;
+  padding: 10px 15px;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.colorMobile {
+  border: 1px solid #000;
+  color: #000;
+}
+
+.colorDesk {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.address {
+  font-family: Raleway;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.8px;
+  letter-spacing: 0.01em;
+}

@@ -1,0 +1,106 @@
+.mainContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.mainContainer h2 {
+  font-family: Raleway;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 61.6px;
+  text-align: center;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.top img {
+  height: 13px;
+  width: 13px;
+}
+.top h4 {
+  font-family: Raleway;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30.8px;
+  letter-spacing: 0.02em;
+  text-align: left;
+
+  max-width: 83px;
+  margin: 0;
+  color: #0c0c0c;
+}
+.bot {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.rangeSliders {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.wrapperRangeSliderContainer {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.extras {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 290px;
+
+  gap: 10px;
+}
+.wrapperRangeSlider {
+  border-top: 1px solid #9f9f9f;
+  padding-top: 20px;
+}
+.checkboxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 40px;
+}
+.checkboxesContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  border-top: 1px solid #9f9f9f;
+  width: 290px;
+  gap: 10px;
+}
+.nameCheckboxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nameCheckboxes span {
+  font-family: Raleway;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20.4px;
+  text-align: left;
+}
+.nameCheckboxes p {
+  height: 2px;
+  width: 20px;
+  background-color: #9f9f9f;
+  margin: 0;
+}
+@media screen and (max-width: 640px) {
+  .extras {
+    margin: 0 auto;
+  }
+}

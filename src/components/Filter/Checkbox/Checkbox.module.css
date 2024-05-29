@@ -1,0 +1,57 @@
+/* Checkbox.module.css */
+.customCheckbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 23px;
+  /* Для отступа метки от кастомного чекбокса */
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18.2px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.customCheckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border: 1px solid #3d6de3;
+  border-radius: 4px;
+}
+
+/* При нажатии на чекбокс */
+.customCheckbox input:checked ~ .checkmark {
+  background-color: #3d6de3;
+}
+
+/* Отображение флажка */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.customCheckbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.customCheckbox .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

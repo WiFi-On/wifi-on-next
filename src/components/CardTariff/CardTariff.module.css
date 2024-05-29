@@ -1,0 +1,199 @@
+.main {
+  height: 595px;
+  width: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+  padding: 25px;
+  border: 1px solid #4d90ff;
+  border-radius: 40px;
+
+  transition: 0.3s ease;
+}
+.main:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px #173cc2;
+}
+.logoAndName {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logoAndName img {
+  height: 35px;
+  width: 35px;
+  background-color: #fff;
+}
+.logoAndName span {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22.4px;
+  letter-spacing: 0.01em;
+  text-align: left;
+
+  transition: 0.5s ease;
+}
+.nameTariff {
+  margin: 0;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22.4px;
+  letter-spacing: 0.01em;
+  text-align: left;
+
+  transition: 0.5s ease;
+}
+.params {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.param {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wrapperImgParam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(84.99deg, #2c55e8 -33.77%, #7eaefe 119.02%);
+  transition: 0.5s ease;
+}
+.wrapperImgParam svg path {
+  fill: #fff;
+  transition: 0.5s ease;
+}
+.paramText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.param p {
+  margin: 0;
+
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-align: left;
+
+  transition: 0.5s ease;
+}
+.detailsAndComparison {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detailsAndComparison svg {
+  cursor: pointer;
+}
+.detailsAndComparison svg:hover {
+  transform: scale(1.1);
+}
+.buttonDetails {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.6px;
+  text-align: left;
+
+  color: #578fec;
+
+  transition: 0.5s ease;
+}
+.buttonDetails a {
+  color: #000;
+  text-decoration: none;
+}
+.buttonDetails:hover {
+  transform: scale(1.05);
+}
+.priceAndButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.wrapperPrices p {
+  margin: 0;
+
+  font-family: Raleway;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 12.91px;
+  text-align: left;
+
+  transition: 0.5s ease;
+}
+.prices {
+  display: flex;
+  align-items: center;
+}
+.newPrice {
+  font-family: Raleway;
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 38.74px;
+  text-align: left;
+
+  transition: 0.5s ease;
+}
+.oldPriceContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 48px;
+}
+.oldPrice {
+  font-family: Raleway;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17.61px;
+  text-align: left;
+
+  text-decoration: line-through;
+  color: #b8b8c0;
+
+  transition: 0.5s ease;
+}
+.rubles {
+  font-family: Raleway;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.09px;
+  text-align: left;
+
+  transition: 0.5s ease;
+}
+.buttonConnect {
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.44px;
+  text-align: left;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 40px;
+
+  transition: 0.5s ease;
+}
+.buttonConnect:hover {
+  transform: scale(1.05);
+}

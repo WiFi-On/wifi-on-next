@@ -1,0 +1,66 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 50px;
+  width: 290px;
+  height: 290px;
+  box-shadow: 3.97px 39.66px 55.52px 7.93px #0000000d;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.main:hover {
+  transform: scale(1.1);
+}
+.mainTablet {
+  width: 230px;
+  height: 230px;
+}
+.mainMobile {
+  width: 156px;
+  height: 173px;
+}
+.wrapperImg {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.wrapperImgTablet {
+  height: 151px;
+  width: 151px;
+}
+.wrapperImgTablet img {
+  width: 100%;
+}
+.wrapperImgMobile {
+  height: 102px;
+  width: 102px;
+}
+.wrapperImgMobile img {
+  width: 100%;
+}
+.main h4 {
+  font-family: Raleway;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30.8px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+.mainTablet h4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+}
+.mainMobile h4 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.8px;
+  text-align: left;
+}

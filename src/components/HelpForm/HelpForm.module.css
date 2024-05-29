@@ -1,0 +1,237 @@
+.main {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 150px auto 0 auto;
+  gap: 34px;
+}
+.main img {
+  height: 20%;
+}
+.containerForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 736px;
+  gap: 30px;
+}
+.containerForm h2 {
+  font-family: Raleway;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 61.6px;
+  text-align: left;
+  margin: 0;
+}
+.desc {
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: left;
+  margin: 0;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 620px;
+}
+.sendAndText {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.sendAndText p {
+  max-width: 371px;
+}
+.sendAndText span {
+  color: #173cc2;
+  cursor: pointer;
+}
+.sendAndText button {
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+  height: 55px;
+  padding: 0 38px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.78px;
+  text-align: center;
+  color: #fff;
+}
+.mainTablet {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 730px;
+  box-sizing: border-box;
+  margin: 80px auto 0 auto;
+  gap: 10px;
+}
+.mainTablet h2 {
+  font-family: Raleway;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: left;
+  margin: 0;
+}
+.mainTablet img {
+  height: 251px;
+  width: 352px;
+}
+.containerFormTablet {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  gap: 30px;
+}
+.descTablet {
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+  max-width: 681px;
+  margin: 0;
+}
+.inputsTablet {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+.sendAndImgTablet {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.sendAndImgTablet span {
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: left;
+  color: #173cc2;
+  cursor: pointer;
+}
+.sendAndImgTablet p {
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: left;
+}
+.sendAndImgTablet button {
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+  height: 55px;
+  padding: 0 38px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.78px;
+  text-align: center;
+  color: #fff;
+}
+.mainMobile {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 10px;
+  max-width: 730px;
+  max-height: 864px;
+  box-sizing: border-box;
+  margin: 80px auto 0 auto;
+  gap: 15px;
+}
+.mainMobile h2 {
+  margin-bottom: 30px;
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+
+  margin: 0;
+}
+.mainMobile img {
+  max-height: 351px;
+  max-width: 352px;
+  width: 100%;
+  height: 100%;
+}
+.containerFormMobile {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  gap: 30px;
+}
+.descMobile {
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+
+  max-width: 681px;
+  margin: 0;
+}
+.inputsMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+.sendAndTextMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.sendAndTextMobile p {
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: left;
+}
+.sendAndTextMobile span {
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  text-align: left;
+
+  color: #173cc2;
+  cursor: pointer;
+}
+.sendAndTextMobile button {
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+  height: 55px;
+  padding: 0 38px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.78px;
+  text-align: center;
+  color: #fff;
+}

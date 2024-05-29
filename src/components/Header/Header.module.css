@@ -1,0 +1,73 @@
+.main {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 160px;
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+  padding: 30px 20px 40px 20px;
+  box-shadow: 0px 10px 20px 0px #00122608;
+  border-radius: 0px 0px 24px 24px;
+  box-sizing: border-box;
+  gap: 10px;
+  z-index: 100;
+}
+
+.logo {
+  padding: 7px 12px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.container {
+  width: 1280px;
+
+  margin: 0 auto;
+  gap: 27px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.number {
+  color: #fff;
+  text-decoration: none;
+
+  font-family: "Raleway";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin: 0;
+
+  transition: 0.2s ease;
+}
+.number a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+.iconMenu {
+  height: 19px;
+  cursor: pointer;
+}
+.containerTablet {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.number a:hover {
+  color: #cedfff;
+}

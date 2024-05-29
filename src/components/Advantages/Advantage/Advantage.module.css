@@ -1,0 +1,106 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 340px;
+  width: 290px;
+  border: 1px solid #00000008;
+  border-radius: 50px;
+  box-shadow: 0px 25px 50px 0px #9ba1a71a;
+
+  transition: 0.5s ease;
+}
+.main:hover {
+  background: #284fdc;
+  transform: scale(1.04);
+}
+.main:hover h5,
+.main:hover p {
+  color: #fff;
+}
+.main svg path {
+  fill: #284fdc;
+  transition: 0.5s ease;
+}
+.main:hover svg path {
+  fill: #fff;
+}
+.text {
+  display: inline-flex; /* или inline-flex */
+  flex-direction: column;
+  gap: 5px;
+  vertical-align: top; /* выравнивание по верхнему краю */
+  margin: 30px 0 0 30px;
+}
+.text h5 {
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin: 0;
+
+  transition: 0.5s ease;
+}
+.text p {
+  font-family: Raleway;
+  width: 215px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25.2px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  margin: 0;
+  color: #414141;
+
+  transition: 0.5s ease;
+}
+@media screen and (max-width: 640px) {
+  .main {
+    display: flex;
+    height: 100px;
+    max-width: 400px;
+    width: 100%;
+    flex-direction: row;
+    border: 1px solid #00000008;
+    border-radius: 20px;
+    box-shadow: 0px 25px 50px 0px #9ba1a71a;
+  }
+  .main svg {
+    height: 60px;
+    width: 60px;
+    align-self: flex-end;
+    transform: scaleX(-1);
+  }
+  .text {
+    display: inline-flex; /* или inline-flex */
+    align-self: flex-start;
+    flex-direction: column;
+    max-width: 246px;
+    gap: 5px;
+    vertical-align: top; /* выравнивание по верхнему краю */
+    margin: 16px 0 0 16px;
+  }
+  .text h5 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    text-align: left;
+
+    margin: 0;
+  }
+  .text p {
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.6px;
+    letter-spacing: 0.02em;
+    text-align: left;
+
+    margin: 0;
+    color: #414141;
+  }
+}

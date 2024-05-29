@@ -1,0 +1,52 @@
+.main {
+  border: 1px solid #d9d9d9;
+  padding: 16px 30px;
+  border-radius: 30px;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+}
+.mainActive {
+  border: 1px solid #284fdc;
+  color: #284fdc;
+}
+.error {
+  border: 1px solid #f43d3d;
+  color: #f43d3d;
+}
+.main:hover {
+  border: 1px solid #284fdc;
+}
+.main:hover::placeholder {
+  color: #284fdc;
+}
+.main:focus {
+  outline: 0.5px solid #284fdc;
+  color: #284fdc;
+}
+.main:focus::placeholder {
+  color: #284fdc;
+}
+.mainEmail {
+  background-color: transparent;
+}
+.mainEmail::placeholder {
+  color: #fff;
+}
+.mainEmail {
+  border: 1px solid #d9d9d9;
+  padding: 16px 30px;
+  border-radius: 30px;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+  color: #fff;
+}
+.mainEmail:focus {
+  outline: none;
+  color: #fff;
+}

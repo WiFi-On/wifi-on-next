@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1280px;
+  margin: 200px auto 0 auto;
+}
+
+.main h2 {
+  font-family: Raleway;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 61.6px;
+  margin: 10px;
+  text-align: center;
+}
+.wrapperCards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1000px;
+}

@@ -1,0 +1,50 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  width: 180px;
+  border: 1px solid #578fec;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.wrapper {
+  height: 132px;
+  width: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper img {
+  width: 100%;
+}
+.on {
+  border: 2px solid #284fdc;
+}
+@media screen and (max-width: 1250px) {
+  .main {
+    height: 105px;
+    width: 105px;
+  }
+  .main:hover {
+    border: 2px solid #284fdc;
+  }
+  .wrapper {
+    height: 76px;
+    width: 76px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .main {
+    height: 70px;
+    width: 70px;
+  }
+  .main:hover {
+    border: 2px solid #284fdc;
+  }
+  .wrapper {
+    height: 51px;
+    width: 51px;
+  }
+}

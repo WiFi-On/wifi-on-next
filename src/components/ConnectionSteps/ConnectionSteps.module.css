@@ -1,0 +1,162 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  background: linear-gradient(83.24deg, #284fdc -22.56%, #578fec 106.47%);
+}
+.main h2 {
+  padding: 60px 0 0 0;
+  margin: 0;
+  font-family: Raleway;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 61.6px;
+  text-align: center;
+  color: #fff;
+}
+.containerConnectionSteps {
+  background-image: url(./imgs/lineDesktop.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  margin: 50px auto 0 auto;
+  width: 640px;
+  height: 585px;
+}
+.step1 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 61px;
+}
+.step2 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 170px;
+  left: 86px;
+}
+.step3 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 120px;
+  right: 13.5px;
+}
+.text {
+  max-width: 330px;
+}
+.steps span {
+  font-size: 85px;
+  font-weight: 700;
+  line-height: 119px;
+  text-align: center;
+
+  color: #fff;
+}
+.step1 h5,
+.step3 h5 {
+  margin: 0;
+  color: #fff;
+
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  text-align: right;
+}
+.step2 h5 {
+  margin: 0;
+  color: #fff;
+
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.step1 p,
+.step3 p {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25.2px;
+  letter-spacing: 0.03em;
+  text-align: right;
+
+  margin: 0;
+  color: #fff;
+}
+.step2 p {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25.2px;
+  letter-spacing: 0.03em;
+  text-align: left;
+
+  margin: 0;
+  color: #fff;
+}
+.mainMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 60px;
+  padding: 40px 0;
+  background: linear-gradient(83.24deg, #284fdc -22.56%, #578fec 106.47%);
+}
+.mainMobile h2 {
+  font-size: 18.42px;
+  font-weight: 700;
+  line-height: 25.78px;
+  text-align: center;
+  color: #fff;
+}
+
+.stepsMobile {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.stepMobile {
+  display: flex;
+  align-items: center;
+}
+.stepMobile span {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 67.2px;
+  text-align: center;
+  color: #fff;
+}
+.textMobile {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin-left: 8px;
+  gap: 5px;
+}
+.textMobile h5 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.8px;
+  text-align: left;
+  margin: 0;
+  color: #fff;
+}
+.textMobile p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin: 0;
+  color: #fff;
+}
