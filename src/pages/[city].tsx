@@ -24,7 +24,10 @@ const CityPage = ({ cityData }) => {
         providers={cityData.providers}
         nameLocationWhere={cityData.district_info.namewhere}
       ></ProvidersInCity>
-      <SliderTariffsMain tariffs={cityData.populartariffs}></SliderTariffsMain>
+      <SliderTariffsMain
+        nameCityWhere={cityData.district_info.namewhere}
+        tariffs={cityData.populartariffs}
+      ></SliderTariffsMain>
       <AboutUs></AboutUs>
       <Advantages></Advantages>
       <ConnectionSteps></ConnectionSteps>

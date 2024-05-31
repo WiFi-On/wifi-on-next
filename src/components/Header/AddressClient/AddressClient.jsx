@@ -7,14 +7,13 @@ import { useEffect, useState } from "react";
 
 const AddressClient = ({ mobile }) => {
   const [address, setAddress] = useState("Ваш адрес");
+  const addressStorage = localStorage.getItem("address");
 
   useEffect(() => {
-    const addressStorage = localStorage.getItem("address");
-
     if (addressStorage) {
       setAddress(addressStorage);
     }
-  }, [address]);
+  }, [addressStorage]);
 
   return (
     <div

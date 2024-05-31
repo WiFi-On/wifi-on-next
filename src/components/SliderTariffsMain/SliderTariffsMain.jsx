@@ -6,7 +6,7 @@ import CardTariff from "../CardTariff/CardTariff";
 import styles from "./SliderTariffsMain.module.css";
 import cn from "classnames";
 
-const SliderTariffsMain = ({ tariffs }) => {
+const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
   const [windowWidth, setWindowWidth] = useState(null);
   let sliderRef = useRef(null);
   const next = () => {
@@ -44,7 +44,7 @@ const SliderTariffsMain = ({ tariffs }) => {
 
     return (
       <div className={cn(styles.main, styles.main4Elements)}>
-        <h2>Популярные тарифы в Мухосранске</h2>
+        <h2>Популярные тарифы в {nameCityWhere}</h2>
         <Slider
           ref={(slider) => {
             sliderRef = slider;

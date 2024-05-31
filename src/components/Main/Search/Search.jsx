@@ -1,6 +1,6 @@
 import styles from "./Search.module.css";
 import cn from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Search = ({ device }) => {
@@ -34,6 +34,7 @@ const Search = ({ device }) => {
   };
 
   const clickSuggestion = (event) => {
+    localStorage.setItem("address", event.target.textContent);
     console.log(event.target);
     setQuery(event.target.textContent);
     setSuggestions([]);
@@ -93,7 +94,6 @@ const Search = ({ device }) => {
               </p>
             );
           } else {
-            localStorage.setItem("address", suggestion.value);
             return (
               <Link
                 onClick={clickSuggestion}
