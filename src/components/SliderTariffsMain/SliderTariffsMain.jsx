@@ -6,8 +6,8 @@ import CardTariff from "../CardTariff/CardTariff";
 import styles from "./SliderTariffsMain.module.css";
 import cn from "classnames";
 
-const SliderTariffsMain = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+const SliderTariffsMain = ({ tariffs }) => {
+  const [windowWidth, setWindowWidth] = useState(null);
   let sliderRef = useRef(null);
   const next = () => {
     sliderRef.slickNext();
@@ -20,6 +20,8 @@ const SliderTariffsMain = () => {
       setWindowWidth(window.innerWidth);
     };
 
+    handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -28,6 +30,7 @@ const SliderTariffsMain = () => {
   }, []);
 
   if (windowWidth > 1300) {
+    console.log(tariffs);
     const settings = {
       dots: false,
       infinite: true,
@@ -48,30 +51,11 @@ const SliderTariffsMain = () => {
           }}
           {...settings}
         >
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
+          {tariffs.map((tariff) => (
+            <div key={tariff.id}>
+              <CardTariff tariff={tariff}></CardTariff>
+            </div>
+          ))}
         </Slider>
         <div className={styles.buttons}>
           <svg
@@ -456,7 +440,7 @@ const SliderTariffsMain = () => {
         </div>
       </div>
     );
-  } else {
+  } else if (windowWidth <= 654) {
     const settings = {
       dots: false,
       infinite: true,

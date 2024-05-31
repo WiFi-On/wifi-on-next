@@ -3,6 +3,7 @@ import cn from "classnames";
 import Input from "../Input/Input";
 import saleIcon from "./imgs/saleIcon.png";
 import wifiIcon from "./imgs/wifiIcon.png";
+import Image from "next/image";
 
 const Newsletter = () => {
   return (
@@ -21,8 +22,8 @@ const Newsletter = () => {
           персональных данных
         </p>
       </div>
-      <img className={styles.saleIcon} src={saleIcon} alt="" />
-      <img className={styles.wifiIcon} src={wifiIcon} alt="" />
+      <Image className={styles.saleIcon} src={saleIcon} alt="" />
+      <Image className={styles.wifiIcon} src={wifiIcon} alt="" />
     </div>
   );
 };

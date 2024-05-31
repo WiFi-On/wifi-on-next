@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import styles from "./ConnectionSteps.module.css";
 import lineDesktop from "./imgs/lineDesktop.svg";
 import diod from "./imgs/diod.svg";
+import Image from "next/image";
 
 const ConnectionSteps = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(null);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
@@ -28,12 +31,12 @@ const ConnectionSteps = () => {
                 <h5>Оставьте заявку</h5>
                 <p>Сделайте это прямо на сайте или позвоните нам</p>
               </div>
-              <img src={diod} alt="" />
+              <Image src={diod} alt="" />
               <span>1</span>
             </div>
             <div className={styles.step2}>
               <span>2</span>
-              <img src={diod} alt="" />
+              <Image src={diod} alt="" />
               <div className={styles.text}>
                 <h5>Звонок менеджера</h5>
                 <p>
@@ -50,7 +53,7 @@ const ConnectionSteps = () => {
                   и подключит выбранные услуги
                 </p>
               </div>
-              <img src={diod} alt="" />
+              <Image src={diod} alt="" />
               <span>3</span>
             </div>
           </div>
@@ -64,7 +67,7 @@ const ConnectionSteps = () => {
 
         <div className={styles.stepsMobile}>
           <div className={styles.stepMobile}>
-            <img src={diod} alt="" />
+            <Image src={diod} alt="" />
             <span>1</span>
             <div className={styles.textMobile}>
               <h5>Оставьте заявку</h5>
@@ -73,7 +76,7 @@ const ConnectionSteps = () => {
           </div>
           <div className={styles.stepsMobile}>
             <div className={styles.stepMobile}>
-              <img src={diod} alt="" />
+              <Image src={diod} alt="" />
               <span>2</span>
               <div className={styles.textMobile}>
                 <h5>Звонок менеджера</h5>
@@ -86,7 +89,7 @@ const ConnectionSteps = () => {
           </div>
           <div className={styles.stepsMobile}>
             <div className={styles.stepMobile}>
-              <img src={diod} alt="" />
+              <Image src={diod} alt="" />
               <span>3</span>
               <div className={styles.textMobile}>
                 <h5>Подключение</h5>

@@ -1,13 +1,18 @@
 import styles from "./CardTariff.module.css";
-import { Link } from "react-router-dom";
+import { Link } from "next/link";
+import Image from "next/image";
 
 const CardTariff = ({ tariff }) => {
+  if (!tariff) return <div>Loading...</div>;
+  console.log(tariff);
   return (
     <div className={styles.main}>
       <div className={styles.logoAndName}>
-        <img
-          src={`/src/components/CardTariff/imgs/providers/${tariff.provider.img}`}
+        <Image
+          src={`/imgs/cardTariff/providers/${tariff.provider.img}`}
           alt=""
+          width={50}
+          height={50}
         />
         <span>{tariff.provider.name}</span>
       </div>
@@ -16,9 +21,11 @@ const CardTariff = ({ tariff }) => {
         {tariff.params.map((paramMain, i) => (
           <div key={i} className={styles.param}>
             <div className={styles.wrapperImgParam}>
-              <img
-                src={`/src/components/CardTariff/imgs/params/${paramMain.img}`}
+              <Image
+                src={`/imgs/cardTariff/params/${paramMain.img}`}
                 alt=""
+                width={20}
+                height={20}
               />
             </div>
             <div className={styles.paramText}>
@@ -33,7 +40,7 @@ const CardTariff = ({ tariff }) => {
       </div>
       <div className={styles.detailsAndComparison}>
         <div className={styles.buttonDetails}>
-          <Link to={`/tariff?id=${tariff.id}`}>Подробнее о тарифе</Link>
+          <a href="/">Подробнее о тарифе</a>
           <svg
             width="10"
             height="10"

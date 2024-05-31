@@ -4,14 +4,17 @@ import calendarImg from "./img/iconCalendar.svg";
 import groupImg from "./img/iconGroup.svg";
 import mapImg from "./img/iconMap.svg";
 import cn from "classnames";
+import Image from "next/image";
 
 const AboutUs = (props) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
@@ -35,21 +38,21 @@ const AboutUs = (props) => {
           <tbody>
             <tr>
               <td className={styles.mobileBlock}>
-                <img src={calendarImg} alt="" />
+                <Image src={calendarImg} alt="" />
                 <div className={styles.blockText}>
                   <h2>10 лет</h2>
                   <p>сотрудничаем с ведущими интернет — провайдерами страны</p>
                 </div>
               </td>
               <td className={cn(styles.mobileBlock, styles.mobileBlock2)}>
-                <img src={groupImg} alt="" />
+                <Image src={groupImg} alt="" />
                 <div className={styles.blockText}>
                   <h2>31452</h2>
                   <p>подключённых клиентов через наш сервис</p>
                 </div>
               </td>
               <td className={styles.mobileBlock}>
-                <img src={mapImg} alt="" />
+                <Image src={mapImg} alt="" />
                 <div className={styles.blockText}>
                   <h2>89</h2>
                   <p>регионов, в которых мы подключаем Интернет и ТВ</p>
@@ -76,14 +79,14 @@ const AboutUs = (props) => {
           <tbody>
             <tr>
               <td className={cn(styles.block, styles.block1)}>
-                <img src={calendarImg} alt="" />
+                <Image src={calendarImg} alt="" />
               </td>
               <td className={styles.block}>
                 <h2>10 лет</h2>
                 <p>сотрудничаем с ведущими интернет — провайдерами страны</p>
               </td>
               <td className={cn(styles.block, styles.block3)}>
-                <img src={mapImg} alt="" />
+                <Image src={mapImg} alt="" />
               </td>
             </tr>
             <tr>
@@ -92,7 +95,7 @@ const AboutUs = (props) => {
                 <p>подключённых клиентов через наш сервис</p>
               </td>
               <td className={styles.block}>
-                <img src={groupImg} alt="" />
+                <Image src={groupImg} alt="" />
               </td>
               <td className={cn(styles.block, styles.block6)}>
                 <h2>89</h2>

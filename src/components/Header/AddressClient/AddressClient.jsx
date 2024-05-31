@@ -3,9 +3,18 @@ import iconVectorBlack from "./iconVectorBlack.svg";
 import cn from "classnames";
 import styles from "./AddressClient.module.css";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const AddressClient = (props) => {
-  const { mobile } = props;
+const AddressClient = ({ mobile }) => {
+  const [address, setAddress] = useState("Ваш адрес");
+
+  useEffect(() => {
+    const addressStorage = localStorage.getItem("address");
+
+    if (addressStorage) {
+      setAddress(addressStorage);
+    }
+  }, [address]);
 
   return (
     <div
@@ -19,9 +28,7 @@ const AddressClient = (props) => {
       ) : (
         <Image className="" src={iconVectorWhite} alt="" />
       )}
-      <span className={styles.address}>
-        Адрес клиента длинный какой то пиздец
-      </span>
+      <span className={styles.address}>{address}</span>
     </div>
   );
 };

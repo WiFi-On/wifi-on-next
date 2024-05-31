@@ -3,13 +3,17 @@ import cn from "classnames";
 import helpDesk from "./imgs/helpDesk.png";
 import { useEffect, useState } from "react";
 import Input from "../Input/Input";
+import Image from "next/image";
 
 const HelpForm = (props) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(null);
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
+    handleWindowResize();
+
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
@@ -39,7 +43,7 @@ const HelpForm = (props) => {
             </p>
           </div>
         </div>
-        <img src={helpDesk} alt="" />
+        <Image src={helpDesk} alt="" />
       </div>
     );
   } else if (windowWidth < 1280 && windowWidth > 680) {
@@ -57,7 +61,7 @@ const HelpForm = (props) => {
             <Input placeholder="Ваш телефон" typeInput="phone"></Input>
             <Input placeholder="Адрес подключения" typeInput="address"></Input>
           </div>
-          <img src={helpDesk} alt="" />
+          <Image src={helpDesk} alt="" />
         </div>
         <div className={styles.sendAndImgTablet}>
           <button>Отправить</button>
@@ -89,7 +93,7 @@ const HelpForm = (props) => {
             <span> Политикой конфиденциальности</span>
           </p>
         </div>
-        <img src={helpDesk} alt="" />
+        <Image src={helpDesk} alt="" />
       </div>
     );
   }

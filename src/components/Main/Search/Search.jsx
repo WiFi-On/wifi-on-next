@@ -1,7 +1,7 @@
 import styles from "./Search.module.css";
 import cn from "classnames";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Search = ({ device }) => {
   const [query, setQuery] = useState("");
@@ -87,13 +87,18 @@ const Search = ({ device }) => {
       >
         {suggestions.map((suggestion, i) => {
           if (suggestion.data.fias_level !== "8") {
-            return <p onClick={clickSuggestion}>{suggestion.value}</p>;
+            return (
+              <p key={i} onClick={clickSuggestion}>
+                {suggestion.value}
+              </p>
+            );
           } else {
+            localStorage.setItem("address", suggestion.value);
             return (
               <Link
                 onClick={clickSuggestion}
                 key={i}
-                to={`/tariffs?address=${suggestion.value}`}
+                href={`/tariffs?address=${suggestion.value}`}
                 className={styles.suggestion}
               >
                 {suggestion.value}

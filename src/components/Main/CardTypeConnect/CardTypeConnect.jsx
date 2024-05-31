@@ -4,6 +4,7 @@ import iconInternetTV from "./iconInternettv.png";
 import iconTV from "./iconTV.png";
 import iconConnection from "./iconConnection.png";
 import cn from "classnames";
+import Image from "next/image";
 
 const CardTypeConnect = (props) => {
   const { device, type } = props;
@@ -23,7 +24,7 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <img src={iconInternetTV} alt="" />
+            <Image src={iconInternetTV} alt="" />
           </div>
 
           <h4>Интернет+ТВ</h4>
@@ -43,7 +44,7 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <img src={iconInternet} alt="" />
+            <Image src={iconInternet} alt="" />
           </div>
 
           <h4>Домашний интернет</h4>
@@ -63,7 +64,7 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <img src={iconTV} alt="" />
+            <Image src={iconTV} alt="" />
           </div>
 
           <h4>Телевидение</h4>
@@ -83,7 +84,7 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <img src={iconConnection} alt="" />
+            <Image src={iconConnection} alt="" />
           </div>
           <h4>Связь+Интернет+ТВ</h4>
         </div>

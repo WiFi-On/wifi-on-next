@@ -3,13 +3,17 @@ import { useState, useEffect } from "react";
 import iconLogo from "./imgs/iconLogo.png";
 import tgIcon from "./imgs/iconTG.png";
 import waIcon from "./imgs/iconWA.png";
+import Image from "next/image";
 
 const Footer = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(null);
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
+    handleWindowResize();
+
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
@@ -19,7 +23,7 @@ const Footer = () => {
     return (
       <div className={styles.main}>
         <div className={styles.policyAndAgreement}>
-          <img src={iconLogo} alt="" />
+          <Image src={iconLogo} alt="" />
           <p>Политика конфиденциальности</p>
           <p>Пользовательское соглашение</p>
         </div>
@@ -41,10 +45,10 @@ const Footer = () => {
           <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
           <div className={styles.links}>
             <a href="">
-              <img src={tgIcon} alt="" />
+              <Image src={tgIcon} alt="" />
             </a>
             <a href="">
-              <img src={waIcon} alt="" />
+              <Image src={waIcon} alt="" />
             </a>
           </div>
         </div>
@@ -54,7 +58,7 @@ const Footer = () => {
     return (
       <div className={styles.mainTablet}>
         <div className={styles.topTablet}>
-          <img src={iconLogo} alt="" />
+          <Image src={iconLogo} alt="" />
           <div className={styles.navTablet}>
             <div className={styles.wrapperNavTablet}>
               <p>О нас</p>
@@ -80,10 +84,10 @@ const Footer = () => {
           </div>
           <div className={styles.linksTablet}>
             <a href="">
-              <img src={tgIcon} alt="" />
+              <Image src={tgIcon} alt="" />
             </a>
             <a href="">
-              <img src={waIcon} alt="" />
+              <Image src={waIcon} alt="" />
             </a>
           </div>
         </div>
@@ -94,7 +98,7 @@ const Footer = () => {
       <div className={styles.mainMobile}>
         <div className={styles.topOrLeft}>
           {" "}
-          <img src={iconLogo} alt="" />
+          <Image src={iconLogo} alt="" />
           <div className={styles.navMobile}>
             <p>О нас</p>
             <p>Провайдеры</p>
@@ -112,10 +116,10 @@ const Footer = () => {
           </div>
           <div className={styles.linksMobile}>
             <a href="">
-              <img src={tgIcon} alt="" />
+              <Image src={tgIcon} alt="" />
             </a>
             <a href="">
-              <img src={waIcon} alt="" />
+              <Image src={waIcon} alt="" />
             </a>
           </div>
           <div className={styles.policyAndAgreementMobile}>

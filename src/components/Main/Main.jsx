@@ -3,14 +3,17 @@ import CardTypeConnect from "./CardTypeConnect/CardTypeConnect";
 import connectionsImg from "./connections.svg";
 import Search from "./Search/Search";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Main = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
@@ -30,7 +33,11 @@ const Main = () => {
             </div>
             <Search></Search>
           </div>
-          <img className={styles.connectionsImg} src={connectionsImg} alt="" />
+          <Image
+            className={styles.connectionsImg}
+            src={connectionsImg}
+            alt=""
+          />
         </div>
         <div className={styles.bot}>
           <CardTypeConnect type="Internet+TV"></CardTypeConnect>
@@ -51,7 +58,7 @@ const Main = () => {
             </div>
             <Search device="tablet"></Search>
           </div>
-          <img
+          <Image
             className={styles.connectionsImgTablet}
             src={connectionsImg}
             alt=""
@@ -79,7 +86,7 @@ const Main = () => {
             </div>
             <Search device="mobile"></Search>
           </div>
-          <img
+          <Image
             className={styles.connectionsImgMobile}
             src={connectionsImg}
             alt=""
