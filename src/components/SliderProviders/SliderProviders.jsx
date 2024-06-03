@@ -13,7 +13,7 @@ const SliderProviders = ({ providers = [] }) => {
           <CardProvider
             key={provider.id}
             id={provider.id}
-            img={`src/components/SliderProviders/imgs/${provider.img}`}
+            img={`/imgs/providersColor/${provider.img}`}
           />
         ))}
       </div>

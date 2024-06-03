@@ -28,7 +28,7 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
             <Image
               className={styles.providersImg}
               key={provider.id}
-              src={`/imgs/providersMain/${provider.img}`}
+              src={`/imgs/providersWhite/${provider.img}`}
               width={180}
               height={180}
               alt={provider.name}

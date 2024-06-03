@@ -29,11 +29,11 @@ const CardTariff = ({ tariff }) => {
               />
             </div>
             <div className={styles.paramText}>
-              {paramMain.params.map((param, i) => (
-                <p key={i}>
-                  {param.value} {param.value_type}
-                </p>
-              ))}
+              <p>{paramMain.name}</p>
+              <p>
+                {paramMain.params[0].name} {paramMain.params[0].value}{" "}
+                {paramMain.params[0].value_type}
+              </p>
             </div>
           </div>
         ))}
@@ -124,9 +124,13 @@ const CardTariff = ({ tariff }) => {
         <div className={styles.wrapperPrices}>
           <p>Абонентская плата</p>
           <div className={styles.prices}>
-            <span className={styles.newPrice}>{tariff.price}</span>
+            <span className={styles.newPrice}>
+              {tariff.newprice ? tariff.newprice : tariff.price}
+            </span>
             <div className={styles.oldPriceContainer}>
-              <span className={styles.oldPrice}>1000</span>
+              <span className={styles.oldPrice}>
+                {tariff.newprice ? tariff.price : ""}
+              </span>
               <span className={styles.rubles}>₽/мес</span>
             </div>
           </div>

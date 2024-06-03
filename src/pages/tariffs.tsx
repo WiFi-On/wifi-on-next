@@ -25,7 +25,6 @@ const Tariffs = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           setTariffs(data.tariffs);
           setProviders(data.providers);
         })
@@ -33,7 +32,7 @@ const Tariffs = () => {
           console.error("Fetch error:", error);
         });
     }
-  }, []);
+  }, [address]);
 
   return (
     <>

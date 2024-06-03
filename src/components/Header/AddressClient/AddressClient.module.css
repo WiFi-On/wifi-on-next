@@ -1,16 +1,15 @@
 .main {
-  max-height: 40px;
-  max-width: 400px;
+  max-width: 500px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
   gap: 7px;
   border-radius: 20px;
   padding: 10px 15px;
-
-  overflow-x: scroll;
-  overflow-y: hidden;
+  position: relative;
+  background: linear-gradient(311.67deg, #3b77e6 2.28%, #305aea 78.75%);
 }
 
 .main::-webkit-scrollbar {
@@ -26,12 +25,61 @@
   border: 1px solid #fff;
   color: #fff;
 }
+.top {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 7px;
+}
+.top input {
+  border: none;
+  background-color: transparent;
+  width: 98%;
+  box-sizing: border-box;
 
-.address {
   font-family: Raleway;
   flex-shrink: 0;
   font-size: 16px;
   font-weight: 500;
   line-height: 20.8px;
   letter-spacing: 0.01em;
+  color: #fff;
+}
+.top input:focus {
+  outline: none;
+}
+.bot {
+  display: none;
+  position: absolute;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+  top: 48px;
+  border: 1px solid #fff;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background: linear-gradient(311.67deg, #3b77e6 2.28%, #305aea 78.75%);
+}
+.botActive {
+  display: flex;
+}
+.bot a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.8px;
+  letter-spacing: 0.01em;
+}
+.bot p {
+  cursor: pointer;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.8px;
+  letter-spacing: 0.01em;
+  margin: 0;
 }

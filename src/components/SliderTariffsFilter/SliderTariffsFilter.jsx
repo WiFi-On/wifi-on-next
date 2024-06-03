@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SliderTariffsFilter.module.css";
 import CardTariff from "../CardTariff/CardTariff";
-import arrowLeft from "./imgs/arrowLeft.svg";
-import arrowRight from "./imgs/arrowRight.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
+import Image from "next/image";
 
 function SliderTariffsFilter({ allTariffs }) {
   const [filterTariffs, setFilterTariffs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const tariffsPerPage = 16; // Количество тарифов на одной странице
 
   const dispatch = useDispatch();
   const activeProviders = useSelector((state) => state.filter.providers);
@@ -21,31 +22,55 @@ function SliderTariffsFilter({ allTariffs }) {
       }
     });
 
-    console.log(results);
     setFilterTariffs(results);
   };
 
   useEffect(() => {
     if (activeProviders.length > 0) {
-      console.log("я в фильтрации");
       filterTariffsFun(allTariffs, activeProviders);
     } else {
-      console.log("я не в фильтрации");
       setFilterTariffs(allTariffs);
     }
   }, [allTariffs, activeProviders]);
 
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const pageCount = Math.ceil(filterTariffs.length / tariffsPerPage);
+  const offset = currentPage * tariffsPerPage;
+
   return (
     <div className={styles.main}>
       <div className={styles.sliderContainer}>
-        {filterTariffs.map((tariff) => (
+        {filterTariffs.slice(offset, offset + tariffsPerPage).map((tariff) => (
           <CardTariff key={tariff.id} tariff={tariff} />
         ))}
       </div>
-      <div className={styles.buttons}>
-        <img src={arrowLeft} alt="" />
-        <img src={arrowRight} alt="" />
-      </div>
+      <ReactPaginate
+        pageCount={pageCount}
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={1}
+        onPageChange={handlePageChange}
+        containerClassName={styles.pagination} // Используйте переменную стилей из модуля CSS
+        activeClassName={styles.active} // Используйте переменную стилей из модуля CSS
+        previousLabel={
+          <Image
+            height={21}
+            width={9}
+            src={"/imgs/paginate/arrowLeft.svg"}
+            alt="Previous"
+          ></Image>
+        }
+        nextLabel={
+          <Image
+            height={21}
+            width={9}
+            src={"/imgs/paginate/arrowRight.svg"}
+            alt="Next"
+          ></Image>
+        }
+      />
     </div>
   );
 }

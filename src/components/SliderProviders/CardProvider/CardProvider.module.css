@@ -2,16 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 180px;
-  width: 180px;
+  height: 160px;
+  width: 160px;
   border: 1px solid #578fec;
   border-radius: 20px;
   cursor: pointer;
 }
 
 .wrapper {
-  height: 132px;
-  width: 132px;
+  height: 110px;
+  width: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
