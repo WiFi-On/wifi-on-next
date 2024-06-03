@@ -54,22 +54,10 @@ function SliderTariffsFilter({ allTariffs }) {
         onPageChange={handlePageChange}
         containerClassName={styles.pagination} // Используйте переменную стилей из модуля CSS
         activeClassName={styles.active} // Используйте переменную стилей из модуля CSS
-        previousLabel={
-          <Image
-            height={21}
-            width={9}
-            src={"/imgs/paginate/arrowLeft.svg"}
-            alt="Previous"
-          ></Image>
-        }
-        nextLabel={
-          <Image
-            height={21}
-            width={9}
-            src={"/imgs/paginate/arrowRight.svg"}
-            alt="Next"
-          ></Image>
-        }
+        previousClassName={styles.previous}
+        nextClassName={styles.next}
+        previousLabel={"<"}
+        nextLabel={">"}
       />
     </div>
   );
