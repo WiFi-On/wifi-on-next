@@ -51,6 +51,8 @@ const AddressClient = ({ mobile }) => {
     if (addressStorage) {
       setQuery(addressStorage);
     }
+
+    updateInputWidth(); // Обновляем ширину при первой загрузке компонента
   }, [addressStorage]);
 
   return (

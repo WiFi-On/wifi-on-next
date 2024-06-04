@@ -7,6 +7,10 @@ import Image from "next/image";
 
 const HelpForm = (props) => {
   const [windowWidth, setWindowWidth] = useState(null);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -23,7 +27,7 @@ const HelpForm = (props) => {
   if (windowWidth > 1280) {
     return (
       <div className={styles.main}>
-        <div className={styles.containerForm}>
+        <form className={styles.containerForm}>
           <h2>Нужна помощь в выборе тарифа?</h2>
           <p className={styles.desc}>
             Оставьте свои контактные данные в форме ниже и наши менеджеры
@@ -42,7 +46,7 @@ const HelpForm = (props) => {
               <span> Политикой конфиденциальности</span>
             </p>
           </div>
-        </div>
+        </form>
         <Image src={helpDesk} alt="" />
       </div>
     );

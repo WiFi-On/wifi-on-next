@@ -3,19 +3,13 @@
   max-width: 1250px;
 }
 .sliderContainer {
-  width: 1250px;
+  max-width: 1250px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -33,6 +27,7 @@
   color: #9f9f9f;
   display: flex;
   cursor: pointer;
+  flex-shrink: 0;
 
   align-items: center;
   justify-content: center;
