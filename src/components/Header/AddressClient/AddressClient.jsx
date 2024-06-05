@@ -3,7 +3,7 @@ import iconVectorBlack from "./iconVectorBlack.svg";
 import cn from "classnames";
 import styles from "./AddressClient.module.css";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
 const AddressClient = ({ mobile }) => {
@@ -11,10 +11,13 @@ const AddressClient = ({ mobile }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [query, setQuery] = useState("");
   const [activeSuggestions, setActiveSuggestions] = useState(false);
+  const inputRef = useRef(null);
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setQuery(event.target.value);
+    const newQuery = event.target.value;
+    setQuery(newQuery);
+
     const token = "bbbdb08051ba3df93014d80a721660db6c19f0db";
 
     fetch(
@@ -26,7 +29,7 @@ const AddressClient = ({ mobile }) => {
           Accept: "application/json",
           Authorization: "Token " + token,
         },
-        body: JSON.stringify({ query: query, count: 3 }),
+        body: JSON.stringify({ query: newQuery, count: 3 }),
       }
     )
       .then((response) => response.json())
@@ -39,10 +42,14 @@ const AddressClient = ({ mobile }) => {
       });
   };
 
+  const handlefocus = (event) => {
+    inputRef.current.select();
+  };
+
   const clickSuggestion = (event) => {
-    localStorage.setItem("address", event.target.textContent);
-    console.log(event.target);
-    setQuery(event.target.textContent);
+    const address = event.target.textContent;
+    localStorage.setItem("address", address);
+    setQuery(address);
     setSuggestions([]);
     setActiveSuggestions(false);
   };
@@ -51,8 +58,6 @@ const AddressClient = ({ mobile }) => {
     if (addressStorage) {
       setQuery(addressStorage);
     }
-
-    updateInputWidth(); // Обновляем ширину при первой загрузке компонента
   }, [addressStorage]);
 
   return (
@@ -64,16 +69,18 @@ const AddressClient = ({ mobile }) => {
     >
       <div className={styles.top}>
         {mobile ? (
-          <Image className="" src={iconVectorBlack} alt="" />
+          <Image className="" src={iconVectorBlack} alt="icon" />
         ) : (
-          <Image className="" src={iconVectorWhite} alt="" />
+          <Image className="" src={iconVectorWhite} alt="icon" />
         )}
         <input
           onChange={handleSearch}
           className={styles.address}
           value={query}
           type="text"
-        ></input>
+          ref={inputRef}
+          onFocus={handlefocus}
+        />
       </div>
       <div
         className={cn(styles.bot, { [styles.botActive]: activeSuggestions })}

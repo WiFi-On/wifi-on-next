@@ -3,6 +3,7 @@ import styles from "./ParamTariff.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import Switcher from "../Switcher/Switcher";
+import Image from "next/image";
 
 function ParamTariff({ title, params, img, equipmen = false }) {
   if (equipmen) {
@@ -13,7 +14,12 @@ function ParamTariff({ title, params, img, equipmen = false }) {
     return (
       <div className={styles.main}>
         <div className={styles.top}>
-          <img src={`/src/components/Tariff/imgs/params/${img}`} alt="" />
+          <Image
+            width={25}
+            height={25}
+            src={`/imgs/paramsTariff/${img}`}
+            alt=""
+          />
           <h5>{title}</h5>
         </div>
         <div className={styles.botEquipment}>
@@ -35,7 +41,12 @@ function ParamTariff({ title, params, img, equipmen = false }) {
     return (
       <div className={styles.main}>
         <div className={styles.top}>
-          <img src={`/src/components/Tariff/imgs/params/${img}`} alt="" />
+          <Image
+            width={25}
+            height={25}
+            src={`/imgs/paramsTariff/${img}`}
+            alt=""
+          />
           <h5>{title}</h5>
         </div>
         <div className={styles.bot}>

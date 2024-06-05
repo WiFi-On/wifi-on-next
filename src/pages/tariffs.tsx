@@ -10,14 +10,13 @@ import { useRouter } from "next/router";
 const Tariffs = () => {
   const router = useRouter();
   const { address } = router.query;
-
   const [tariffs, setTariffs] = useState([]);
   const [providers, setProviders] = useState([]);
   const [filterProviders, setFilterProviders] = useState([]);
 
   useEffect(() => {
     if (address) {
-      fetch(`/api/get_tariffs?address=${address}`)
+      fetch(`https://on-wifi.ru/get_tariffs?address=${address}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

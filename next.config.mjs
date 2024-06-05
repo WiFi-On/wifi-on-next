@@ -4,8 +4,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/get_tariffs",
-        destination: "https://on-wifi.ru/get_tariffs",
+        source: "/get_tariff/:tariffId",
+        destination: "https://on-wifi.ru/get_tariff/:tariffId",
       },
     ];
   },

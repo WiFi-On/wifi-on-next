@@ -1,6 +1,7 @@
 import styles from "./Tariff.module.css";
 import ParamTariff from "./ParamTariff/ParamTariff";
 import compare from "./imgs/compare.svg";
+import Image from "next/image";
 
 function Tariff({ tariffInfo }) {
   if (tariffInfo.provider) {
@@ -9,14 +10,16 @@ function Tariff({ tariffInfo }) {
       <div className={styles.main}>
         <div className={styles.logoAndButton}>
           <div className={styles.logoAndText}>
-            <img
-              src={`src/components/Tariff/imgs/providers/${tariffInfo.provider.img}`}
+            <Image
+              src={`/imgs/providersColor/${tariffInfo.provider.img}`}
               alt=""
+              width={70}
+              height={70}
             />
             <p>{tariffInfo.provider.name}</p>
           </div>
           <div className={styles.buttons}>
-            <img src={compare} alt="" />
+            <Image src={compare} alt="" />
             <button>Подключить</button>
           </div>
         </div>
