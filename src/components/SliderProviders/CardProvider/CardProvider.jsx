@@ -6,6 +6,7 @@ import {
   addProvider,
   removeProvider,
 } from "../../../redux/actions/providerAction";
+import Image from "next/image";
 
 const CardProvider = ({ img, id }) => {
   const [on, setOn] = useState(false);
@@ -23,7 +24,7 @@ const CardProvider = ({ img, id }) => {
   return (
     <div onClick={handleClick} className={cn(styles.main, { [styles.on]: on })}>
       <div className={styles.wrapper}>
-        <img src={img} alt="" />
+        <Image src={img} alt="" />
       </div>
     </div>
   );

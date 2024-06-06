@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = () => {
             <ComparisonButton></ComparisonButton>
           </div>
           <div className={styles.bot}>
-            <AddressClient></AddressClient>
+            <AddressClient mobile={false}></AddressClient>
             <h5 className={styles.number}>
               <a href="tel:+7999999999">+7 (800) 550–07–92</a>
             </h5>
@@ -74,7 +74,7 @@ const Header: React.FC<HeaderProps> = () => {
           <Link href="/">
             <Image className={styles.logo} src={logo} alt="" />
           </Link>
-          <AddressClient></AddressClient>
+          <AddressClient mobile={false}></AddressClient>
         </div>
         <Image
           onClick={openHamburgerMenu}

@@ -3,6 +3,7 @@ import iconPlus from "./imgs/iconPlus.png";
 import iconMinus from "./imgs/iconMinus.png";
 import { useState, useRef } from "react";
 import cn from "classnames";
+import Image from "next/image";
 
 const Question = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,7 @@ const Question = ({ question, answer }) => {
         })}
       >
         <h4>{question}</h4>
-        <img src={isOpen ? iconMinus : iconPlus} alt="" />
+        <Image src={isOpen ? iconMinus : iconPlus} alt="" />
       </div>
       <div
         className={cn(styles.answerWrapper, { [styles.open]: isOpen })}

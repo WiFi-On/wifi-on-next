@@ -6,11 +6,10 @@ import Switcher from "../Switcher/Switcher";
 import Image from "next/image";
 
 function ParamTariff({ title, params, img, equipmen = false }) {
+  const [rent, setRent] = useState(0);
+  const [buy, setBuy] = useState(0);
+  const [installment, setInstallment] = useState(0);
   if (equipmen) {
-    const [rent, setRent] = useState(0);
-    const [buy, setBuy] = useState(0);
-    const [installment, setInstallment] = useState(0);
-
     return (
       <div className={styles.main}>
         <div className={styles.top}>

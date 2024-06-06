@@ -13,7 +13,7 @@ import Cities from "../components/Cities/Cities";
 import Newsletter from "../components/NewsLetter/NewsLetter";
 import Footer from "../components/Footer/Footer";
 
-const CityPage = ({ cityData }) => {
+const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
 
   return (
@@ -1051,7 +1051,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const res = await fetch(
     `https://on-wifi.ru/district_info?districtengname=${params.city}`
   );
