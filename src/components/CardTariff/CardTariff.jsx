@@ -1,5 +1,5 @@
 import styles from "./CardTariff.module.css";
-import { Link } from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 
 const CardTariff = ({ tariff }) => {
@@ -40,7 +40,7 @@ const CardTariff = ({ tariff }) => {
       </div>
       <div className={styles.detailsAndComparison}>
         <div className={styles.buttonDetails}>
-          <a href="/">Подробнее о тарифе</a>
+          <Link href={`/Moskva/${tariff.id}`}>Подробнее о тарифе</Link>
           <svg
             width="10"
             height="10"

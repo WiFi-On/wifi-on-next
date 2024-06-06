@@ -33,7 +33,7 @@ const CityPage = ({ cityData }) => {
       <ConnectionSteps></ConnectionSteps>
       <HelpForm></HelpForm>
       <Questions></Questions>
-      {/* <Cities></Cities> */}
+      <Cities></Cities>
       <Newsletter></Newsletter>
       <Footer></Footer>
     </>

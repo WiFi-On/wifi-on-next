@@ -4,8 +4,10 @@
 }
 .sliderContainer {
   max-width: 1250px;
+  min-height: 2260px;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -42,4 +44,12 @@
 .pagination li.active {
   border: 2px solid #007bff;
   color: #007bff;
+}
+.pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
 }

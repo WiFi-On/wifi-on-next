@@ -15,6 +15,9 @@
   flex-direction: column;
   gap: 15px;
 }
+.arrowUp {
+  transform: rotate(180deg);
+}
 .top {
   display: flex;
   align-items: center;
@@ -32,7 +35,6 @@
   line-height: 30.8px;
   letter-spacing: 0.02em;
   text-align: left;
-
   max-width: 83px;
   margin: 0;
   color: #0c0c0c;
@@ -59,7 +61,6 @@
   justify-content: center;
   flex-direction: column;
   width: 290px;
-
   gap: 10px;
 }
 .wrapperRangeSlider {
@@ -70,7 +71,6 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
   gap: 40px;
 }
 .checkboxesContainer {
@@ -103,4 +103,24 @@
   .extras {
     margin: 0 auto;
   }
+}
+
+/* CSS for animations */
+.bot-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.bot-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.bot-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.bot-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
 }

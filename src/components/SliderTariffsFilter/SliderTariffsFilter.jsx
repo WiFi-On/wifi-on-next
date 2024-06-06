@@ -52,8 +52,8 @@ function SliderTariffsFilter({ allTariffs }) {
         pageRangeDisplayed={2}
         marginPagesDisplayed={1}
         onPageChange={handlePageChange}
-        containerClassName={styles.pagination} // Используйте переменную стилей из модуля CSS
-        activeClassName={styles.active} // Используйте переменную стилей из модуля CSS
+        containerClassName={styles.pagination}
+        activeClassName={styles.active}
         previousClassName={styles.previous}
         nextClassName={styles.next}
         previousLabel={"<"}

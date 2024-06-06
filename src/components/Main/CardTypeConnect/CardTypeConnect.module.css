@@ -1,12 +1,12 @@
 .main {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
   background-color: #fff;
   border-radius: 50px;
-  width: 290px;
-  height: 290px;
+  width: 250px;
+  height: 250px;
   box-shadow: 3.97px 39.66px 55.52px 7.93px #0000000d;
   flex-shrink: 0;
   cursor: pointer;
@@ -24,8 +24,8 @@
   height: 173px;
 }
 .wrapperImg {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -51,6 +51,7 @@
   line-height: 30.8px;
   letter-spacing: 0.02em;
   text-align: center;
+  margin: 10px 0 10px 0;
 }
 .mainTablet h4 {
   font-size: 20px;
