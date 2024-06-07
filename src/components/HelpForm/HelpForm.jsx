@@ -10,6 +10,7 @@ const HelpForm = (props) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [numberValidation, setNumberValidation] = useState(false);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -22,27 +23,98 @@ const HelpForm = (props) => {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  });
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const responseUser = await fetch(
+        "https://on-wifi.bitrix24.ru/rest/11940/8je0m717nl212bhe/crm.contact.add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields: {
+              NAME: name,
+              SECOND_NAME: name,
+              LAST_NAME: name,
+              PHONE: [{ VALUE: phone, VALUE_TYPE: "WORK" }],
+              ADDRESS: address,
+            },
+          }),
+        }
+      );
+      if (!responseUser.ok) {
+        throw new Error("Ошибка при отправке данных");
+      }
+
+      const userData = await responseUser.json();
+      const contactId = userData.result;
+      console.log(contactId);
+      const responseLead = await fetch(
+        "https://on-wifi.bitrix24.ru/rest/11940/8je0m717nl212bhe/crm.deal.add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields: {
+              TITLE: name,
+              CONTACT_ID: contactId,
+            },
+          }),
+        }
+      );
+      if (!responseLead.ok) {
+        throw new Error("Ошибка при отправке данных");
+      }
+    } catch (error) {
+      console.error("Ошибка:", error.message);
+    }
+  };
 
   if (windowWidth > 1280) {
     return (
       <div className={styles.main}>
-        <form className={styles.containerForm}>
+        <form className={styles.containerForm} onSubmit={handleSubmit}>
           <h2>Нужна помощь в выборе тарифа?</h2>
           <p className={styles.desc}>
-            Оставьте свои контактные данные в форме ниже и наши менеджеры
-            свяжутся с вами, чтобы подробно проконсультировать вас о тарифах
-            и провайдерах вашего города
+            Оставьте свои контактные данные в форме ниже и наши менеджеры
+            свяжутся с вами, чтобы подробно проконсультировать вас о тарифах и
+            провайдерах вашего города
           </p>
           <div className={styles.inputs}>
-            <Input placeholder="Ваше имя"></Input>
-            <Input placeholder="Ваш телефон" typeInput="phone"></Input>
-            <Input placeholder="Адрес подключения" typeInput="address"></Input>
+            <Input
+              placeholder="Ваше имя"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Input
+              placeholder="Ваш телефон"
+              name="phone"
+              typeInput="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              setIsValid={setNumberValidation}
+            />
+            <Input
+              placeholder="Адрес подключения"
+              name="address"
+              typeInput="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </div>
           <div className={styles.sendAndText}>
-            <button>Отправить</button>
+            <button disabled={numberValidation} type="submit">
+              Отправить
+            </button>
             <p>
-              Нажимая кнопку «Отправить» вы соглашаетесь с 
+              Нажимая кнопку «Отправить» вы соглашаетесь с{" "}
               <span> Политикой конфиденциальности</span>
             </p>
           </div>
@@ -53,51 +125,95 @@ const HelpForm = (props) => {
   } else if (windowWidth < 1280 && windowWidth > 680) {
     return (
       <div className={styles.mainTablet}>
-        <h2>Нужна помощь в выборе тарифа?</h2>
-        <p className={styles.descTablet}>
-          Оставьте свои контактные данные в форме ниже и наши менеджеры свяжутся
-          с вами, чтобы подробно проконсультировать вас о тарифах и провайдерах
-          вашего города
-        </p>
-        <div className={styles.containerFormTablet}>
-          <div className={styles.inputsTablet}>
-            <Input placeholder="Ваше имя"></Input>
-            <Input placeholder="Ваш телефон" typeInput="phone"></Input>
-            <Input placeholder="Адрес подключения" typeInput="address"></Input>
-          </div>
-          <Image src={helpDesk} alt="" />
-        </div>
-        <div className={styles.sendAndImgTablet}>
-          <button>Отправить</button>
-          <p>
-            Нажимая кнопку «Отправить» вы соглашаетесь с 
-            <span> Политикой конфиденциальности</span>
+        <form className={styles.containerForm} onSubmit={handleSubmit}>
+          <h2>Нужна помощь в выборе тарифа?</h2>
+          <p className={styles.descTablet}>
+            Оставьте свои контактные данные в форме ниже и наши менеджеры
+            свяжутся с вами, чтобы подробно проконсультировать вас о тарифах
+            и провайдерах вашего города
           </p>
-        </div>
+          <div className={styles.containerFormTablet}>
+            <div className={styles.inputsTablet}>
+              <Input
+                placeholder="Ваше имя"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Input
+                placeholder="Ваш телефон"
+                name="phone"
+                typeInput="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                setIsValid={setNumberValidation}
+              />
+              <Input
+                placeholder="Адрес подключения"
+                name="address"
+                typeInput="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </div>
+            <Image src={helpDesk} alt="" />
+          </div>
+          <div className={styles.sendAndImgTablet}>
+            <button disabled={numberValidation} type="submit">
+              Отправить
+            </button>
+            <p>
+              Нажимая кнопку «Отправить» вы соглашаетесь с 
+              <span> Политикой конфиденциальности</span>
+            </p>
+          </div>
+        </form>
       </div>
     );
   } else {
     return (
       <div className={styles.mainMobile}>
-        <h2>Нужна помощь в выборе тарифа?</h2>
-        <p className={styles.descMobile}>
-          Оставьте свои контактные данные в форме ниже и наши менеджеры свяжутся
-          с вами, чтобы подробно проконсультировать вас о тарифах и провайдерах
-          вашего города
-        </p>
-        <div className={styles.inputsMobile}>
-          <Input placeholder="Ваше имя"></Input>
-          <Input placeholder="Ваш телефон" typeInput="phone"></Input>
-          <Input placeholder="Адрес подключения" typeInput="address"></Input>
-        </div>
-        <div className={styles.sendAndTextMobile}>
-          <button>Отправить</button>
-          <p>
-            Нажимая кнопку «Отправить» вы соглашаетесь с 
-            <span> Политикой конфиденциальности</span>
+        <form className={styles.containerForm} onSubmit={handleSubmit}>
+          <h2>Нужна помощь в выборе тарифа?</h2>
+          <p className={styles.descMobile}>
+            Оставьте свои контактные данные в форме ниже и наши менеджеры
+            свяжутся с вами, чтобы подробно проконсультировать вас о тарифах
+            и провайдерах вашего города
           </p>
-        </div>
-        <Image src={helpDesk} alt="" />
+          <div className={styles.inputsMobile}>
+            <Input
+              placeholder="Ваше имя"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Input
+              placeholder="Ваш телефон"
+              name="phone"
+              typeInput="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              setIsValid={setNumberValidation}
+            />
+            <Input
+              placeholder="Адрес подключения"
+              name="address"
+              typeInput="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+          <div className={styles.sendAndTextMobile}>
+            <button disabled={numberValidation} type="submit">
+              Отправить
+            </button>
+            <p>
+              Нажимая кнопку «Отправить» вы соглашаетесь с 
+              <span> Политикой конфиденциальности</span>
+            </p>
+          </div>
+          <Image src={helpDesk} alt="" />
+        </form>
       </div>
     );
   }

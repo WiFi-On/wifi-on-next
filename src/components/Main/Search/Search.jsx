@@ -10,28 +10,37 @@ const Search = ({ device }) => {
   const handleSearch = (event) => {
     event.preventDefault();
     setQuery(event.target.value);
-    const token = "bbbdb08051ba3df93014d80a721660db6c19f0db";
 
-    fetch(
-      "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Token " + token,
-        },
-        body: JSON.stringify({ query: query }),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setSuggestions(data.suggestions);
-      })
-      .catch((error) => {
-        console.error("Ошибка:", error);
-      });
+    // Очищаем предыдущий таймер, чтобы избежать отправки запроса при каждом изменении
+    clearTimeout(timer);
+
+    // Устанавливаем новый таймер, который будет запускать запрос через 500 миллисекунд после завершения ввода
+    timer = setTimeout(() => {
+      console.log("тут");
+      const token = "bbbdb08051ba3df93014d80a721660db6c19f0db";
+      fetch(
+        "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Token " + token,
+          },
+          body: JSON.stringify({ query: query }),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setSuggestions(data.suggestions);
+        })
+        .catch((error) => {
+          console.error("Ошибка:", error);
+        });
+    }, 500);
   };
+
+  let timer;
 
   const clickSuggestion = (event) => {
     localStorage.setItem("address", event.target.textContent);
@@ -54,7 +63,7 @@ const Search = ({ device }) => {
           type="text"
           placeholder="Введите ваш адрес"
         />
-        <div
+        {/* <div
           className={cn(styles.buttonSearch, {
             [styles.buttonSearchTablet]: device === "tablet",
             [styles.buttonSearchMobile]: device === "mobile",
@@ -79,7 +88,7 @@ const Search = ({ device }) => {
               </clipPath>
             </defs>
           </svg>
-        </div>
+        </div> */}
       </div>
       <div
         className={cn(styles.suggestions, {
@@ -87,13 +96,7 @@ const Search = ({ device }) => {
         })}
       >
         {suggestions.map((suggestion, i) => {
-          if (suggestion.data.fias_level !== "8") {
-            return (
-              <p key={i} onClick={clickSuggestion}>
-                {suggestion.value}
-              </p>
-            );
-          } else {
+          if (suggestion.data.fias_level >= "8") {
             return (
               <Link
                 onClick={clickSuggestion}
@@ -103,6 +106,12 @@ const Search = ({ device }) => {
               >
                 {suggestion.value}
               </Link>
+            );
+          } else {
+            return (
+              <p key={i} onClick={clickSuggestion}>
+                {suggestion.value}
+              </p>
             );
           }
         })}

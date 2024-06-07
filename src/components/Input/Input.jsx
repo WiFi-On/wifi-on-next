@@ -2,20 +2,19 @@ import styles from "./Input.module.css";
 import { useState } from "react";
 import cn from "classnames";
 
-const Input = ({ placeholder, typeInput }) => {
-  const [inputData, setInputData] = useState("");
+const Input = ({ placeholder, typeInput, value, onChange, setIsValid }) => {
   const [error, setError] = useState(false);
   if (typeInput === "phone") {
-    const handleChange = (event) => {
-      const newValue = event.target.value;
-      setInputData(newValue);
-
-      // const phoneRegex = /^((\+7|7|8)+([0-9]){10})$/;
-      // if (phoneRegex.test(newValue)) {
-      //   setError(false);
-      // } else {
-      //   setError(true);
-      // }
+    const handleBlur = (e) => {
+      const newValue = e.target.value;
+      const phoneRegex = /^((\+7|7|8)+([0-9]){10})$/;
+      if (phoneRegex.test(newValue)) {
+        setError(false);
+        setIsValid(false);
+      } else {
+        setError(true);
+        setIsValid(true);
+      }
     };
 
     return (
@@ -23,54 +22,52 @@ const Input = ({ placeholder, typeInput }) => {
         <input
           placeholder={placeholder}
           className={cn(styles.main, {
-            [styles.mainActive]: inputData,
+            [styles.mainActive]: value,
+            [styles.error]: error,
           })}
           type="text"
-          value={inputData}
-          onChange={handleChange}
+          value={value}
+          onChange={onChange}
+          onBlur={handleBlur}
           required
         ></input>
-        {error && <p className={styles.error}>Некорректный номер</p>}
       </>
     );
   } else if (typeInput === "email") {
-    const handleChange = (event) => {
+    const handleBlur = (event) => {
       const newValue = event.target.value;
-      setInputData(newValue);
 
-      // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      // if (!emailRegex.test(newValue)) {
-      //   setError(false);
-      // } else {
-      //   setError(true);
-      // }
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(newValue)) {
+        setError(false);
+      } else {
+        setError(true);
+      }
     };
 
     return (
       <>
         <input
           placeholder={placeholder}
-          className={cn(styles.mainEmail, styles.mainEmail)}
+          className={styles.mainEmail}
           type="text"
-          value={inputData}
-          onChange={handleChange}
+          value={value}
+          onChange={onChange}
+          onBlur={handleBlur}
           required
         ></input>
-        {error && <p className={styles.error}>Некорректный email</p>}
       </>
     );
   } else if (typeInput === "password") {
-    const handleChange = (event) => {
+    const handleBlur = (event) => {
       const newValue = event.target.value;
-      setInputData(newValue);
-
-      // const passwordPattern =
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      // if (!passwordPattern.test(newValue)) {
-      //   setError(false);
-      // } else {
-      //   setError(true);
-      // }
+      const passwordPattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (!passwordPattern.test(newValue)) {
+        setError(false);
+      } else {
+        setError(true);
+      }
     };
 
     return (
@@ -78,14 +75,15 @@ const Input = ({ placeholder, typeInput }) => {
         <input
           placeholder={placeholder}
           className={cn(styles.main, {
-            [styles.mainActive]: inputData,
+            [styles.mainActive]: value,
+            [styles.error]: error,
           })}
-          value={inputData}
-          onChange={handleChange}
+          value={value}
+          onChange={onChange}
+          onBlur={handleBlur}
           type="password"
           required
         ></input>
-        {error && <p className={styles.error}>Некорректный пароль</p>}
       </>
     );
   } else {
@@ -93,11 +91,11 @@ const Input = ({ placeholder, typeInput }) => {
       const newValue = event.target.value;
       setInputData(newValue);
 
-      // if (newValue) {
-      //   setError(false);
-      // } else {
-      //   setError(true);
-      // }
+      if (newValue) {
+        setError(false);
+      } else {
+        setError(true);
+      }
     };
 
     return (
@@ -105,14 +103,12 @@ const Input = ({ placeholder, typeInput }) => {
         <input
           placeholder={placeholder}
           className={cn(styles.main, {
-            [styles.mainActive]: inputData,
+            [styles.mainActive]: value,
           })}
-          value={inputData}
-          onChange={handleChange}
+          value={value}
+          onChange={onChange}
           type="text"
-          required
         ></input>
-        {error && <p className={styles.error}>Заполните поле</p>}
       </>
     );
   }

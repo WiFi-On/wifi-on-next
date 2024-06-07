@@ -65,6 +65,19 @@
   text-align: center;
   color: #fff;
 }
+.sendAndText button:disabled {
+  cursor: not-allowed;
+  background: #a8b8d8;
+}
+.sendAndImgTablet button:disabled {
+  cursor: not-allowed;
+  background: #a8b8d8;
+}
+.sendAndTextMobile button:disabled {
+  cursor: not-allowed;
+  background: #a8b8d8;
+}
+
 .mainTablet {
   display: flex;
   align-items: flex-start;
