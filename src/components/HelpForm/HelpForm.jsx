@@ -11,6 +11,7 @@ const HelpForm = (props) => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [numberValidation, setNumberValidation] = useState(false);
+  const [sent, setSent] = useState(false);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -71,6 +72,11 @@ const HelpForm = (props) => {
       if (!responseLead.ok) {
         throw new Error("Ошибка при отправке данных");
       }
+      setName("");
+      setPhone("");
+      setAddress("");
+      setNumberValidation(false);
+      setSent(true);
     } catch (error) {
       console.error("Ошибка:", error.message);
     }
@@ -109,6 +115,11 @@ const HelpForm = (props) => {
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
+          {sent && (
+            <p className={styles.sent}>
+              Заявка отправлена! Ждите обратной связи
+            </p>
+          )}
           <div className={styles.sendAndText}>
             <button disabled={numberValidation} type="submit">
               Отправить
@@ -158,6 +169,11 @@ const HelpForm = (props) => {
             </div>
             <Image src={helpDesk} alt="" />
           </div>
+          {sent && (
+            <p className={styles.sent}>
+              Заявка отправлена! Ждите обратной связи
+            </p>
+          )}
           <div className={styles.sendAndImgTablet}>
             <button disabled={numberValidation} type="submit">
               Отправить
@@ -207,6 +223,11 @@ const HelpForm = (props) => {
             <button disabled={numberValidation} type="submit">
               Отправить
             </button>
+            {sent && (
+              <p className={styles.sent}>
+                Заявка отправлена! Ждите обратной связи
+              </p>
+            )}
             <p>
               Нажимая кнопку «Отправить» вы соглашаетесь с 
               <span> Политикой конфиденциальности</span>
