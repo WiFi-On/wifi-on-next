@@ -13,9 +13,11 @@ const Tariffs = () => {
   const [tariffs, setTariffs] = useState([]);
   const [providers, setProviders] = useState([]);
   const [filterProviders, setFilterProviders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (address) {
+      setLoading(true);
       fetch(`https://on-wifi.ru/get_tariffs?address=${address}`)
         .then((response) => {
           if (!response.ok) {
@@ -26,6 +28,7 @@ const Tariffs = () => {
         .then((data) => {
           setTariffs(data.tariffs);
           setProviders(data.providers);
+          setLoading(false);
         })
         .catch((error) => {
           console.error("Fetch error:", error);
@@ -36,9 +39,15 @@ const Tariffs = () => {
   return (
     <>
       <Header />
-      <SliderProviders providers={providers} />
-      <Filter />
-      <SliderTariffsFilter allTariffs={tariffs} />
+      {loading ? (
+        <div style={{ padding: "200px" }}>Загрузка...</div> // Индикатор загрузки
+      ) : (
+        <>
+          <SliderProviders providers={providers} />
+          <Filter />
+          <SliderTariffsFilter allTariffs={tariffs} />
+        </>
+      )}
       <HelpForm />
       <Footer />
     </>
