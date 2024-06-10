@@ -6,6 +6,9 @@ import HelpForm from "../components/HelpForm/HelpForm";
 import Footer from "../components/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Questions from "@/components/Questions/Questions";
+import { Element } from "react-scroll";
+import AboutUs from "@/components/AboutUs/AboutUs";
 
 const Tariffs = () => {
   const router = useRouter();
@@ -48,7 +51,9 @@ const Tariffs = () => {
           <SliderTariffsFilter allTariffs={tariffs} />
         </>
       )}
+      <AboutUs />
       <HelpForm />
+      <Questions />
       <Footer />
     </>
   );

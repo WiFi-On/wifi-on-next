@@ -11,6 +11,7 @@
 }
 .navElement {
   flex-shrink: 0;
+  cursor: pointer;
 
   font-family: Raleway;
   font-size: 16px;

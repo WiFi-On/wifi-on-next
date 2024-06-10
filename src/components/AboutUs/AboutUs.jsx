@@ -5,6 +5,7 @@ import groupImg from "./img/iconGroup.svg";
 import mapImg from "./img/iconMap.svg";
 import cn from "classnames";
 import Image from "next/image";
+import { Element } from "react-scroll";
 
 const AboutUs = (props) => {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -65,7 +66,7 @@ const AboutUs = (props) => {
     );
   } else {
     return (
-      <div className={styles.main}>
+      <Element name="aboutUs" className={styles.main}>
         <div className={styles.text}>
           <h2>О нас</h2>
           <p>
@@ -104,7 +105,7 @@ const AboutUs = (props) => {
             </tr>
           </tbody>
         </table>
-      </div>
+      </Element>
     );
   }
 };

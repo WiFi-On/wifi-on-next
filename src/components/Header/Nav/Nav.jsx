@@ -2,83 +2,72 @@ import styles from "./Nav.module.css";
 import React, { useState } from "react";
 import Link from "next/link";
 import cn from "classnames";
+import { Link as ScrollLink, Element, scroller } from "react-scroll";
 
 const Nav = (props) => {
   const { mobile } = props;
   const [currentPage, setCurrentPage] = useState("");
 
-  const handleClick = (page, event) => {
-    setCurrentPage(page);
-    event.preventDefault();
-  };
-
   return (
     <div
       className={cn(styles.main, { [styles.mobileMain]: mobile === "true" })}
     >
-      <Link
-        href="/"
+      <ScrollLink
+        to="aboutUs"
+        smooth={true}
+        duration={700}
+        offset={-200}
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "aboutUs",
           [styles.colorMobile]: mobile,
           [styles.colorDesk]: !mobile,
         })}
-        onClick={(e) => handleClick("aboutUs", e)}
       >
         О нас
-      </Link>
+      </ScrollLink>
       <Link
-        href="/"
-        className={cn(styles.navElement, {
-          [styles.active]: currentPage === "providers",
-          [styles.colorMobile]: mobile,
-          [styles.colorDesk]: !mobile,
-        })}
-        onClick={(e) => handleClick("providers", e)}
-      >
-        Провайдеры
-      </Link>
-      <Link
-        href="/"
+        href="/tariffs"
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "tariffs",
           [styles.colorMobile]: mobile,
           [styles.colorDesk]: !mobile,
         })}
-        onClick={(e) => handleClick("tariffs", e)}
       >
         Тарифы
       </Link>
-      <Link
-        href="/"
+      <ScrollLink
+        to="help"
+        smooth={true}
+        duration={700}
+        offset={-200}
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "help",
           [styles.colorMobile]: mobile,
           [styles.colorDesk]: !mobile,
         })}
-        onClick={(e) => handleClick("help", e)}
       >
         Помощь
-      </Link>
-      <Link
-        href="/"
+      </ScrollLink>
+      <ScrollLink
+        smooth={true}
+        duration={700}
+        to="faq"
+        offset={-200}
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "faq",
           [styles.colorMobile]: mobile,
           [styles.colorDesk]: !mobile,
         })}
-        onClick={(e) => handleClick("faq", e)}
       >
         Ответы на вопросы
-      </Link>
+      </ScrollLink>
       <Link
-        href="/"
+        href="/contacts"
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "contacts",
           [styles.colorMobile]: mobile,
           [styles.colorDesk]: !mobile,
         })}
-        onClick={(e) => handleClick("contacts", e)}
       >
         Контакты
       </Link>

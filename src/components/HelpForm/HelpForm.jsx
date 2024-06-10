@@ -4,6 +4,7 @@ import helpDesk from "./imgs/helpDesk.png";
 import { useEffect, useState } from "react";
 import Input from "../Input/Input";
 import Image from "next/image";
+import { Element } from "react-scroll";
 
 const HelpForm = (props) => {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -84,7 +85,7 @@ const HelpForm = (props) => {
 
   if (windowWidth > 1280) {
     return (
-      <div className={styles.main}>
+      <Element name="help" className={styles.main}>
         <form className={styles.containerForm} onSubmit={handleSubmit}>
           <h2>Нужна помощь в выборе тарифа?</h2>
           <p className={styles.desc}>
@@ -131,7 +132,7 @@ const HelpForm = (props) => {
           </div>
         </form>
         <Image src={helpDesk} alt="" />
-      </div>
+      </Element>
     );
   } else if (windowWidth < 1280 && windowWidth > 680) {
     return (
