@@ -1,11 +1,12 @@
-// src/reducers/rootReducer.js
-
+// rootReducer.js
 import { combineReducers } from "redux";
-import providerReducer from "./providerReducer";
-// импортируйте другие редукторы, если есть
+import modalReducer from "./modalSlice";
+import providerReducer from "./providerSlice";
 
 const rootReducer = combineReducers({
+  modal: modalReducer,
   filter: providerReducer,
+  // Другие срезы (slices), если есть
 });
 
 export default rootReducer;

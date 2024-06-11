@@ -1,8 +1,16 @@
 import styles from "./CardTariff.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/redux/reducers/modalSlice";
 
 const CardTariff = ({ tariff }) => {
+  const dispatch = useDispatch();
+
+  const handleConnectClick = () => {
+    dispatch(openModal());
+  };
+
   if (!tariff) return <div>Loading...</div>;
   console.log(tariff);
   return (
@@ -135,7 +143,9 @@ const CardTariff = ({ tariff }) => {
             </div>
           </div>
         </div>
-        <button className={styles.buttonConnect}>Подключить</button>
+        <button className={styles.buttonConnect} onClick={handleConnectClick}>
+          Подключить
+        </button>
       </div>
     </div>
   );

@@ -38,10 +38,12 @@ const Input = ({ placeholder, typeInput, value, onChange, setIsValid }) => {
       const newValue = event.target.value;
 
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(newValue)) {
+      if (emailRegex.test(newValue)) {
         setError(false);
+        setIsValid(false);
       } else {
         setError(true);
+        setIsValid(true);
       }
     };
 
@@ -49,7 +51,10 @@ const Input = ({ placeholder, typeInput, value, onChange, setIsValid }) => {
       <>
         <input
           placeholder={placeholder}
-          className={styles.mainEmail}
+          className={cn(styles.main, {
+            [styles.mainActive]: value,
+            [styles.error]: error,
+          })}
           type="text"
           value={value}
           onChange={onChange}

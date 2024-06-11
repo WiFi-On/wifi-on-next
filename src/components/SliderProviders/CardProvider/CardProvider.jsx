@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   addProvider,
   removeProvider,
-} from "../../../redux/actions/providerAction";
+} from "../../../redux/reducers/providerSlice";
 import Image from "next/image";
 
 const CardProvider = ({ img, id }) => {

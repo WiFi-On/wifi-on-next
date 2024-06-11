@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import Questions from "@/components/Questions/Questions";
 import { Element } from "react-scroll";
 import AboutUs from "@/components/AboutUs/AboutUs";
+import PopUpLead from "@/components/PopUpLead/PopUpLead";
 
 const Tariffs = () => {
   const router = useRouter();
@@ -55,6 +56,7 @@ const Tariffs = () => {
       <HelpForm />
       <Questions />
       <Footer />
+      <PopUpLead></PopUpLead>
     </>
   );
 };

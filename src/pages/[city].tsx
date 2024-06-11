@@ -12,6 +12,7 @@ import Questions from "../components/Questions/Questions";
 import Cities from "../components/Cities/Cities";
 import Newsletter from "../components/NewsLetter/NewsLetter";
 import Footer from "../components/Footer/Footer";
+import PopUpLead from "@/components/PopUpLead/PopUpLead";
 
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
@@ -36,6 +37,7 @@ const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
       <Cities></Cities>
       <Newsletter></Newsletter>
       <Footer></Footer>
+      <PopUpLead></PopUpLead>
     </>
   );
 };
