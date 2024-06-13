@@ -10,10 +10,10 @@ const Input = ({ placeholder, typeInput, value, onChange, setIsValid }) => {
       const phoneRegex = /^((\+7|7|8)+([0-9]){10})$/;
       if (phoneRegex.test(newValue)) {
         setError(false);
-        setIsValid(false);
+        setIsValid(true);
       } else {
         setError(true);
-        setIsValid(true);
+        setIsValid(false);
       }
     };
 

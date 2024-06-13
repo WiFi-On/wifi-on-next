@@ -2,13 +2,19 @@ import styles from "./CardTariff.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { openModal } from "@/redux/reducers/modalSlice";
+import { openPopUpLead } from "@/redux/reducers/modalSlice";
 
 const CardTariff = ({ tariff }) => {
   const dispatch = useDispatch();
 
   const handleConnectClick = () => {
-    dispatch(openModal());
+    localStorage.setItem("nameProvider", tariff.provider.name);
+    localStorage.setItem("nameTariff", tariff.name);
+    localStorage.setItem(
+      "priceTariff",
+      tariff.newprice ? tariff.newprice : tariff.price
+    );
+    dispatch(openPopUpLead());
   };
 
   if (!tariff) return <div>Loading...</div>;

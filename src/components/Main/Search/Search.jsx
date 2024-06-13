@@ -11,10 +11,8 @@ const Search = ({ device }) => {
     event.preventDefault();
     setQuery(event.target.value);
 
-    // Очищаем предыдущий таймер, чтобы избежать отправки запроса при каждом изменении
     clearTimeout(timer);
 
-    // Устанавливаем новый таймер, который будет запускать запрос через 500 миллисекунд после завершения ввода
     timer = setTimeout(() => {
       console.log("тут");
       const token = "bbbdb08051ba3df93014d80a721660db6c19f0db";
