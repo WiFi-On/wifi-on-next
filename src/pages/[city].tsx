@@ -1059,7 +1059,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `https://on-wifi.ru/district_info?districtengname=${params.city}`
+    `http://92.63.178.153:3067/district_info?districtengname=${params.city}`
   );
   const cityData = await res.json();
 
