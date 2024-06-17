@@ -1,6 +1,7 @@
 .main {
   margin: 150px auto 0 auto;
 }
+
 .main4Elements {
   width: 1280px;
 }
@@ -8,10 +9,10 @@
   width: 950px;
 }
 .main2Elements {
-  width: 620px;
+  width: 630px;
 }
 .main1Elements {
-  width: 290px;
+  width: 315px;
 }
 .main h2 {
   font-family: Raleway;
@@ -42,6 +43,9 @@
   line-height: 18.78px;
 }
 @media screen and (max-width: 1280px) {
+  .main {
+    margin: 80px auto 0 auto;
+  }
   .main h2 {
     font-family: Raleway;
     font-size: 32px;
@@ -51,6 +55,9 @@
   }
 }
 @media screen and (max-width: 654px) {
+  .main {
+    margin: 40px auto 0 auto;
+  }
   .main h2 {
     font-family: Raleway;
     font-size: 20px;

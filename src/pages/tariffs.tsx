@@ -10,6 +10,8 @@ import Questions from "@/components/Questions/Questions";
 import { Element } from "react-scroll";
 import AboutUs from "@/components/AboutUs/AboutUs";
 import PopUpLead from "@/components/PopUpLead/PopUpLead";
+import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
+import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 
 const Tariffs = () => {
   const router = useRouter();
@@ -57,6 +59,8 @@ const Tariffs = () => {
       <Questions />
       <Footer />
       <PopUpLead></PopUpLead>
+      <PopUpAgreement></PopUpAgreement>
+      <PopUpPolicy></PopUpPolicy>
     </>
   );
 };

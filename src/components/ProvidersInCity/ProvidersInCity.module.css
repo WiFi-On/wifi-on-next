@@ -59,6 +59,7 @@
 }
 .providersTablet {
   display: flex;
+  justify-content: center;
   gap: 23px;
   overflow-x: auto;
 }
@@ -68,10 +69,7 @@
   gap: 16px;
   overflow-x: auto;
 }
-.providersMobile img {
-  height: 70px;
-  width: 70px;
-}
+
 .providers::-webkit-scrollbar {
   display: none;
 }

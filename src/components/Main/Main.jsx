@@ -1,6 +1,6 @@
 import styles from "./Main.module.css";
 import CardTypeConnect from "./CardTypeConnect/CardTypeConnect";
-import connectionsImg from "./connections.svg";
+import connectionsImg from "./connection.svg";
 import Search from "./Search/Search";
 import { useState, useEffect } from "react";
 import Image from "next/image";

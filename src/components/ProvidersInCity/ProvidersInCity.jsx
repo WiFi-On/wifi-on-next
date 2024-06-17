@@ -40,15 +40,37 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
   } else if (windowWidth <= 1280 && windowWidth >= 440) {
     return (
       <div className={styles.tabletMain}>
-        <h2>Провайдеры доступные в Тюмени</h2>
-        <div className={styles.providersTablet}></div>
+        <h2>Провайдеры доступные в {nameLocationWhere}</h2>
+        <div className={styles.providersTablet}>
+          {providers.map((provider) => (
+            <Image
+              className={styles.providersImg}
+              key={provider.id}
+              src={`/imgs/providersWhite/${provider.img}`}
+              width={90}
+              height={90}
+              alt={provider.name}
+            />
+          ))}
+        </div>
       </div>
     );
   } else {
     return (
       <div className={styles.mobileMain}>
-        <h2>Провайдеры доступные в Тюмени</h2>
-        <div className={styles.providersMobile}></div>
+        <h2>Провайдеры доступные в {nameLocationWhere}</h2>
+        <div className={styles.providersMobile}>
+          {providers.map((provider) => (
+            <Image
+              className={styles.providersImg}
+              key={provider.id}
+              src={`/imgs/providersWhite/${provider.img}`}
+              width={70}
+              height={70}
+              alt={provider.name}
+            />
+          ))}
+        </div>
       </div>
     );
   }

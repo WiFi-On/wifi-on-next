@@ -1,8 +1,8 @@
 import styles from "./CardTypeConnect.module.css";
-import iconInternet from "./iconInternet.png";
-import iconInternetTV from "./iconInternettv.png";
-import iconTV from "./iconTV.png";
-import iconConnection from "./iconConnection.png";
+import iconInternet from "./internet.svg";
+import iconInternetTV from "./inetTV.svg";
+import iconTV from "./tv.svg";
+import iconConnection from "./mobile.svg";
 import cn from "classnames";
 import Image from "next/image";
 

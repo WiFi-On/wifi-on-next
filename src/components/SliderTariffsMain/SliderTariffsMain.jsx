@@ -50,9 +50,10 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
             sliderRef = slider;
           }}
           {...settings}
+          className={styles.slider}
         >
           {tariffs.map((tariff) => (
-            <div key={tariff.id}>
+            <div className={styles.element} key={tariff.id}>
               <CardTariff tariff={tariff}></CardTariff>
             </div>
           ))}
@@ -168,37 +169,18 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
 
     return (
       <div className={cn(styles.main, styles.main3Elements)}>
-        <h2>Популярные тарифы в Мухосранске</h2>
+        <h2>Популярные тарифы в {nameCityWhere}</h2>
         <Slider
           ref={(slider) => {
             sliderRef = slider;
           }}
           {...settings}
         >
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
+          {tariffs.map((tariff) => (
+            <div key={tariff.id}>
+              <CardTariff tariff={tariff}></CardTariff>
+            </div>
+          ))}
         </Slider>
         <div className={styles.buttons}>
           <svg
@@ -311,37 +293,18 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
 
     return (
       <div className={cn(styles.main, styles.main2Elements)}>
-        <h2>Популярные тарифы в Мухосранске</h2>
+        <h2>Популярные тарифы в {nameCityWhere}</h2>
         <Slider
           ref={(slider) => {
             sliderRef = slider;
           }}
           {...settings}
         >
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
+          {tariffs.map((tariff) => (
+            <div key={tariff.id}>
+              <CardTariff tariff={tariff}></CardTariff>
+            </div>
+          ))}
         </Slider>
         <div className={styles.buttons}>
           <svg
@@ -454,37 +417,18 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
 
     return (
       <div className={cn(styles.main, styles.main1Elements)}>
-        <h2>Популярные тарифы в Мухосранске</h2>
+        <h2>Популярные тарифы в {nameCityWhere}</h2>
         <Slider
           ref={(slider) => {
             sliderRef = slider;
           }}
           {...settings}
         >
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
-          <div>
-            <CardTariff></CardTariff>
-          </div>
+          {tariffs.map((tariff) => (
+            <div key={tariff.id}>
+              <CardTariff tariff={tariff}></CardTariff>
+            </div>
+          ))}
         </Slider>
         <div className={styles.buttons}>
           <svg

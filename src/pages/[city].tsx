@@ -15,12 +15,30 @@ import Footer from "../components/Footer/Footer";
 import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
+import Head from "next/head";
 
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
 
   return (
     <>
+      <Head>
+        <title>
+          Тарифы на интернет в {cityData.district_info.namewhere} 🙋‍♂️ Домашний
+          интернет в квартиру | Тарифы и акции на интернет - On-wifi
+        </title>
+        <meta
+          name="description"
+          content={
+            "Какой интернет подключить " +
+            cityData.district_info.name +
+            "➡️ Выбрать интернет на квартиру в " +
+            cityData.district_info.namewhere +
+            " 🌐 Выбрать лучший тариф на домашний интернет"
+          }
+        />
+        <meta name="apple-mobile-web-app-title" content="On-wifi" />
+      </Head>
       <Header></Header>
       <Main></Main>
       <ProvidersInCity
@@ -1059,7 +1077,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `http://92.63.178.153:3067/district_info?districtengname=${params.city}`
+    `https://on-wifi.ru/district_info?districtengname=${params.city}`
   );
   const cityData = await res.json();
 
