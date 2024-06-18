@@ -1,0 +1,28 @@
+.main {
+  margin: 180px auto 0 auto;
+  max-width: 1200px;
+}
+.main h1 {
+  font-family: Raleway;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: center;
+  margin: 20px;
+}
+.main h2 {
+  font-family: Raleway;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: left;
+  margin: 15px 0;
+}
+.main p {
+  font-family: Raleway;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 26.4px;
+  text-align: left;
+  margin: 5px;
+}

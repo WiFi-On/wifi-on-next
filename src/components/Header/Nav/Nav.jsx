@@ -2,7 +2,7 @@ import styles from "./Nav.module.css";
 import React, { useState } from "react";
 import Link from "next/link";
 import cn from "classnames";
-import { Link as ScrollLink, Element, scroller } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 
 const Nav = (props) => {
   const { mobile } = props;

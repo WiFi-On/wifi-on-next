@@ -7,6 +7,45 @@
   margin-top: 150px;
   padding: 0 15%;
 }
+.policyAndAgreement p a {
+  position: relative;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+.policyAndAgreement p a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Положение линии относительно текста */
+  width: 0;
+  height: 1px; /* Толщина линии */
+  background-color: #1d1d1d;
+  opacity: 0.6;
+  transition: width 0.5s ease;
+}
+.main a:hover::after {
+  width: 100%;
+}
+.wrapperNav a {
+  position: relative;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+.wrapperNav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Положение линии относительно текста */
+  width: 0;
+  height: 1px; /* Толщина линии */
+  background-color: #1d1d1d;
+  opacity: 0.6;
+  transition: width 0.5s ease;
+}
+.wrapperNav a:hover::after {
+  width: 100%;
+}
+
 .policyAndAgreement {
   display: flex;
   gap: 8px;
@@ -17,6 +56,12 @@
   height: 26px;
   width: 115px;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.policyAndAgreement img:hover {
+  transform: scale(1.03);
 }
 .policyAndAgreement p {
   font-family: Raleway;
@@ -35,6 +80,7 @@
 }
 .wrapperNav {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-direction: column;
 }
@@ -47,6 +93,7 @@
   line-height: 20.8px;
   letter-spacing: 0.01em;
   text-align: left;
+  cursor: pointer;
 }
 .numberAndLinks {
   display: flex;
@@ -75,7 +122,13 @@
   letter-spacing: 0.02em;
   text-align: right;
   margin: 20px 0 0 0;
+  cursor: pointer;
 }
+.number a {
+  text-decoration: none;
+  color: #1d1d1d;
+}
+
 .numberAndLinks p {
   max-width: 212px;
 
@@ -92,6 +145,12 @@
   display: flex;
   gap: 10px;
 }
+.links a {
+  transition: transform 0.3s ease;
+}
+.links a:hover {
+  transform: scale(1.05);
+}
 .mainTablet {
   display: flex;
   align-items: center;
@@ -102,6 +161,44 @@
   margin-top: 80px;
   padding: 10px;
 }
+.policyAndAgreementTablet p a {
+  position: relative;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+.policyAndAgreementTablet p a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Положение линии относительно текста */
+  width: 0;
+  height: 1px; /* Толщина линии */
+  background-color: #1d1d1d;
+  opacity: 0.6;
+  transition: width 0.5s ease;
+}
+.policyAndAgreementTablet a:hover::after {
+  width: 100%;
+}
+.wrapperNavTablet a {
+  position: relative;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+.wrapperNavTablet a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Положение линии относительно текста */
+  width: 0;
+  height: 1px; /* Толщина линии */
+  background-color: #1d1d1d;
+  opacity: 0.6;
+  transition: width 0.5s ease;
+}
+.wrapperNavTablet a:hover::after {
+  width: 100%;
+}
 .topTablet {
   display: flex;
   align-items: flex-start;
@@ -109,8 +206,8 @@
   justify-content: space-between;
 }
 .topTablet img {
-  width: 105px;
-  height: 24px;
+  width: 140px;
+  height: 29px;
 }
 .navTablet {
   display: flex;
@@ -118,6 +215,7 @@
 }
 .wrapperNavTablet {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-direction: column;
 }
@@ -128,7 +226,7 @@
   line-height: 20.8px;
   letter-spacing: 0.01em;
   text-align: left;
-
+  cursor: pointer;
   margin: 0;
 }
 .numberAndLinksTablet {
@@ -169,6 +267,10 @@
   text-align: right;
   margin: 0;
 }
+.numberTablet a {
+  text-decoration: none;
+  color: #1d1d1d;
+}
 .botTablet {
   display: flex;
   width: 100%;
@@ -202,9 +304,53 @@
   background: #e6edfa;
   padding: 60px 15px;
 }
+.policyAndAgreementMobile p a {
+  position: relative;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+.policyAndAgreementMobile p a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Положение линии относительно текста */
+  width: 0;
+  height: 1px; /* Толщина линии */
+  background-color: #1d1d1d;
+  opacity: 0.6;
+  transition: width 0.5s ease;
+}
+.policyAndAgreementMobile a:hover::after {
+  width: 100%;
+}
+.navMobile a {
+  position: relative;
+  color: #1d1d1d;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navMobile a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Положение линии относительно текста */
+  width: 0;
+  height: 1px; /* Толщина линии */
+  background-color: #1d1d1d;
+  opacity: 0.6;
+  transition: width 0.5s ease;
+}
+.navMobile a:hover::after {
+  width: 100%;
+}
 .mainMobile img {
   width: 105px;
   height: 24px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.mainMobile img:hover {
+  transform: scale(1.03);
 }
 .navMobile {
   display: flex;
@@ -257,6 +403,10 @@
   letter-spacing: 0.02em;
   text-align: left;
   margin: 30px 0 0 0;
+}
+.numberMobile a {
+  text-decoration: none;
+  color: #1d1d1d;
 }
 .linksMobile {
   display: flex;
