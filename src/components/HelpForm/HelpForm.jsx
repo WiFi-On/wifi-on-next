@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Input from "../Input/Input";
 import Image from "next/image";
 import { Element } from "react-scroll";
+import Link from "next/link";
 
 const HelpForm = (props) => {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -127,7 +128,9 @@ const HelpForm = (props) => {
             </button>
             <p>
               Нажимая кнопку «Отправить» вы соглашаетесь с{" "}
-              <span> Политикой конфиденциальности</span>
+              <span>
+                <Link href={"/policy"}>Политикой конфиденциальности</Link>
+              </span>
             </p>
           </div>
         </form>
@@ -136,7 +139,7 @@ const HelpForm = (props) => {
     );
   } else if (windowWidth < 1280 && windowWidth > 680) {
     return (
-      <div className={styles.mainTablet}>
+      <Element name="help" className={styles.mainTablet}>
         <form className={styles.containerForm} onSubmit={handleSubmit}>
           <h2>Нужна помощь в выборе тарифа?</h2>
           <p className={styles.descTablet}>
@@ -181,15 +184,17 @@ const HelpForm = (props) => {
             </button>
             <p>
               Нажимая кнопку «Отправить» вы соглашаетесь с 
-              <span> Политикой конфиденциальности</span>
+              <span>
+                <Link href={"/policy"}>Политикой конфиденциальности</Link>
+              </span>
             </p>
           </div>
         </form>
-      </div>
+      </Element>
     );
   } else {
     return (
-      <div className={styles.mainMobile}>
+      <Element name="help" className={styles.mainMobile}>
         <form className={styles.containerForm} onSubmit={handleSubmit}>
           <h2>Нужна помощь в выборе тарифа?</h2>
           <p className={styles.descMobile}>
@@ -231,12 +236,15 @@ const HelpForm = (props) => {
             )}
             <p>
               Нажимая кнопку «Отправить» вы соглашаетесь с 
-              <span> Политикой конфиденциальности</span>
+              <span>
+                {" "}
+                <Link href={"/policy"}>Политикой конфиденциальности</Link>
+              </span>
             </p>
           </div>
           <Image src={helpDesk} alt="" />
         </form>
-      </div>
+      </Element>
     );
   }
 };

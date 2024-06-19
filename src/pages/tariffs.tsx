@@ -45,15 +45,9 @@ const Tariffs = () => {
   return (
     <>
       <Header />
-      {loading ? (
-        <div style={{ padding: "200px" }}>Загрузка...</div> // Индикатор загрузки
-      ) : (
-        <>
-          <SliderProviders providers={providers} />
-          <Filter />
-          <SliderTariffsFilter allTariffs={tariffs} />
-        </>
-      )}
+      <SliderProviders providers={providers} />
+      <Filter />
+      <SliderTariffsFilter allTariffs={tariffs} />
       <AboutUs />
       <HelpForm />
       <Questions />

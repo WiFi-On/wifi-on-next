@@ -28,17 +28,66 @@ function SliderTariffsFilter({ allTariffs }) {
   useEffect(() => {
     if (activeProviders.length > 0) {
       filterTariffsFun(allTariffs, activeProviders);
+
+      setCurrentPage(0);
     } else {
       setFilterTariffs(allTariffs);
+
+      setCurrentPage(0);
     }
   }, [allTariffs, activeProviders]);
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
+    smoothScrollToTop();
   };
-
+  const smoothScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  console.log(currentPage);
   const pageCount = Math.ceil(filterTariffs.length / tariffsPerPage);
   const offset = currentPage * tariffsPerPage;
+
+  if (filterTariffs < 1)
+    return (
+      <div className={styles.main}>
+        <div className={styles.sliderContainer}>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+          <div className={styles.cardTariffLoading}></div>
+        </div>
+        <ReactPaginate
+          pageCount={pageCount}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
+          onPageChange={handlePageChange}
+          containerClassName={styles.pagination}
+          activeClassName={styles.active}
+          previousClassName={styles.previous}
+          nextClassName={styles.next}
+          previousLabel={"<"}
+          nextLabel={">"}
+          renderOnZeroPageCount={null}
+          breakLabel="..."
+        />
+      </div>
+    );
 
   return (
     <div className={styles.main}>
@@ -56,8 +105,13 @@ function SliderTariffsFilter({ allTariffs }) {
         activeClassName={styles.active}
         previousClassName={styles.previous}
         nextClassName={styles.next}
+        disabledClassName={styles.disabled}
+        pageClassName={styles.page}
         previousLabel={"<"}
         nextLabel={">"}
+        renderOnZeroPageCount={null}
+        disableInitialCallback={true}
+        breakLabel="..."
       />
     </div>
   );

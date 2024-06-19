@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 20px;
   max-width: 1280px;
-  margin: 200px auto 0 auto;
+  margin: 180px auto 0 auto;
 }
 
 .main h2 {
@@ -22,4 +22,39 @@
   justify-content: center;
   gap: 20px;
   max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+.loadingBlock {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 200%;
+  animation: loading 1.5s infinite;
+}
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@media screen and (max-width: 634px) {
+  .main {
+    margin: 160px auto 0 auto;
+  }
+  .main h2 {
+    font-family: Raleway;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44.8px;
+    text-align: center;
+  }
+  .loadingBlock {
+    width: 105px;
+    height: 105px;
+  }
 }

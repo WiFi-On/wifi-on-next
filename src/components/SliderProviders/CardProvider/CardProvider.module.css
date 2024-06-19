@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 140px;
-  width: 140px;
+  height: 130px;
+  width: 130px;
   border: 1px solid #578fec;
   border-radius: 20px;
   cursor: pointer;
@@ -22,7 +22,7 @@
 .on {
   border: 2px solid #284fdc;
 }
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 634px) {
   .main {
     height: 105px;
     width: 105px;
@@ -34,17 +34,8 @@
     height: 76px;
     width: 76px;
   }
-}
-@media screen and (max-width: 700px) {
-  .main {
-    height: 70px;
-    width: 70px;
-  }
-  .main:hover {
-    border: 2px solid #284fdc;
-  }
-  .wrapper {
-    height: 51px;
-    width: 51px;
+  .wrapper img {
+    width: 90%;
+    height: 90%;
   }
 }

@@ -4,7 +4,8 @@
 }
 .sliderContainer {
   max-width: 1250px;
-  min-height: 2260px;
+
+  padding: 0 10px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -39,11 +40,35 @@
   font-weight: 500;
   line-height: 27.28px;
   text-align: center;
-}
 
+  transition: 0.3s ease;
+}
+.pagination li.page {
+  cursor: pointer;
+}
+.pagination li:hover {
+  border: 2px solid #007bff;
+  color: #007bff;
+}
 .pagination li.active {
   border: 2px solid #007bff;
   color: #007bff;
+}
+
+.pagination li.previous {
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.pagination li.next {
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.pagination li.disabled {
+  border: 2px solid #9f9f9f;
+  color: #9f9f9f;
+  cursor: not-allowed;
 }
 .pagination li a {
   display: flex;
@@ -52,4 +77,31 @@
 
   height: 100%;
   width: 100%;
+}
+.cardTariffLoading {
+  width: 290px;
+  height: 550px;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 200%;
+  animation: loading 1.5s infinite;
+}
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@media screen and (max-width: 634px) {
+  .pagination li {
+    border: 2px solid #9f9f9f;
+    height: 35px;
+    width: 35px;
+  }
+  .pagination {
+    gap: 10px;
+  }
 }

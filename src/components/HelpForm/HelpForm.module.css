@@ -7,6 +7,14 @@
   margin: 150px auto 0 auto;
   gap: 34px;
 }
+.main a {
+  color: #173cc2;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+.main a:hover {
+  color: #4d90ff;
+}
 .main img {
   height: 20%;
 }
@@ -87,6 +95,13 @@
   box-sizing: border-box;
   margin: 80px auto 0 auto;
   gap: 10px;
+}
+.mainTablet a {
+  color: #173cc2;
+  text-decoration: none;
+}
+.mainTablet a:hover {
+  transform: scale(1.03);
 }
 .mainTablet h2 {
   font-family: Raleway;
@@ -169,6 +184,10 @@
   box-sizing: border-box;
   margin: 80px auto 0 auto;
   gap: 15px;
+}
+.mainMobile a {
+  color: #173cc2;
+  text-decoration: none;
 }
 .mainMobile h2 {
   margin-bottom: 30px;

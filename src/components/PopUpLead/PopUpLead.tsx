@@ -1,6 +1,5 @@
 import styles from "./PopUpLead.module.css";
 import Input from "../Input/Input";
-
 import Image from "next/image";
 import close from "./Button.png";
 import { useEffect, useState } from "react";
@@ -13,7 +12,6 @@ import {
   selectIsOpenPopUpPolicy,
 } from "../../redux/reducers/modalSlice";
 import cn from "classnames";
-import { time } from "console";
 
 const PopUpLead = () => {
   const isOpen = useSelector(selectIsOpenPopUpLead);
@@ -45,9 +43,15 @@ const PopUpLead = () => {
 
   const [checked, setChecked] = useState(false);
 
+  const [closing, setClosing] = useState(false);
+
   const closeModalHandler = () => {
-    dispatch(closePopUpLead());
-    document.body.style.overflow = "auto";
+    setClosing(true);
+    setTimeout(() => {
+      dispatch(closePopUpLead());
+      document.body.style.overflow = "auto";
+      setClosing(false);
+    }, 300);
   };
 
   const handleSubmit = async (e) => {
@@ -168,13 +172,16 @@ const PopUpLead = () => {
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen && !closing) return null;
 
   if (sent) {
     return (
       <div className={styles.container} onClick={closeModalHandler}>
         <div
-          className={cn(styles.main, { [styles.mainActive]: isOpen })}
+          className={cn(styles.main, {
+            [styles.mainActive]: isOpen,
+            [styles.mainClosing]: closing,
+          })}
           onClick={(e) => e.stopPropagation()}
         >
           <Image
@@ -192,9 +199,18 @@ const PopUpLead = () => {
   }
 
   return (
-    <div className={styles.container} onClick={closeModalHandler}>
+    <div
+      className={cn(styles.container, {
+        [styles.containerActive]: isOpen,
+        [styles.containerClosing]: closing,
+      })}
+      onClick={closeModalHandler}
+    >
       <div
-        className={cn(styles.main, { [styles.mainActive]: isOpen })}
+        className={cn(styles.main, {
+          [styles.mainActive]: isOpen,
+          [styles.mainClosing]: closing,
+        })}
         onClick={(e) => e.stopPropagation()}
       >
         <Image

@@ -18,7 +18,7 @@ const CardTariff = ({ tariff }) => {
   };
 
   if (!tariff) return <div>Loading...</div>;
-  console.log(tariff);
+
   return (
     <div className={styles.main}>
       <div className={styles.logoAndName}>
