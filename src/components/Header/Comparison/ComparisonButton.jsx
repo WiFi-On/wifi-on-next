@@ -14,7 +14,7 @@ const ComparisonButton = (props) => {
         [styles.colorMobile]: mobile === "true",
         [styles.colorDesk]: mobile !== "true",
       })}
-      href="/"
+      href="/compare"
     >
       {mobile === "true" ? (
         <Image src={iconComparisonBlack} alt="" />

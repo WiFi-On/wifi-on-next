@@ -11,6 +11,15 @@
 
   transition: 0.3s ease;
 }
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  pointer-events: none;
+}
 .main:hover {
   transform: scale(1.03);
   box-shadow: 0 0 10px #173cc2;
@@ -91,7 +100,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto;
 }
 .detailsAndComparison svg {
   cursor: pointer;
@@ -182,6 +190,8 @@
 .buttonConnect {
   background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
 
+  height: 40px;
+  width: 115px;
   font-family: Raleway;
   font-size: 14px;
   font-weight: 500;
@@ -190,7 +200,7 @@
   color: #fff;
   border: none;
   border-radius: 30px;
-  padding: 10px 16px;
+  text-align: center;
   box-sizing: border-box;
   cursor: pointer;
   height: 40px;
@@ -199,4 +209,9 @@
 }
 .buttonConnect:hover {
   transform: scale(1.05);
+}
+@media screen and (max-width: 1254px) {
+  .link {
+    pointer-events: all;
+  }
 }

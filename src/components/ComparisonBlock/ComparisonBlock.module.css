@@ -1,0 +1,77 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 140px;
+  min-width: 1420px;
+
+  box-sizing: border-box;
+  gap: 10px;
+}
+.trash {
+  cursor: pointer;
+}
+.table {
+  width: 100%;
+  border-spacing: 0;
+}
+.main tr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main th {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.main th img {
+  margin-right: 20px;
+}
+.providerName {
+  font-family: Raleway;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 33.8px;
+  text-align: left;
+  margin-right: 10px;
+}
+.main tr {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+  text-align: left;
+
+  border-radius: 20px;
+}
+.main tr td {
+  box-sizing: border-box;
+  padding: 12px;
+  width: 330px;
+}
+.main tr th {
+  box-sizing: border-box;
+  padding: 20px 13px;
+  width: 330px;
+}
+.blue {
+  background: #e3ebfb;
+}
+.main button {
+  border: none;
+  padding: 16px 31px;
+  border-radius: 30px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.78px;
+  text-align: left;
+
+  text-align: center;
+
+  color: #ffffff;
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+}

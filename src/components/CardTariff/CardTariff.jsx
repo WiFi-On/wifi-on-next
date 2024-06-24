@@ -17,41 +17,78 @@ const CardTariff = ({ tariff }) => {
     dispatch(openPopUpLead());
   };
 
+  const handleClickComparison = () => {
+    const tariffComparison = {
+      id: tariff.id,
+      name: tariff.name,
+      provider: tariff.provider.name,
+      imgProvider: tariff.provider.img,
+      price: tariff.price + "₽",
+      newPrice: tariff.newprice ? tariff.newprice + "₽" : "-",
+      internet_speed: tariff.internet_speed
+        ? tariff.internet_speed + "Мбит/с"
+        : "-",
+      router_rent: tariff.router_rent ? tariff.router_rent + "₽" : "-",
+      tv_box_rent: tariff.tv_box_rent ? tariff.tv_box_rent + "₽" : "-",
+      minutes: tariff.minutes ? tariff.minutes + "мин." : "-",
+      channels: tariff.channels_count ? tariff.channels_count + "кан." : "-",
+      sms: tariff.sms ? tariff.sms + "шт." : "-",
+    };
+
+    const listComparisons = localStorage.getItem("listComparisons") || "[]";
+    const list = JSON.parse(listComparisons);
+
+    if (!list.some((item) => item.id === tariffComparison.id)) {
+      if (list.length === 3) {
+        list.shift();
+      }
+      list.push(tariffComparison);
+      localStorage.setItem("listComparisons", JSON.stringify(list));
+      console.log(list);
+    } else {
+      console.log("Tariff already exists in comparison list");
+    }
+  };
+
   if (!tariff) return <div>Loading...</div>;
 
   return (
     <div className={styles.main}>
-      <div className={styles.logoAndName}>
-        <Image
-          src={`/imgs/cardTariff/providers/${tariff.provider.img}`}
-          alt=""
-          width={50}
-          height={50}
-        />
-        <span>{tariff.provider.name}</span>
-      </div>
-      <p className={styles.nameTariff}>{tariff.name}</p>
-      <div className={styles.params}>
-        {tariff.params.map((paramMain, i) => (
-          <div key={i} className={styles.param}>
-            <div className={styles.wrapperImgParam}>
-              <Image
-                src={`/imgs/cardTariff/params/${paramMain.img}`}
-                alt=""
-                width={20}
-                height={20}
-              />
+      <Link href={`/Moskva/${tariff.id}`} className={styles.link}>
+        <div className={styles.logoAndName}>
+          <Image
+            src={`/imgs/cardTariff/providers/${tariff.provider.img}`}
+            alt=""
+            width={50}
+            height={50}
+          />
+          <span>{tariff.provider.name}</span>
+        </div>
+
+        <p className={styles.nameTariff}>{tariff.name}</p>
+        <div className={styles.params}>
+          {tariff.params.map((paramMain, i) => (
+            <div key={i} className={styles.param}>
+              <div className={styles.wrapperImgParam}>
+                <Image
+                  src={`/imgs/cardTariff/params/${paramMain.img}`}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className={styles.paramText}>
+                <p>{paramMain.name}</p>
+                <p>
+                  {paramMain.params[0].name} {paramMain.params[0].value}{" "}
+                  {paramMain.params[0].value_type}
+                </p>
+              </div>
             </div>
-            <div className={styles.paramText}>
-              <p>{paramMain.name}</p>
-              <p>
-                {paramMain.params[0].name} {paramMain.params[0].value}{" "}
-                {paramMain.params[0].value_type}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Link>
+
       <div className={styles.detailsAndComparison}>
         <div className={styles.buttonDetails}>
           <Link href={`/Moskva/${tariff.id}`}>Подробнее о тарифе</Link>
@@ -95,6 +132,7 @@ const CardTariff = ({ tariff }) => {
           viewBox="0 0 23 25"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={handleClickComparison}
         >
           <rect
             x="0.912893"

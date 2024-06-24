@@ -58,7 +58,7 @@ const PopUpLead = () => {
     e.preventDefault();
     try {
       const responseUser = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/8je0m717nl212bhe/crm.contact.add",
+        "https://on-wifi.bitrix24.ru/rest/11940/gcff4qvkq0xmwhxh/crm.contact.add",
         {
           method: "POST",
           headers: {
@@ -83,7 +83,7 @@ const PopUpLead = () => {
       const contactId = userData.result;
 
       const responseLead = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/8je0m717nl212bhe/crm.deal.add",
+        "https://on-wifi.bitrix24.ru/rest/11940/gcff4qvkq0xmwhxh/crm.deal.add",
         {
           method: "POST",
           headers: {
