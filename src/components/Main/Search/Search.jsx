@@ -99,7 +99,7 @@ const Search = ({ device }) => {
               <Link
                 onClick={clickSuggestion}
                 key={i}
-                href={`/tariffs?address=${suggestion.value}`}
+                href={`/tariffs?address=${suggestion.data.house_kladr_id}`}
                 className={styles.suggestion}
               >
                 {suggestion.value}

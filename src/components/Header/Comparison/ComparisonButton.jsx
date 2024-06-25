@@ -4,9 +4,12 @@ import styles from "./ComparisonButton.module.css";
 import Link from "next/link";
 import cn from "classnames";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const ComparisonButton = (props) => {
   const { mobile } = props;
+  const router = useRouter();
+  const { city } = router.query;
 
   return (
     <Link
@@ -14,7 +17,7 @@ const ComparisonButton = (props) => {
         [styles.colorMobile]: mobile === "true",
         [styles.colorDesk]: mobile !== "true",
       })}
-      href="/compare"
+      href={`/${city}/compare`}
     >
       {mobile === "true" ? (
         <Image src={iconComparisonBlack} alt="" />

@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import cn from "classnames";
 import { Link as ScrollLink } from "react-scroll";
+import { useRouter } from "next/router";
 
 const Nav = (props) => {
   const { mobile } = props;
   const [currentPage, setCurrentPage] = useState("");
+  const router = useRouter();
+  const { city } = router.query;
 
   return (
     <div
@@ -26,7 +29,7 @@ const Nav = (props) => {
         О нас
       </ScrollLink>
       <Link
-        href="/tariffs"
+        href={`/${city}/tariffs`}
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "tariffs",
           [styles.colorMobile]: mobile,
@@ -62,7 +65,7 @@ const Nav = (props) => {
         Ответы на вопросы
       </ScrollLink>
       <Link
-        href="/contacts"
+        href={`/${city}/contacts`}
         className={cn(styles.navElement, {
           [styles.active]: currentPage === "contacts",
           [styles.colorMobile]: mobile,

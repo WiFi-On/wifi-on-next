@@ -1,5 +1,5 @@
 // pages/[city].js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import Main from "../components/Main/Main";
 import ProvidersInCity from "../components/ProvidersInCity/ProvidersInCity";
@@ -20,20 +20,34 @@ import Head from "next/head";
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
 
+  useEffect(() => {
+    const fetchIp = async () => {
+      try {
+        const response = await fetch("/api/getIp");
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Failed to fetch IP:", error);
+      }
+    };
+
+    fetchIp();
+  }, []);
+
   return (
     <>
       <Head>
         <title>
-          Тарифы на интернет в {cityData.district_info.namewhere} 🙋‍♂️ Домашний
+          Тарифы на интернет в {cityData.districtName.namewhere} 🙋‍♂️ Домашний
           интернет в квартиру | Тарифы и акции на интернет - On-wifi
         </title>
         <meta
           name="description"
           content={
             "Какой интернет подключить " +
-            cityData.district_info.name +
+            cityData.districtName.name +
             "➡️ Выбрать интернет на квартиру в " +
-            cityData.district_info.namewhere +
+            cityData.districtName.namewhere +
             " 🌐 Выбрать лучший тариф на домашний интернет"
           }
         />
@@ -43,11 +57,11 @@ const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
       <Main></Main>
       <ProvidersInCity
         providers={cityData.providers}
-        nameLocationWhere={cityData.district_info.namewhere}
+        nameLocationWhere={cityData.districtName.namewhere}
       ></ProvidersInCity>
       <SliderTariffsMain
-        nameCityWhere={cityData.district_info.namewhere}
-        tariffs={cityData.populartariffs}
+        nameCityWhere={cityData.districtName.namewhere}
+        tariffs={cityData.tariffs}
       ></SliderTariffsMain>
       <AboutUs></AboutUs>
       <Advantages></Advantages>
@@ -1077,7 +1091,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `https://on-wifi.ru/district_info?districtengname=${params.city}`
+    `http://localhost:5021/api/fullInfoDistrictByEndName/${params.city}`
   );
   const cityData = await res.json();
 

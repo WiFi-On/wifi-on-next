@@ -12,7 +12,7 @@ const CardTariff = ({ tariff }) => {
     localStorage.setItem("nameTariff", tariff.name);
     localStorage.setItem(
       "priceTariff",
-      tariff.newprice ? tariff.newprice : tariff.price
+      tariff.min_tariff_cost ? tariff.min_tariff_cost : tariff.price
     );
     dispatch(openPopUpLead());
   };
@@ -23,8 +23,8 @@ const CardTariff = ({ tariff }) => {
       name: tariff.name,
       provider: tariff.provider.name,
       imgProvider: tariff.provider.img,
-      price: tariff.price + "₽",
-      newPrice: tariff.newprice ? tariff.newprice + "₽" : "-",
+      price: tariff.max_tariff_cost + "₽",
+      newPrice: tariff.min_tariff_cost ? tariff.min_tariff_cost + "₽" : "-",
       internet_speed: tariff.internet_speed
         ? tariff.internet_speed + "Мбит/с"
         : "-",
@@ -67,7 +67,7 @@ const CardTariff = ({ tariff }) => {
 
         <p className={styles.nameTariff}>{tariff.name}</p>
         <div className={styles.params}>
-          {tariff.params.map((paramMain, i) => (
+          {tariff.cardparams.map((paramMain, i) => (
             <div key={i} className={styles.param}>
               <div className={styles.wrapperImgParam}>
                 <Image
@@ -177,11 +177,13 @@ const CardTariff = ({ tariff }) => {
           <p>Абонентская плата</p>
           <div className={styles.prices}>
             <span className={styles.newPrice}>
-              {tariff.newprice ? tariff.newprice : tariff.price}
+              {tariff.min_tariff_cost
+                ? tariff.min_tariff_cost
+                : tariff.max_tariff_cost}
             </span>
             <div className={styles.oldPriceContainer}>
               <span className={styles.oldPrice}>
-                {tariff.newprice ? tariff.price : ""}
+                {tariff.min_tariff_cost ? tariff.max_tariff_cost : ""}
               </span>
               <span className={styles.rubles}>₽/мес</span>
             </div>
