@@ -57,7 +57,7 @@ const Tariffs = () => {
         console.error("Fetch error:", error);
       });
   };
-  console.log(address, city);
+
   useEffect(() => {
     if (address || city) {
       setLoading(true);

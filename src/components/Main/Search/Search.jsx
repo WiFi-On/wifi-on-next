@@ -2,10 +2,12 @@ import styles from "./Search.module.css";
 import cn from "classnames";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Search = ({ device }) => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const { city } = useRouter().query;
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -99,7 +101,7 @@ const Search = ({ device }) => {
               <Link
                 onClick={clickSuggestion}
                 key={i}
-                href={`/tariffs?address=${suggestion.data.house_kladr_id}`}
+                href={`/${city}/tariffs?address=${suggestion.data.house_kladr_id}`}
                 className={styles.suggestion}
               >
                 {suggestion.value}

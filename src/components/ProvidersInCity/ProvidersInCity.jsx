@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./ProvidersInCity.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const ProvidersInCity = ({ providers, nameLocationWhere }) => {
   const [windowWidth, setWindowWidth] = useState(null);
-
+  const router = useRouter();
+  const { city } = router.query;
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -25,14 +28,18 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
         <h2>Провайдеры доступные в {nameLocationWhere}</h2>
         <div className={styles.providers}>
           {providers.map((provider) => (
-            <Image
-              className={styles.providersImg}
+            <Link
               key={provider.id}
-              src={`/imgs/providersWhite/${provider.img}`}
-              width={105}
-              height={105}
-              alt={provider.name}
-            />
+              href={`${city}/tariffs?providers=${provider.id}`}
+            >
+              <Image
+                className={styles.providersImg}
+                src={`/imgs/providersWhite/${provider.img}`}
+                width={105}
+                height={105}
+                alt={provider.name}
+              />
+            </Link>
           ))}
         </div>
       </div>

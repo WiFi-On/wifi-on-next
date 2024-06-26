@@ -5,14 +5,19 @@ import iconTV from "./tv.svg";
 import iconConnection from "./mobile.svg";
 import cn from "classnames";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const CardTypeConnect = (props) => {
   const { device, type } = props;
+  const router = useRouter();
+  const { city } = router.query;
 
   switch (type) {
     case "Internet+TV":
       return (
-        <div
+        <Link
+          href={`${city}/tariffs?connectType=1,2`}
           className={cn(styles.main, {
             [styles.mainTablet]: device === "tablet",
             [styles.mainMobile]: device === "mobile",
@@ -28,11 +33,12 @@ const CardTypeConnect = (props) => {
           </div>
 
           <h4>Интернет+ТВ</h4>
-        </div>
+        </Link>
       );
     case "Internet":
       return (
-        <div
+        <Link
+          href={`${city}/tariffs?connectType=1`}
           className={cn(styles.main, {
             [styles.mainTablet]: device === "tablet",
             [styles.mainMobile]: device === "mobile",
@@ -48,11 +54,12 @@ const CardTypeConnect = (props) => {
           </div>
 
           <h4>Домашний интернет</h4>
-        </div>
+        </Link>
       );
     case "TV":
       return (
-        <div
+        <Link
+          href={`${city}/tariffs?connectType=2`}
           className={cn(styles.main, {
             [styles.mainTablet]: device === "tablet",
             [styles.mainMobile]: device === "mobile",
@@ -67,12 +74,13 @@ const CardTypeConnect = (props) => {
             <Image src={iconTV} alt="" />
           </div>
 
-          <h4>Телевидение</h4>
-        </div>
+          <h4>Интернет+Связь</h4>
+        </Link>
       );
     case "Internet+Connection+TV":
       return (
-        <div
+        <Link
+          href={`${city}/tariffs?connectType=1,2,3`}
           className={cn(styles.main, {
             [styles.mainTablet]: device === "tablet",
             [styles.mainMobile]: device === "mobile",
@@ -87,7 +95,7 @@ const CardTypeConnect = (props) => {
             <Image src={iconConnection} alt="" />
           </div>
           <h4>Связь+Интернет+ТВ</h4>
-        </div>
+        </Link>
       );
   }
 };
