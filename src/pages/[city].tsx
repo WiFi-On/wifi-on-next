@@ -1077,7 +1077,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `http://92.63.178.153/5030/api/fullInfoDistrictByEndName/${params.city}`
+    `http://92.63.178.153:5030/api/fullInfoDistrictByEndName/${params.city}`
   );
   const cityData = await res.json();
 
