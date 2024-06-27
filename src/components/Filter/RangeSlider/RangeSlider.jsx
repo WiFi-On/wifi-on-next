@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import styles from "./RangeSlider.module.css";
 
-const RangeSlider = ({ name }) => {
-  const [minPrice, setMinPrice] = useState(100);
-  const [maxPrice, setMaxPrice] = useState(900);
+const RangeSlider = ({ name, min, max, onChange }) => {
+  const [minValue, setMinValue] = useState(min);
+  const [maxValue, setMaxValue] = useState(max);
 
   const handleMinChange = (e) => {
-    const value = Math.min(Number(e.target.value), maxPrice - 1);
-    setMinPrice(value);
+    const value = Math.min(Number(e.target.value), maxValue - 1);
+    setMinValue(value);
   };
 
   const handleMaxChange = (e) => {
-    const value = Math.max(Number(e.target.value), minPrice + 1);
-    setMaxPrice(value);
+    const value = Math.max(Number(e.target.value), minValue + 1);
+    setMaxValue(value);
+  };
+
+  const handleMouseUp = () => {
+    onChange(minValue, maxValue);
   };
 
   return (
@@ -22,25 +26,27 @@ const RangeSlider = ({ name }) => {
         <span className={styles.dashName}></span>
       </div>
       <div className={styles.priceDisplay}>
-        <span className={styles.priceMin}>от {minPrice}</span>
+        <span className={styles.priceMin}>от {minValue}</span>
         <span className={styles.dash}></span>
-        <span className={styles.priceMax}>до {maxPrice}</span>
+        <span className={styles.priceMax}>до {maxValue}</span>
       </div>
       <div className={styles.rangeSlider}>
         <input
           type="range"
-          min="0"
-          max="1000"
-          value={minPrice}
+          min={min}
+          max={max}
+          value={minValue}
           onChange={handleMinChange}
+          onMouseUp={handleMouseUp}
           className={styles.rangeInput}
         />
         <input
           type="range"
-          min="0"
-          max="1000"
-          value={maxPrice}
+          min={min}
+          max={max}
+          value={maxValue}
           onChange={handleMaxChange}
+          onMouseUp={handleMouseUp}
           className={styles.rangeInput}
         />
         <div className={styles.sliderTrack}></div>

@@ -9,9 +9,16 @@ function SliderTariffsFilter({ allTariffs }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [filteredTariffs, setFilteredTariffs] = useState(allTariffs);
   const tariffsPerPage = 16; // Количество тарифов на одной странице
-  console.log(filteredTariffs);
+
   useEffect(() => {
-    const { providers, connectType, discount, freeConnection } = router.query;
+    const {
+      providers,
+      connectType,
+      discount,
+      freeConnection,
+      priceRange,
+      speedRange,
+    } = router.query;
     let filtered = allTariffs;
 
     if (providers) {
@@ -20,7 +27,6 @@ function SliderTariffsFilter({ allTariffs }) {
         providerIds.includes(tariff.provider.id)
       );
     }
-
     if (connectType) {
       const typeTariffIds = connectType
         .split(",")
@@ -69,13 +75,29 @@ function SliderTariffsFilter({ allTariffs }) {
         );
       }
     }
-    console.log(filtered);
     if (discount) {
       filtered = filtered.filter((tariff) => tariff.min_tariff_cost);
     }
     if (freeConnection) {
       filtered = filtered.filter((tariff) => tariff.connection_cost);
     }
+    if (priceRange) {
+      const [minPrice, maxPrice] = priceRange.split("-");
+      filtered = filtered.filter(
+        (tariff) =>
+          tariff.max_tariff_cost >= parseInt(minPrice, 10) &&
+          tariff.max_tariff_cost <= parseInt(maxPrice, 10)
+      );
+    }
+    if (speedRange) {
+      const [minSpeed, maxSpeed] = speedRange.split("-");
+      filtered = filtered.filter(
+        (tariff) =>
+          tariff.internet_speed >= parseInt(minSpeed, 10) &&
+          tariff.internet_speed <= parseInt(maxSpeed, 10)
+      );
+    }
+
     setFilteredTariffs(filtered);
     setCurrentPage(0); // Сброс текущей страницы при изменении фильтров
   }, [router.query, allTariffs]);

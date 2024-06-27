@@ -9,13 +9,12 @@ const CardProvider = ({ img, id }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if the current provider id is in the URL params and set the initial state
     const { providers } = router.query;
     if (providers) {
       const providerIds = providers.split(",").map((pid) => parseInt(pid, 10));
-      if (providerIds.includes(id)) {
-        setOn(true);
-      }
+      setOn(providerIds.includes(id));
+    } else {
+      setOn(false);
     }
   }, [router.query, id]);
 
@@ -24,12 +23,10 @@ const CardProvider = ({ img, id }) => {
     let newProviders;
 
     if (on) {
-      setOn(false);
       newProviders = currentQuery.providers
         ? currentQuery.providers.split(",").filter((pid) => pid !== String(id))
         : [];
     } else {
-      setOn(true);
       newProviders = currentQuery.providers
         ? [...currentQuery.providers.split(","), String(id)]
         : [String(id)];

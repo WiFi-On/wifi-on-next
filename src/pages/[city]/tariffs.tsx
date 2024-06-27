@@ -19,8 +19,11 @@ const Tariffs = () => {
   const { city } = router.query;
   const [tariffs, setTariffs] = useState([]);
   const [providers, setProviders] = useState([]);
-  const [filterProviders, setFilterProviders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(5000);
+  const [minSpeed, setMinSpeed] = useState(0);
+  const [maxSpeed, setMaxSpeed] = useState(5000);
 
   const fetchGetTariffsHouse = async (id) => {
     fetch(`http://localhost:5021/api/fullInfoByHouse/${id}`)
@@ -39,7 +42,6 @@ const Tariffs = () => {
         console.error("Fetch error:", error);
       });
   };
-
   const fetchGetTariffsDistrict = async (engName) => {
     fetch(`http://localhost:5021/api/fullInfoDistrictByEndName/${engName}`)
       .then((response) => {
@@ -57,25 +59,65 @@ const Tariffs = () => {
         console.error("Fetch error:", error);
       });
   };
+  const minAndMaxPrice = (tariffs) => {
+    let min = 30000;
+    let max = 0;
+    tariffs.forEach((tariff) => {
+      const maxTariffCost = parseFloat(tariff.max_tariff_cost);
+      if (maxTariffCost < min) {
+        min = maxTariffCost;
+      }
+      if (maxTariffCost > max) {
+        max = maxTariffCost;
+      }
+    });
+    setMinPrice(min);
+    setMaxPrice(max);
+  };
+  const minAndMaxSpeed = (tariffs) => {
+    let min = Infinity;
+    let max = -Infinity;
+    tariffs.forEach((tariff) => {
+      const internetSpeed = parseFloat(tariff.internet_speed);
+      if (internetSpeed < min) {
+        min = internetSpeed;
+      }
+      if (internetSpeed > max) {
+        max = internetSpeed;
+      }
+    });
+    setMinSpeed(min);
+    setMaxSpeed(max);
+  };
 
   useEffect(() => {
-    if (address || city) {
+    if (address) {
       setLoading(true);
-
-      if (address) {
-        fetchGetTariffsHouse(address);
-      }
-      if (city) {
-        fetchGetTariffsDistrict(city);
-      }
+      fetchGetTariffsHouse(address);
+    } else if (city) {
+      setLoading(true);
+      fetchGetTariffsDistrict(city);
     }
   }, [address, city]);
+
+  useEffect(() => {
+    if (tariffs.length > 0) {
+      minAndMaxPrice(tariffs);
+      minAndMaxSpeed(tariffs);
+    }
+  }, [tariffs]);
 
   return (
     <>
       <Header />
       <SliderProviders providers={providers} />
-      <Filter />
+      <Filter
+        providersProp={providers}
+        minPriceProp={minPrice}
+        maxPriceProp={maxPrice}
+        minSpeedProp={minSpeed}
+        maxSpeedProp={maxSpeed}
+      />
       <SliderTariffsFilter allTariffs={tariffs} />
       <AboutUs />
       <HelpForm />

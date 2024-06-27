@@ -7,16 +7,23 @@ import { CSSTransition } from "react-transition-group";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const Filter = (
+const Filter = ({
   providersProp,
   minPriceProp,
   maxPriceProp,
   minSpeedProp,
-  maxSpeedProp
-) => {
+  maxSpeedProp,
+}) => {
   const [isBotVisible, setIsBotVisible] = useState(false);
   const router = useRouter();
-  const { providers, connectType, discount, freeConnection } = router.query;
+  const {
+    providers,
+    connectType,
+    discount,
+    freeConnection,
+    priceRange,
+    speedRange,
+  } = router.query;
 
   const onChangeConnectType = (idConnectType) => {
     const currentQuery = { ...router.query };
@@ -45,6 +52,35 @@ const Filter = (
       query: currentQuery,
     });
   };
+
+  const onChangeProviders = (idProvider) => {
+    const currentQuery = { ...router.query };
+    let newProviders;
+
+    if (currentQuery.providers?.includes(String(idProvider))) {
+      newProviders = currentQuery.providers
+        ? currentQuery.providers
+            .split(",")
+            .filter((pid) => pid !== String(idProvider))
+        : [];
+    } else {
+      newProviders = currentQuery.providers
+        ? [...currentQuery.providers.split(","), String(idProvider)]
+        : [String(idProvider)];
+    }
+
+    if (newProviders.length > 0) {
+      currentQuery.providers = newProviders.join(",");
+    } else {
+      delete currentQuery.providers;
+    }
+
+    router.push({
+      pathname: router.pathname,
+      query: currentQuery,
+    });
+  };
+
   const onChangeDiscount = () => {
     const currentQuery = { ...router.query };
 
@@ -59,6 +95,7 @@ const Filter = (
       query: currentQuery,
     });
   };
+
   const onChangeFreeConnection = () => {
     const currentQuery = { ...router.query };
 
@@ -67,6 +104,26 @@ const Filter = (
     } else {
       currentQuery.freeConnection = "1";
     }
+
+    router.push({
+      pathname: router.pathname,
+      query: currentQuery,
+    });
+  };
+
+  const handlePriceChange = (min, max) => {
+    const currentQuery = { ...router.query };
+    currentQuery.priceRange = `${min}-${max}`;
+
+    router.push({
+      pathname: router.pathname,
+      query: currentQuery,
+    });
+  };
+
+  const handleSpeedChange = (min, max) => {
+    const currentQuery = { ...router.query };
+    currentQuery.speedRange = `${min}-${max}`;
 
     router.push({
       pathname: router.pathname,
@@ -109,10 +166,20 @@ const Filter = (
             <div className={styles.rangeSliders}>
               <div className={styles.wrapperRangeSliderContainer}>
                 <div className={styles.wrapperRangeSlider}>
-                  <RangeSlider name="Абонентская плата, ₽" />
+                  <RangeSlider
+                    min={minPriceProp}
+                    max={maxPriceProp}
+                    name="Абонентская плата, ₽"
+                    onChange={handlePriceChange}
+                  />
                 </div>
                 <div className={styles.wrapperRangeSlider}>
-                  <RangeSlider name="Скорость интернета, Мбит/с" />
+                  <RangeSlider
+                    min={minSpeedProp}
+                    max={maxSpeedProp}
+                    name="Скорость интернета, Мбит/с"
+                    onChange={handleSpeedChange}
+                  />
                 </div>
               </div>
               <div className={styles.extras}>
@@ -134,11 +201,14 @@ const Filter = (
                   <span>Провайдер</span>
                   <p></p>
                 </div>
-                <Checkbox label="Дом.ру" />
-                <Checkbox label="Ростелеком" />
-                <Checkbox label="Билайн" />
-                <Checkbox label="МТС" />
-                <Checkbox label="ТТК" />
+                {providersProp.map((provider) => (
+                  <Checkbox
+                    checked={providers?.includes(provider.id)}
+                    key={provider.id}
+                    label={provider.name}
+                    onChange={() => onChangeProviders(provider.id)}
+                  ></Checkbox>
+                ))}
               </div>
               <div className={styles.checkboxesContainer}>
                 <div className={styles.nameCheckboxes}>
