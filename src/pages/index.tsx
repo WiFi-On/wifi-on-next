@@ -11,18 +11,20 @@ const HomePage = () => {
       try {
         const response = await fetch("/api/getIp");
         const data = await response.json();
-        localStorage.setItem("city", data.city);
-        console.log(data);
-        router.push(`/${data.city}`);
+        if (data.city) {
+          localStorage.setItem("city", data.city);
+          router.push(`/${data.city}`);
+        } else {
+          localStorage.setItem("city", "Moskva");
+          router.push(`/Moskva`);
+        }
       } catch (error) {
         console.error(error);
         localStorage.setItem("city", "Moskva");
         router.push(`/Moskva`);
       }
     };
-    if (city) {
-      fetchIp();
-    }
+    fetchIp();
   }, []);
 
   return <></>;
