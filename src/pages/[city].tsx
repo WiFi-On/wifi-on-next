@@ -20,20 +20,6 @@ import Head from "next/head";
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
 
-  useEffect(() => {
-    const fetchIp = async () => {
-      try {
-        const response = await fetch("/api/getIp");
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error("Failed to fetch IP:", error);
-      }
-    };
-
-    fetchIp();
-  }, []);
-
   return (
     <>
       <Head>
@@ -1091,7 +1077,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `http://localhost:5021/api/fullInfoDistrictByEndName/${params.city}`
+    `http://92.63.178.153/5030/api/fullInfoDistrictByEndName/${params.city}`
   );
   const cityData = await res.json();
 

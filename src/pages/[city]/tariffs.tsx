@@ -26,7 +26,7 @@ const Tariffs = () => {
   const [maxSpeed, setMaxSpeed] = useState(5000);
 
   const fetchGetTariffsHouse = async (id) => {
-    fetch(`http://localhost:5021/api/fullInfoByHouse/${id}`)
+    fetch(`http://92.63.178.153/5030/api/fullInfoByHouse/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -43,7 +43,7 @@ const Tariffs = () => {
       });
   };
   const fetchGetTariffsDistrict = async (engName) => {
-    fetch(`http://localhost:5021/api/fullInfoDistrictByEndName/${engName}`)
+    fetch(`http://92.63.178.153/5030/api/fullInfoDistrictByEndName/${engName}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
