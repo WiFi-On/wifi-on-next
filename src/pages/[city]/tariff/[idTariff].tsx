@@ -1,20 +1,18 @@
-import Header from "../../components/Header/Header";
-import Tariff from "../../components/Tariff/Tariff";
-import Footer from "../../components/Footer/Footer";
-import HelpForm from "../../components/HelpForm/HelpForm";
+import Header from "../../../components/Header/Header";
+import Tariff from "../../../components/Tariff/Tariff";
+import Footer from "../../../components/Footer/Footer";
+import HelpForm from "../../../components/HelpForm/HelpForm";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 function TariffPage() {
   const router = useRouter();
-  const { city, tariff } = router.query;
+  const { city, idTariff } = router.query;
 
   const [tariffData, setTariffData] = useState(null);
 
   useEffect(() => {
-    if (!tariff) return; // Дождитесь, пока тариф не будет доступен
-
-    fetch(`https://on-wifi.ru/get_tariff?id=${tariff}`)
+    fetch(`http://127.0.0.1:5003/api/getTariff/${idTariff}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -22,12 +20,14 @@ function TariffPage() {
         return response.json(); // Преобразование ответа в JSON
       })
       .then((data) => {
-        setTariffData(data);
+        setTariffData(data.tariff);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
       });
-  }, [tariff, city]); // Зависимость от тариф и город
+  }, [idTariff, city]); // Зависимость от тариф и город
+
+  console.log(tariffData);
   return (
     <>
       <Header />

@@ -3,9 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { openPopUpLead } from "@/redux/reducers/modalSlice";
+import { useRouter } from "next/router";
 
 const CardTariff = ({ tariff }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const { city, idTariff } = router.query;
 
   const handleConnectClick = () => {
     localStorage.setItem("nameProvider", tariff.provider.name);
@@ -91,7 +94,7 @@ const CardTariff = ({ tariff }) => {
 
       <div className={styles.detailsAndComparison}>
         <div className={styles.buttonDetails}>
-          <Link href={`/Moskva/${tariff.id}`}>Подробнее о тарифе</Link>
+          <Link href={`/${city}/tariff/${tariff.id}`}>Подробнее о тарифе</Link>
           <svg
             width="10"
             height="10"

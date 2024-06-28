@@ -88,3 +88,114 @@
   margin: 0;
   text-align: center;
 }
+.mainMobile {
+  margin: 130px auto 0 auto;
+  padding: 5px;
+}
+.logoAndButtonMobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.logoAndTextMobile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  max-width: 240px;
+  width: 100%;
+}
+.logoAndTextMobile p {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.4px;
+  text-align: left;
+  margin: 0;
+}
+.logoAndButtonMobile button {
+  border: 0;
+  padding: 13px 26px;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: linear-gradient(83.24deg, #173cc2 -22.56%, #4d90ff 106.47%);
+
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.78px;
+  text-align: left;
+  color: #fff;
+}
+.nameAndCompareMobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.nameAndCompareMobile h2 {
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+}
+.twoTextMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.textPriceMobile {
+  font-family: Raleway;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 25.2px;
+  text-align: right;
+  margin: 0;
+}
+.priceMobile {
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+  text-align: right;
+  margin: 0;
+}
+
+@media screen and (max-width: 868px) {
+  .main {
+    margin: 150px auto 0 auto;
+  }
+  .logoAndText p {
+    font-family: Raleway;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 33.8px;
+    text-align: left;
+  }
+  .nameAndPrice h2 {
+    font-family: Raleway;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44.8px;
+    text-align: left;
+  }
+  .textPrice {
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22.4px;
+    text-align: left;
+  }
+  .price {
+    font-family: Raleway;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44.8px;
+    letter-spacing: -0.01em;
+    text-align: right;
+  }
+}
