@@ -3,9 +3,12 @@ import ParamTariff from "./ParamTariff/ParamTariff";
 import compare from "./imgs/compare.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { openPopUpLead } from "@/redux/reducers/modalSlice";
 
 function Tariff({ tariffInfo }) {
   const [windowWidth, setWindowWidth] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,6 +23,54 @@ function Tariff({ tariffInfo }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleClickComparison = () => {
+    const tariffComparison = {
+      id: tariffInfo.id,
+      name: tariffInfo.name,
+      provider: tariffInfo.provider.name,
+      imgProvider: tariffInfo.provider.img,
+      price: tariffInfo.max_tariff_cost + "₽",
+      newPrice: tariffInfo.min_tariff_cost
+        ? tariffInfo.min_tariff_cost + "₽"
+        : "-",
+      internet_speed: tariffInfo.internet_speed
+        ? tariffInfo.internet_speed + "Мбит/с"
+        : "-",
+      router_rent: tariffInfo.router_rent ? tariffInfo.router_rent + "₽" : "-",
+      tv_box_rent: tariffInfo.tv_box_rent ? tariffInfo.tv_box_rent + "₽" : "-",
+      minutes: tariffInfo.minutes ? tariffInfo.minutes + "мин." : "-",
+      channels: tariffInfo.channels_count
+        ? tariffInfo.channels_count + "кан."
+        : "-",
+      sms: tariffInfo.sms ? tariffInfo.sms + "шт." : "-",
+    };
+
+    const listComparisons = localStorage.getItem("listComparisons") || "[]";
+    const list = JSON.parse(listComparisons);
+
+    if (!list.some((item) => item.id === tariffComparison.id)) {
+      if (list.length === 3) {
+        list.shift();
+      }
+      list.push(tariffComparison);
+      localStorage.setItem("listComparisons", JSON.stringify(list));
+      console.log(list);
+    } else {
+      console.log("Tariff already exists in comparison list");
+    }
+  };
+  const handleConnectClick = () => {
+    localStorage.setItem("nameProvider", tariffInfo.provider.name);
+    localStorage.setItem("nameTariff", tariffInfo.name);
+    localStorage.setItem(
+      "priceTariff",
+      tariffInfo.min_tariff_cost
+        ? tariffInfo.min_tariff_cost
+        : tariffInfo.max_tariff_cost
+    );
+    dispatch(openPopUpLead());
+  };
 
   if (tariffInfo.provider && windowWidth >= 650) {
     console.log(tariffInfo);
@@ -36,8 +87,8 @@ function Tariff({ tariffInfo }) {
             <p>{tariffInfo.provider.name}</p>
           </div>
           <div className={styles.buttons}>
-            <Image src={compare} alt="" />
-            <button>Подключить</button>
+            <Image onClick={handleClickComparison} src={compare} alt="" />
+            <button onClick={handleConnectClick}>Подключить</button>
           </div>
         </div>
         <div className={styles.nameAndPrice}>
@@ -164,21 +215,6 @@ function Tariff({ tariffInfo }) {
               img="iconTv.svg"
             />
           )}
-
-          {/* <ParamTariff
-            key={i}
-            title={param.name}
-            params={param.params}
-            img={param.img}
-            equipmen={true}
-          />
-
-          <ParamTariff
-            key={i}
-            title={param.name}
-            params={param.params}
-            img={param.img}
-          /> */}
         </div>
       </div>
     );
@@ -196,11 +232,11 @@ function Tariff({ tariffInfo }) {
             />
             <p>{tariffInfo.provider.name}</p>
           </div>
-          <button>Подключить</button>
+          <button onClick={handleConnectClick}>Подключить</button>
         </div>
         <div className={styles.nameAndCompareMobile}>
           <h2>{tariffInfo.name}</h2>
-          <Image src={compare} alt="" />
+          <Image onClick={handleClickComparison} src={compare} alt="" />
         </div>
         <div className={styles.twoTextMobile}>
           <p className={styles.textPriceMobile}>Абонентская плата</p>
@@ -344,8 +380,6 @@ function Tariff({ tariffInfo }) {
       </div>
     );
   }
-
-  return null;
 }
 
 export default Tariff;

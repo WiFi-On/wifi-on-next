@@ -3,8 +3,9 @@ import styles from "./SliderTariffsFilter.module.css";
 import CardTariff from "../CardTariff/CardTariff";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
+import NotTariffs from "../NotTariffs/NotTariffs";
 
-function SliderTariffsFilter({ allTariffs }) {
+function SliderTariffsFilter({ allTariffs, loading = true }) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const [filteredTariffs, setFilteredTariffs] = useState(allTariffs);
@@ -79,7 +80,7 @@ function SliderTariffsFilter({ allTariffs }) {
       filtered = filtered.filter((tariff) => tariff.min_tariff_cost);
     }
     if (freeConnection) {
-      filtered = filtered.filter((tariff) => tariff.connection_cost);
+      filtered = filtered.filter((tariff) => !tariff.connection_cost);
     }
     if (priceRange) {
       const [minPrice, maxPrice] = priceRange.split("-");
@@ -117,7 +118,7 @@ function SliderTariffsFilter({ allTariffs }) {
   const pageCount = Math.ceil(filteredTariffs.length / tariffsPerPage);
   const offset = currentPage * tariffsPerPage;
 
-  if (filteredTariffs.length < 1)
+  if (loading) {
     return (
       <div className={styles.main}>
         <div className={styles.sliderContainer}>
@@ -141,7 +142,10 @@ function SliderTariffsFilter({ allTariffs }) {
         />
       </div>
     );
-
+  }
+  if (filteredTariffs.length < 1) {
+    return <NotTariffs status={0}></NotTariffs>;
+  }
   return (
     <div className={styles.main}>
       <div className={styles.sliderContainer}>

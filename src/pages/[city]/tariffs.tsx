@@ -12,6 +12,7 @@ import AboutUs from "@/components/AboutUs/AboutUs";
 import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
+import NotTariffs from "@/components/NotTariffs/NotTariffs";
 
 const Tariffs = () => {
   const router = useRouter();
@@ -26,7 +27,7 @@ const Tariffs = () => {
   const [maxSpeed, setMaxSpeed] = useState(5000);
 
   const fetchGetTariffsHouse = async (id) => {
-    fetch(`http://92.63.178.153:5030/api/fullInfoByHouse/${id}`)
+    fetch(`http://localhost:5005/api/fullInfoByHouse/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -43,7 +44,7 @@ const Tariffs = () => {
       });
   };
   const fetchGetTariffsDistrict = async (engName) => {
-    fetch(`http://92.63.178.153:5030/api/fullInfoDistrictByEndName/${engName}`)
+    fetch(`http://localhost:5005/api/fullInfoDistrictByEndName/${engName}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -118,7 +119,7 @@ const Tariffs = () => {
         minSpeedProp={minSpeed}
         maxSpeedProp={maxSpeed}
       />
-      <SliderTariffsFilter allTariffs={tariffs} />
+      <SliderTariffsFilter loading={loading} allTariffs={tariffs} />
       <AboutUs />
       <HelpForm />
       <Questions />

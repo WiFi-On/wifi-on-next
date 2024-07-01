@@ -31,6 +31,9 @@
   align-items: center;
   gap: 20px;
 }
+.buttons img {
+  cursor: pointer;
+}
 .buttons button {
   border: 0;
   padding: 13px 26px;
@@ -134,6 +137,9 @@
   justify-content: space-between;
   margin-bottom: 5px;
 }
+.nameAndCompareMobile img {
+  cursor: pointer;
+}
 .nameAndCompareMobile h2 {
   font-family: Raleway;
   font-size: 20px;
@@ -164,7 +170,11 @@
   text-align: right;
   margin: 0;
 }
-
+.paramsMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 @media screen and (max-width: 868px) {
   .main {
     margin: 150px auto 0 auto;

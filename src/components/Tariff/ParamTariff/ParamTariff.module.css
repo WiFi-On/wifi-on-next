@@ -71,6 +71,9 @@
   align-items: center;
   gap: 10px;
 }
+.switcher span {
+  width: auto;
+}
 .param {
   display: flex;
   width: 100%;
@@ -85,4 +88,44 @@
   line-height: 26px;
   text-align: right;
   margin: 0;
+}
+.param span {
+  white-space: nowrap;
+}
+.valueEquipmen {
+  white-space: nowrap;
+}
+@media screen and (max-width: 500px) {
+  .bot {
+    padding: 10px 20px;
+  }
+  .botEquipment {
+    padding: 10px 20px;
+  }
+  .top h5 {
+    font-family: Raleway;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    text-align: left;
+
+    color: #fff;
+    margin: 0;
+  }
+  .param p,
+  .param span {
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-align: left;
+  }
+  .equipmentPayment {
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-align: left;
+  }
 }

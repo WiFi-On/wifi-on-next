@@ -18,14 +18,6 @@ const PopUpLead = () => {
   const isOpenPolicy = useSelector(selectIsOpenPopUpPolicy);
   const dispatch = useDispatch();
 
-  const idProvidersBitrix = {
-    МТС: 54,
-    Ростелеком: 52,
-    Билайн: 56,
-    Мегафон: 57,
-    "Дом.ру": 60,
-  };
-
   const [nameTariff, setNameTariff] = useState("");
   const [nameProvider, setNameProvider] = useState("");
   const [priceTariff, setPriceTariff] = useState("");
@@ -58,7 +50,7 @@ const PopUpLead = () => {
     e.preventDefault();
     try {
       const responseUser = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/gcff4qvkq0xmwhxh/crm.contact.add",
+        "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.contact.add",
         {
           method: "POST",
           headers: {
@@ -81,9 +73,16 @@ const PopUpLead = () => {
 
       const userData = await responseUser.json();
       const contactId = userData.result;
+      const idProvidersBitrix = {
+        МТС: 54,
+        Ростелеком: 52,
+        Билайн: 56,
+        Мегафон: 57,
+        "Дом.ру": 60,
+      };
 
       const responseLead = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/gcff4qvkq0xmwhxh/crm.deal.add",
+        "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.deal.add",
         {
           method: "POST",
           headers: {
