@@ -50,14 +50,18 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
         <h2>Провайдеры доступные в {nameLocationWhere}</h2>
         <div className={styles.providersTablet}>
           {providers.map((provider) => (
-            <Image
-              className={styles.providersImg}
+            <Link
               key={provider.id}
-              src={`/imgs/providersWhite/${provider.img}`}
-              width={90}
-              height={90}
-              alt={provider.name}
-            />
+              href={`${city}/tariffs?providers=${provider.id}`}
+            >
+              <Image
+                className={styles.providersImg}
+                src={`/imgs/providersWhite/${provider.img}`}
+                width={90}
+                height={90}
+                alt={provider.name}
+              />
+            </Link>
           ))}
         </div>
       </div>
@@ -68,14 +72,18 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
         <h2>Провайдеры доступные в {nameLocationWhere}</h2>
         <div className={styles.providersMobile}>
           {providers.map((provider) => (
-            <Image
-              className={styles.providersImg}
+            <Link
               key={provider.id}
-              src={`/imgs/providersWhite/${provider.img}`}
-              width={70}
-              height={70}
-              alt={provider.name}
-            />
+              href={`${city}/tariffs?providers=${provider.id}`}
+            >
+              <Image
+                className={styles.providersImg}
+                src={`/imgs/providersWhite/${provider.img}`}
+                width={70}
+                height={70}
+                alt={provider.name}
+              />
+            </Link>
           ))}
         </div>
       </div>

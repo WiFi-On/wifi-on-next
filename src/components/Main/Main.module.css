@@ -71,10 +71,12 @@
 }
 .connectionsImgTablet {
   width: 355px;
-  height: 376px;
+  height: 500px;
 }
 .botTablet {
   display: flex;
+
+  justify-content: center;
   box-sizing: border-box;
 
   gap: 20px;
@@ -128,7 +130,7 @@
   gap: 10px;
 }
 .connectionsImgMobile {
-  height: 360px;
+  height: 370px;
   width: 310px;
 }
 .botMobile {
@@ -163,6 +165,11 @@
   text-align: center;
 
   color: #fff;
+}
+@media screen and (max-width: 1067px) {
+  .botTablet {
+    justify-content: flex-start;
+  }
 }
 @media screen and (max-width: 755px) {
   .topTablet {

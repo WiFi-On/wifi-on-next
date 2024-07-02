@@ -32,7 +32,7 @@ const HelpForm = (props) => {
     e.preventDefault();
     try {
       const responseUser = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/8je0m717nl212bhe/crm.contact.add",
+        "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.contact.add",
         {
           method: "POST",
           headers: {
@@ -57,7 +57,7 @@ const HelpForm = (props) => {
       const contactId = userData.result;
       console.log(contactId);
       const responseLead = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/8je0m717nl212bhe/crm.deal.add",
+        "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.deal.add",
         {
           method: "POST",
           headers: {
@@ -65,7 +65,7 @@ const HelpForm = (props) => {
           },
           body: JSON.stringify({
             fields: {
-              TITLE: name,
+              TITLE: "Заявка с сайта on-wifi ТЕСТ",
               CONTACT_ID: contactId,
             },
           }),
@@ -123,7 +123,7 @@ const HelpForm = (props) => {
             </p>
           )}
           <div className={styles.sendAndText}>
-            <button disabled={numberValidation} type="submit">
+            <button disabled={!numberValidation} type="submit">
               Отправить
             </button>
             <p>

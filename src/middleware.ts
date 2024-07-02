@@ -1,71 +1,13 @@
-// pages/[city].js
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header/Header";
-import Main from "../components/Main/Main";
-import ProvidersInCity from "../components/ProvidersInCity/ProvidersInCity";
-import AboutUs from "../components/AboutUs/AboutUs";
-import SliderTariffsMain from "../components/SliderTariffsMain/SliderTariffsMain";
-import Advantages from "../components/Advantages/Advantages";
-import ConnectionSteps from "../components/ConnectionSteps/ConnectionSteps";
-import HelpForm from "../components/HelpForm/HelpForm";
-import Questions from "../components/Questions/Questions";
-import Cities from "../components/Cities/Cities";
-import Newsletter from "../components/NewsLetter/NewsLetter";
-import Footer from "../components/Footer/Footer";
-import PopUpLead from "@/components/PopUpLead/PopUpLead";
-import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
-import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
-import Head from "next/head";
+// pages/[city]/_middleware.js
+import { NextResponse } from "next/server";
 
-const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
-  if (!cityData) return <div>Loading...</div>;
-
-  return (
-    <>
-      <Head>
-        <title>
-          Тарифы на интернет в {cityData.districtName.namewhere} 🙋‍♂️ Домашний
-          интернет в квартиру | Тарифы и акции на интернет - On-wifi
-        </title>
-        <meta
-          name="description"
-          content={
-            "Какой интернет подключить " +
-            cityData.districtName.name +
-            "➡️ Выбрать интернет на квартиру в " +
-            cityData.districtName.namewhere +
-            " 🌐 Выбрать лучший тариф на домашний интернет"
-          }
-        />
-        <meta name="apple-mobile-web-app-title" content="On-wifi" />
-      </Head>
-      <Header></Header>
-      <Main></Main>
-      <ProvidersInCity
-        providers={cityData.providers}
-        nameLocationWhere={cityData.districtName.namewhere}
-      ></ProvidersInCity>
-      <SliderTariffsMain
-        nameCityWhere={cityData.districtName.namewhere}
-        tariffs={cityData.tariffs}
-      ></SliderTariffsMain>
-      <AboutUs></AboutUs>
-      <Advantages></Advantages>
-      <ConnectionSteps></ConnectionSteps>
-      <HelpForm></HelpForm>
-      <Questions></Questions>
-      <Cities></Cities>
-      <Newsletter></Newsletter>
-      <Footer></Footer>
-      <PopUpLead></PopUpLead>
-      <PopUpAgreement></PopUpAgreement>
-      <PopUpPolicy></PopUpPolicy>
-    </>
-  );
-};
-
-export async function getStaticPaths() {
-  const cities = [
+export function middleware(req) {
+  const { pathname } = req.nextUrl;
+  const key = pathname.split("/")[1];
+  const validKey = [
+    "_next",
+    "api",
+    "imgs",
     "Beloretsk",
     "Bijsk",
     "Vidnoe",
@@ -1064,28 +1006,11 @@ export async function getStaticPaths() {
     "Zlatoust",
     "Novocheboksarsk",
   ];
-
-  const paths = cities.map((city) => ({
-    params: { city },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
+  if (key && validKey.includes(key)) {
+    return NextResponse.next();
+  } else if (key) {
+    return NextResponse.redirect("http://localhost:3002/Moskva");
+  } else {
+    return NextResponse.next();
+  }
 }
-
-export async function getStaticProps({ params }: any) {
-  const res = await fetch(
-    `http://92.63.178.153:5031/api/fullInfoDistrictByEndName/${params.city}`
-  );
-  const cityData = await res.json();
-
-  return {
-    props: {
-      cityData,
-    },
-  };
-}
-
-export default CityPage;

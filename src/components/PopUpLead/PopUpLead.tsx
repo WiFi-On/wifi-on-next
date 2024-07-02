@@ -39,11 +39,11 @@ const PopUpLead = () => {
 
   const closeModalHandler = () => {
     setClosing(true);
-    setTimeout(() => {
-      dispatch(closePopUpLead());
-      document.body.style.overflow = "auto";
-      setClosing(false);
-    }, 300);
+
+    dispatch(closePopUpLead());
+    document.body.style.overflow = "auto";
+    setClosing(false);
+    setSent(false);
   };
 
   const handleSubmit = async (e) => {
@@ -90,7 +90,7 @@ const PopUpLead = () => {
           },
           body: JSON.stringify({
             fields: {
-              TITLE: "Заявка с сайта on-wifi ТЕСТ",
+              TITLE: "Заявка с сайта on-wifi ТЕСТ",
               CONTACT_ID: contactId,
               UF_CRM_1697294773665: idProvidersBitrix[nameProvider],
               UF_CRM_1697294796468: nameTariff,
@@ -107,10 +107,7 @@ const PopUpLead = () => {
       setClientPhone("");
       setAddress("");
       setNumberValidation(false);
-      setSent(true);
-      setTimeout(() => {
-        closeModalHandler();
-      }, 3000);
+      setSent(true); // Ставим состояние в true после успешной отправки
     } catch (error) {
       console.error("Ошибка:", error.message);
     }
@@ -146,7 +143,7 @@ const PopUpLead = () => {
     const selectedAddress = event.target.textContent;
     const lvl = parseInt(event.target.getAttribute("lvl"), 10);
 
-    if (lvl >= 9) {
+    if (lvl >= 8) {
       setAddressValidation(true);
     } else {
       setAddressValidation(false);
@@ -164,6 +161,9 @@ const PopUpLead = () => {
     const priceLastTariff = localStorage.getItem("priceTariff");
     setPriceTariff(priceLastTariff);
     const addressStorage = localStorage.getItem("address");
+    if (addressStorage) {
+      setAddressValidation(true);
+    }
     setAddress(addressStorage);
 
     if (isOpen) {
@@ -172,30 +172,6 @@ const PopUpLead = () => {
   }, [isOpen]);
 
   if (!isOpen && !closing) return null;
-
-  if (sent) {
-    return (
-      <div className={styles.container} onClick={closeModalHandler}>
-        <div
-          className={cn(styles.main, {
-            [styles.mainActive]: isOpen,
-            [styles.mainClosing]: closing,
-          })}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <Image
-            className={styles.close}
-            src={close}
-            onClick={closeModalHandler}
-            alt=""
-          ></Image>
-          <div className={styles.wrapper}>
-            <h2>Заявка успешно отправлена</h2>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div
@@ -219,92 +195,100 @@ const PopUpLead = () => {
           alt=""
         ></Image>
         <div className={styles.wrapper}>
-          <h2>Заявка на подключение</h2>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.inputs}>
-              <Input
-                placeholder="Ваше имя"
-                onChange={(e) => setClientName(e.target.value)}
-                value={clientName}
-              ></Input>
-              <Input
-                placeholder="Ваш телефон"
-                onChange={(e) => setClientPhone(e.target.value)}
-                typeInput="phone"
-                value={clientPhone}
-                setIsValid={setNumberValidation}
-              ></Input>
-              <div className={styles.wrapperAddress}>
-                <input
-                  onChange={handleSearch}
-                  placeholder="Адрес подключения"
-                  className={cn({
-                    [styles.activeAddress]: address,
-                    [styles.wrapperAddressInput]: !address,
-                  })}
-                  value={address}
-                  onBlur={() => setTimeout(() => setSuggestions([]), 100)}
-                ></input>
-                <div
-                  className={cn(styles.suggestions, {
-                    [styles.suggestionsActive]: suggestions.length > 0,
-                  })}
-                >
-                  {suggestions.map((suggestion, i) => {
-                    return (
-                      <p
-                        key={i}
-                        lvl={suggestion.data.fias_level}
-                        onClick={clickSuggestion}
-                      >
-                        {suggestion.value}
-                      </p>
-                    );
-                  })}
+          {sent ? (
+            <h2>Заявка успешно отправлена</h2>
+          ) : (
+            <>
+              <h2>Заявка на подключение</h2>
+              <form onSubmit={handleSubmit}>
+                <div className={styles.inputs}>
+                  <Input
+                    placeholder="Ваше имя"
+                    onChange={(e) => setClientName(e.target.value)}
+                    value={clientName}
+                  ></Input>
+                  <Input
+                    placeholder="Ваш телефон"
+                    onChange={(e) => setClientPhone(e.target.value)}
+                    typeInput="phone"
+                    value={clientPhone}
+                    setIsValid={setNumberValidation}
+                  ></Input>
+                  <div className={styles.wrapperAddress}>
+                    <input
+                      onChange={handleSearch}
+                      placeholder="Адрес подключения"
+                      className={cn({
+                        [styles.activeAddress]: address,
+                        [styles.wrapperAddressInput]: !address,
+                      })}
+                      value={address}
+                      onBlur={() => setSuggestions([])}
+                    ></input>
+                    <div
+                      className={cn(styles.suggestions, {
+                        [styles.suggestionsActive]: suggestions.length > 0,
+                      })}
+                    >
+                      {suggestions.map((suggestion, i) => {
+                        return (
+                          <p
+                            key={i}
+                            lvl={suggestion.data.fias_level}
+                            onClick={clickSuggestion}
+                          >
+                            {suggestion.value}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className={styles.agrement}>
-              <label className={styles.customCheckbox}>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  onChange={() => {
-                    setChecked(!checked);
-                  }}
-                  spellcheck="false"
-                />
-                <span className={styles.checkmark}></span>
-              </label>
-              <p>
-                Я даю{" "}
-                <p
-                  onClick={() => dispatch(openPopUpAgreement())}
-                  className={styles.link}
-                >
-                  Согласие на обработку персональных данных
-                </p>
-              </p>
-            </div>
-            <div className={styles.buttonAndText}>
-              <button
-                disabled={!(numberValidation && addressValidation && checked)}
-              >
-                Отправить
-              </button>
-              <p>
-                Отправляя заявку, вы соглашаетесь с{" "}
-                <p
-                  onClick={() => {
-                    dispatch(openPopUpPolicy());
-                  }}
-                  className={styles.link}
-                >
-                  Политикой обработки персональных данных
-                </p>
-              </p>
-            </div>
-          </form>
+                <div className={styles.agrement}>
+                  <label className={styles.customCheckbox}>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => {
+                        setChecked(!checked);
+                      }}
+                      spellcheck="false"
+                    />
+                    <span className={styles.checkmark}></span>
+                  </label>
+                  <p>
+                    Я даю{" "}
+                    <p
+                      onClick={() => dispatch(openPopUpAgreement())}
+                      className={styles.link}
+                    >
+                      Согласие на обработку персональных данных
+                    </p>
+                  </p>
+                </div>
+                <div className={styles.buttonAndText}>
+                  <button
+                    disabled={
+                      !(numberValidation && addressValidation && checked)
+                    }
+                  >
+                    Отправить
+                  </button>
+                  <p>
+                    Отправляя заявку, вы соглашаетесь с{" "}
+                    <p
+                      onClick={() => {
+                        dispatch(openPopUpPolicy());
+                      }}
+                      className={styles.link}
+                    >
+                      Политикой обработки персональных данных
+                    </p>
+                  </p>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>

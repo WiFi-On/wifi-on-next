@@ -5,8 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import CardTariff from "../CardTariff/CardTariff";
 import styles from "./SliderTariffsMain.module.css";
 import cn from "classnames";
+import { useRouter } from "next/router";
 
 const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
+  const router = useRouter();
+  const { city } = router.query;
   const [windowWidth, setWindowWidth] = useState(null);
   let sliderRef = useRef(null);
   const next = () => {
@@ -105,7 +108,12 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
               </linearGradient>
             </defs>
           </svg>
-          <button className={styles.button}>Все тарифы</button>
+          <button
+            onClick={() => router.push(`/${city}/tariffs`)}
+            className={styles.button}
+          >
+            Все тарифы
+          </button>
           <svg
             width="55"
             height="55"
@@ -229,7 +237,12 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
               </linearGradient>
             </defs>
           </svg>
-          <button className={styles.button}>Все тарифы</button>
+          <button
+            onClick={() => router.push(`/${city}/tariffs`)}
+            className={styles.button}
+          >
+            Все тарифы
+          </button>
           <svg
             width="55"
             height="55"
@@ -353,7 +366,12 @@ const SliderTariffsMain = ({ tariffs, nameCityWhere }) => {
               </linearGradient>
             </defs>
           </svg>
-          <button className={styles.button}>Все тарифы</button>
+          <button
+            onClick={() => router.push(`/${city}/tariffs`)}
+            className={styles.button}
+          >
+            Все тарифы
+          </button>
           <svg
             width="55"
             height="55"

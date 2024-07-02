@@ -5,12 +5,16 @@ import styles from "./AddressClient.module.css";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const AddressClient = ({ mobile }) => {
   const addressStorage = localStorage.getItem("address");
   const [suggestions, setSuggestions] = useState([]);
   const [query, setQuery] = useState("");
   const [activeSuggestions, setActiveSuggestions] = useState(false);
+
+  const router = useRouter();
+  const { city } = router.query;
   const inputRef = useRef(null);
 
   const handleSearch = (event) => {
@@ -88,7 +92,11 @@ const AddressClient = ({ mobile }) => {
         {suggestions.map((suggestion, i) => {
           if (suggestion.data.fias_level !== "8") {
             return (
-              <p key={i} onClick={clickSuggestion}>
+              <p
+                className={styles.suggestion}
+                key={i}
+                onClick={clickSuggestion}
+              >
                 {suggestion.value}
               </p>
             );
@@ -97,7 +105,7 @@ const AddressClient = ({ mobile }) => {
               <Link
                 onClick={clickSuggestion}
                 key={i}
-                href={`/tariffs?address=${suggestion.value}`}
+                href={`/${city}/tariffs?address=${suggestion.data.kladr_id}`}
                 className={styles.suggestion}
               >
                 {suggestion.value}

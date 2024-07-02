@@ -32,7 +32,7 @@ export default async function handler(req, res) {
 
     // Запрос к локальному API для получения имени города
     const cityResponse = await fetch(
-      `http://92.63.178.153:5030/api/getCityName/${cityKladrId}`
+      `http://92.63.178.153:5031/api/getCityName/${cityKladrId}`
     );
 
     if (!cityResponse.ok) {

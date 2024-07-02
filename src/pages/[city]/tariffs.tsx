@@ -27,7 +27,7 @@ const Tariffs = () => {
   const [maxSpeed, setMaxSpeed] = useState(5000);
 
   const fetchGetTariffsHouse = async (id) => {
-    fetch(`http://localhost:5005/api/fullInfoByHouse/${id}`)
+    fetch(`http://92.63.178.153:5031/api/fullInfoByHouse/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -44,7 +44,7 @@ const Tariffs = () => {
       });
   };
   const fetchGetTariffsDistrict = async (engName) => {
-    fetch(`http://localhost:5005/api/fullInfoDistrictByEndName/${engName}`)
+    fetch(`http://92.63.178.153:5031/api/fullInfoDistrictByEndName/${engName}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -93,7 +93,7 @@ const Tariffs = () => {
 
   useEffect(() => {
     if (address) {
-      setLoading(true);
+      setLoading(false);
       fetchGetTariffsHouse(address);
     } else if (city) {
       setLoading(true);
@@ -108,6 +108,9 @@ const Tariffs = () => {
     }
   }, [tariffs]);
 
+  console.log(tariffs);
+  console.log(providers);
+  console.log(loading);
   return (
     <>
       <Header />

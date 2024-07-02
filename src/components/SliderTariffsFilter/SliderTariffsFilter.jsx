@@ -158,7 +158,7 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
       <ReactPaginate
         pageCount={pageCount}
         pageRangeDisplayed={2}
-        marginPagesDisplayed={1}
+        marginPagesDisplayed={0}
         onPageChange={handlePageChange}
         containerClassName={styles.pagination}
         activeClassName={styles.active}

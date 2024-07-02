@@ -6,9 +6,12 @@ import waIcon from "./imgs/iconWA.png";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Footer = () => {
   const [windowWidth, setWindowWidth] = useState(null);
+  const router = useRouter();
+  const { city } = router.query;
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -28,12 +31,11 @@ const Footer = () => {
           <Link href="/">
             <Image src={iconLogo} alt="" />
           </Link>
-
           <p>
-            <Link href="/policy">Политика конфиденциальности</Link>
+            <Link href={`/${city}/policy`}>Политика конфиденциальности</Link>
           </p>
           <p>
-            <Link href="/agreement">Пользовательское соглашение</Link>
+            <Link href={`/${city}/agreement`}>Пользовательское соглашение</Link>
           </p>
         </div>
         <div className={styles.nav}>
@@ -49,7 +51,7 @@ const Footer = () => {
               </ScrollLink>
             </p>
             <p>
-              <Link href="/tariffs">Тарифы</Link>
+              <Link href={`/${city}/tariffs`}>Тарифы</Link>
             </p>
           </div>
           <div className={styles.wrapperNav}>
@@ -64,16 +66,13 @@ const Footer = () => {
               </ScrollLink>
             </p>
             <p>
-              <Link href="/contacts">Контакты</Link>
+              <Link href={`/${city}/contacts`}>Контакты</Link>
             </p>
           </div>
         </div>
         <div className={styles.numberAndLinks}>
-          <h5 className={styles.partner}>
-            <Link href="/">Я партнер</Link>
-          </h5>
           <h5 className={styles.number}>
-            <a href="tel:+78005500792">+7 (800) 550–07–92</a>
+            <a href="tel:+78003332450">+7 (800) 333-24-50</a>
           </h5>
           <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
           <div className={styles.links}>
@@ -107,7 +106,7 @@ const Footer = () => {
                 </ScrollLink>
               </p>
               <p>
-                <Link href="/tariffs">Тарифы</Link>
+                <Link href={`/${city}/tariffs`}>Тарифы</Link>
               </p>
             </div>
             <div className={styles.wrapperNavTablet}>
@@ -127,16 +126,13 @@ const Footer = () => {
                 </ScrollLink>
               </p>
               <p>
-                <Link href="/contacts">Контакты</Link>
+                <Link href={`/${city}/contacts`}>Контакты</Link>
               </p>
             </div>
           </div>
           <div className={styles.numberAndLinksTablet}>
-            <h5 className={styles.partnerTablet}>
-              <Link href="/">Я партнер</Link>
-            </h5>
             <h5 className={styles.numberTablet}>
-              <a href="tel:+78005500792">+7 (800) 550–07–92</a>
+              <a href="tel:+78003332450">+7 (800) 333-24-50</a>
             </h5>
             <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
           </div>
@@ -144,10 +140,12 @@ const Footer = () => {
         <div className={styles.botTablet}>
           <div className={styles.policyAndAgreementTablet}>
             <p>
-              <Link href="/policy">Политика конфиденциальности</Link>
+              <Link href={`/${city}/policy`}>Политика конфиденциальности</Link>
             </p>
             <p>
-              <Link href="/agreement">Пользовательское соглашение</Link>
+              <Link href={`/${city}/agreement`}>
+                Пользовательское соглашение
+              </Link>
             </p>
           </div>
           <div className={styles.linksTablet}>
@@ -181,7 +179,7 @@ const Footer = () => {
               </ScrollLink>
             </p>
             <p>
-              <Link href="/tariffs">Тарифы</Link>
+              <Link href={`/${city}/tariffs`}>Тарифы</Link>
             </p>
 
             <p>
@@ -195,17 +193,14 @@ const Footer = () => {
               </ScrollLink>
             </p>
             <p>
-              <Link href="/contacts">Контакты</Link>
+              <Link href={`/${city}/contacts`}>Контакты</Link>
             </p>
           </div>
         </div>
         <div className={styles.botOrRight}>
-          <h5 className={styles.partnerMobile}>
-            <Link href="/">Я партнер</Link>
-          </h5>
           <div className={styles.numberAndLinksMobile}>
             <h5 className={styles.numberMobile}>
-              <a href="tel:+78005500792">+7 (800) 550–07–92</a>
+              <a href="tel:+78003332450">+7 (800) 333-24-50</a>
             </h5>
             <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
           </div>
@@ -219,10 +214,12 @@ const Footer = () => {
           </div>
           <div className={styles.policyAndAgreementMobile}>
             <p>
-              <Link href="/policy">Политика конфиденциальности</Link>
+              <Link href={`/${city}/policy`}>Политика конфиденциальности</Link>
             </p>
             <p>
-              <Link href="/agreement">Пользовательское соглашение</Link>
+              <Link href={`/${city}/agreement`}>
+                Пользовательское соглашение
+              </Link>
             </p>
           </div>
         </div>

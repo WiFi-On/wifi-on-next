@@ -59,7 +59,7 @@ const CardTypeConnect = (props) => {
     case "TV":
       return (
         <Link
-          href={`${city}/tariffs?connectType=2`}
+          href={`${city}/tariffs?connectType=1,3`}
           className={cn(styles.main, {
             [styles.mainTablet]: device === "tablet",
             [styles.mainMobile]: device === "mobile",

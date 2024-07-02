@@ -25,7 +25,7 @@ const AboutUs = (props) => {
   }, []);
   if (windowWidth < 768) {
     return (
-      <div className={styles.mobileMain}>
+      <Element name="aboutUs" className={styles.mobileMain}>
         <div className={styles.mobileText}>
           <h2>О нас</h2>
           <p>
@@ -62,7 +62,7 @@ const AboutUs = (props) => {
             </tr>
           </tbody>
         </table>
-      </div>
+      </Element>
     );
   } else {
     return (

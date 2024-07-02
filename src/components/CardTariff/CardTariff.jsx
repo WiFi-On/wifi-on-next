@@ -15,7 +15,7 @@ const CardTariff = ({ tariff }) => {
     localStorage.setItem("nameTariff", tariff.name);
     localStorage.setItem(
       "priceTariff",
-      tariff.min_tariff_cost ? tariff.min_tariff_cost : tariff.price
+      tariff.min_tariff_cost ? tariff.min_tariff_cost : tariff.max_tariff_cost
     );
     dispatch(openPopUpLead());
   };
@@ -57,7 +57,7 @@ const CardTariff = ({ tariff }) => {
 
   return (
     <div className={styles.main}>
-      <Link href={`/Moskva/${tariff.id}`} className={styles.link}>
+      <Link href={`/${city}/tariff/${tariff.id}`} className={styles.link}>
         <div className={styles.logoAndName}>
           <Image
             src={`/imgs/cardTariff/providers/${tariff.provider.img}`}

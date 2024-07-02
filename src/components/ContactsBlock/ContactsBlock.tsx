@@ -16,14 +16,14 @@ const ContactsBlock = () => {
             <Image src={geo} alt=""></Image>
             <div className={styles.text}>
               <p>Адрес</p>
-              <p>Россия, «город, улица, дом, что аж длинное вот такое»</p>
+              <p>г. Москва, улица Коровий Вал, 5</p>
             </div>
           </div>
           <div className={styles.info}>
             <Image src={tel} alt="" />
             <div className={styles.text}>
               <p>Телефон для подключения</p>
-              <p>+7 (800) 550–07–92</p>
+              <a href="tel:+78003332450">+7 (800) 333-24-50</a>
             </div>
             <ScrollLink to="help" smooth={true} duration={700} offset={-200}>
               <button className={styles.button}>Заказать звонок</button>
