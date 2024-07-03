@@ -60,7 +60,7 @@ const CardTariff = ({ tariff }) => {
       <Link href={`/${city}/tariff/${tariff.id}`} className={styles.link}>
         <div className={styles.logoAndName}>
           <Image
-            src={`/imgs/cardTariff/providers/${tariff.provider.img}`}
+            src={`/imgs/providersColor/${tariff.provider.img}`}
             alt=""
             width={50}
             height={50}

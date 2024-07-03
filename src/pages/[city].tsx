@@ -19,7 +19,7 @@ import Head from "next/head";
 
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
-
+  console.log(cityData);
   return (
     <>
       <Head>
@@ -1077,7 +1077,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `http://92.63.178.153:5031/api/fullInfoDistrictByEndName/${params.city}`
+    `http://localhost:5038/api/fullInfoDistrictByEndName/${params.city}`
   );
   const cityData = await res.json();
 

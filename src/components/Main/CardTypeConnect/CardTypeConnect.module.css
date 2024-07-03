@@ -24,6 +24,7 @@
 .mainMobile {
   width: 156px;
   height: 173px;
+  border-radius: 30px;
 }
 .wrapperImg {
   height: 150px;

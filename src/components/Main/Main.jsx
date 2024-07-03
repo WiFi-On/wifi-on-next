@@ -6,23 +6,24 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const Main = () => {
-  const [windowWidth, setWindowWidth] = useState(null);
+  const [htmlWidth, setHtmlWidth] = useState(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+    const handleResize = (entries) => {
+      for (let entry of entries) {
+        setHtmlWidth(entry.contentRect.width);
+      }
     };
 
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
+    const observer = new ResizeObserver(handleResize);
+    observer.observe(document.documentElement); // Наблюдение за элементом <html>
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
     };
   }, []);
 
-  if (windowWidth > 1280) {
+  if (htmlWidth > 1280) {
     return (
       <div className={styles.main}>
         <div className={styles.top}>
@@ -47,7 +48,7 @@ const Main = () => {
         </div>
       </div>
     );
-  } else if (windowWidth <= 1280 && windowWidth >= 440) {
+  } else if (htmlWidth <= 1280 && htmlWidth >= 440) {
     return (
       <div className={styles.mainTablet}>
         <div className={styles.topTablet}>

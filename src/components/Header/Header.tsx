@@ -16,7 +16,7 @@ import menu from "./iconMenu.svg";
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
-  const [windowWidth, setWindowWidth] = useState<number | null>(null);
+  const [htmlWidth, setHtmlWidth] = useState<number | null>(null);
   const [statusHamburgerMenu, setStatusHamburgerMenu] =
     useState<boolean>(false);
 
@@ -28,27 +28,25 @@ const Header: React.FC<HeaderProps> = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+    const handleResize = (entries) => {
+      for (let entry of entries) {
+        setHtmlWidth(entry.contentRect.width);
+      }
     };
 
-    if (typeof window !== "undefined") {
-      setWindowWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-    }
+    const observer = new ResizeObserver(handleResize);
+    observer.observe(document.documentElement); // Наблюдение за элементом <html>
 
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("resize", handleResize);
-      }
+      observer.disconnect();
     };
   }, []);
 
-  if (windowWidth === null) {
+  if (htmlWidth === null) {
     return null; // Или индикатор загрузки, если хотите
   }
 
-  if (windowWidth > 868) {
+  if (htmlWidth > 868) {
     return (
       <header className={styles.main}>
         <div className={styles.container}>
@@ -68,7 +66,7 @@ const Header: React.FC<HeaderProps> = () => {
         </div>
       </header>
     );
-  } else if (windowWidth <= 868 && windowWidth >= 420) {
+  } else if (htmlWidth <= 868 && htmlWidth >= 420) {
     return (
       <header className={styles.main}>
         <div className={styles.containerTablet}>

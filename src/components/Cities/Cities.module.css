@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  gap: 30px;
+
   flex-direction: column;
   max-width: 1280px;
   margin: 150px auto 0 auto;
@@ -17,7 +17,14 @@
 .citiesWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
   gap: 20px;
 }
 .cities {
@@ -69,6 +76,14 @@
     font-weight: 700;
     line-height: 28px;
     text-align: center;
+  }
+  .container {
+    align-items: center;
+    justify-content: center;
+  }
+  .cities {
+    width: 144px;
+    align-items: center;
   }
   .citiesWrapper h4 {
     font-family: Raleway;
