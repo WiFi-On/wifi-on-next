@@ -8,10 +8,16 @@ import AboutUs from "@/components/AboutUs/AboutUs";
 import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
+import Head from "next/head";
 
 const Contacts = () => {
   return (
     <>
+      <Head>
+        <title>Контакты</title>
+
+        <meta name="apple-mobile-web-app-title" content="On-wifi" />
+      </Head>
       <Header></Header>
       <ContactsBlock></ContactsBlock>
       <PopUpLead></PopUpLead>

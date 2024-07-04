@@ -9,6 +9,7 @@ import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function TariffPage() {
   const router = useRouter();
@@ -17,7 +18,7 @@ function TariffPage() {
   const [tariffData, setTariffData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://92.63.178.153:5031/api/getTariff/${idTariff}`)
+    fetch(`https://on-wifi.ru/api/getTariff/${idTariff}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -35,6 +36,11 @@ function TariffPage() {
   console.log(tariffData);
   return (
     <>
+      <Head>
+        <title>Тариф {tariffData?.name}</title>
+
+        <meta name="apple-mobile-web-app-title" content="On-wifi" />
+      </Head>
       <Header />
       {tariffData ? <Tariff tariffInfo={tariffData} /> : <p>Loading...</p>}
       <AboutUs />

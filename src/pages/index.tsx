@@ -8,7 +8,7 @@ const HomePage = () => {
     const city = localStorage.getItem("city");
     const fetchIp = async () => {
       try {
-        const response = await fetch("/api/getIp");
+        const response = await fetch("https://on-wifi.ru/api/getIpAndCity");
         const data = await response.json();
         if (data.city) {
           localStorage.setItem("city", data.city);

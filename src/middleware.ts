@@ -1009,7 +1009,7 @@ export function middleware(req) {
   if (key && validKey.includes(key)) {
     return NextResponse.next();
   } else if (key) {
-    return NextResponse.redirect("http://localhost:3002/Moskva");
+    return NextResponse.redirect("https://on-wifi.ru/Moskva");
   } else {
     return NextResponse.next();
   }
