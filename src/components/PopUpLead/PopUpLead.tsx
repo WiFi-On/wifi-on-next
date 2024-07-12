@@ -141,6 +141,7 @@ const PopUpLead = () => {
 
   const clickSuggestion = (event) => {
     const selectedAddress = event.target.textContent;
+    console.log(selectedAddress);
     const lvl = parseInt(event.target.getAttribute("lvl"), 10);
 
     if (lvl >= 8) {

@@ -24,16 +24,16 @@ const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
     <>
       <Head>
         <title>
-          Тарифы на интернет в {cityData.districtName.namewhere} 🙋‍♂️ Домашний
+          Тарифы на интернет в {cityData.infoDistrict.namewhere} 🙋‍♂️ Домашний
           интернет в квартиру | Тарифы и акции на интернет - On-wifi
         </title>
         <meta
           name="description"
           content={
             "Какой интернет подключить " +
-            cityData.districtName.name +
+            cityData.infoDistrict.name +
             "➡️ Выбрать интернет на квартиру в " +
-            cityData.districtName.namewhere +
+            cityData.infoDistrict.namewhere +
             " 🌐 Выбрать лучший тариф на домашний интернет"
           }
         />
@@ -43,10 +43,10 @@ const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
       <Main></Main>
       <ProvidersInCity
         providers={cityData.providers}
-        nameLocationWhere={cityData.districtName.namewhere}
+        nameLocationWhere={cityData.infoDistrict.namewhere}
       ></ProvidersInCity>
       <SliderTariffsMain
-        nameCityWhere={cityData.districtName.namewhere}
+        nameCityWhere={cityData.infoDistrict.namewhere}
         tariffs={cityData.tariffs}
       ></SliderTariffsMain>
       <AboutUs></AboutUs>
@@ -1077,7 +1077,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `https://on-wifi.ru/api/fullInfoDistrictByEndName/${params.city}`
+    `http://localhost:5030/api/v1/fullInfoDistrictByEndName/${params.city}`
   );
   const cityData = await res.json();
 

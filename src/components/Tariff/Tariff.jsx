@@ -9,6 +9,11 @@ import { openPopUpLead } from "@/redux/reducers/modalSlice";
 function Tariff({ tariffInfo }) {
   const [windowWidth, setWindowWidth] = useState(null);
   const dispatch = useDispatch();
+  const imgProviders = {
+    1: "/imgs/providersColor/ruscom.svg",
+    2: "/imgs/providersColor/mts.svg",
+    3: "/imgs/providersColor/megafon.svg",
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -79,7 +84,7 @@ function Tariff({ tariffInfo }) {
         <div className={styles.logoAndButton}>
           <div className={styles.logoAndText}>
             <Image
-              src={`/imgs/providersColor/${tariffInfo.provider.img}`}
+              src={imgProviders[tariffInfo.provider.id]}
               alt=""
               width={70}
               height={70}
@@ -95,7 +100,10 @@ function Tariff({ tariffInfo }) {
           <h2>{tariffInfo.name}</h2>
           <div className={styles.priceWrapper}>
             <p className={styles.textPrice}>Абонентская плата</p>
-            <p className={styles.price}>{tariffInfo.max_tariff_cost} ₽/мес</p>
+            <p className={styles.price}>
+              {tariffInfo.sale_cost ? tariffInfo.sale_cost : tariffInfo.cost}
+               ₽/мес
+            </p>
           </div>
         </div>
         <div className={styles.params}>
@@ -188,6 +196,16 @@ function Tariff({ tariffInfo }) {
                       },
                     ]
                   : []),
+                ,
+                ...(tariffInfo.router_payment
+                  ? [
+                      {
+                        name: "В рассрочку",
+                        value: tariffInfo.router_payment,
+                        value_type: "мес.",
+                      },
+                    ]
+                  : []),
               ]}
               img="iconWifi.svg"
             />
@@ -195,7 +213,7 @@ function Tariff({ tariffInfo }) {
           {tariffInfo.tv_box_rent && (
             <ParamTariff
               title="ТВ приставка"
-              equipmen={true}
+              equipmen={true} // Assuming this is meant to be "equipment"
               params={[
                 {
                   name: "В аренду",
@@ -205,9 +223,18 @@ function Tariff({ tariffInfo }) {
                 ...(tariffInfo.tv_box_cost
                   ? [
                       {
-                        name: "В собственность (единоразово)",
+                        name: "В собственность (единоразово)",
                         value: tariffInfo.tv_box_cost,
                         value_type: "₽",
+                      },
+                    ]
+                  : []),
+                ...(tariffInfo.tv_box_payment
+                  ? [
+                      {
+                        name: "В рассрочку",
+                        value: tariffInfo.tv_box_payment,
+                        value_type: "мес.",
                       },
                     ]
                   : []),
@@ -225,7 +252,7 @@ function Tariff({ tariffInfo }) {
         <div className={styles.logoAndButtonMobile}>
           <div className={styles.logoAndTextMobile}>
             <Image
-              src={`/imgs/providersColor/${tariffInfo.provider.img}`}
+              src={imgProviders[tariffInfo.provider.id]}
               alt=""
               width={70}
               height={70}

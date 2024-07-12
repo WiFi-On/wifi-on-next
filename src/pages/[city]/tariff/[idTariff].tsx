@@ -18,7 +18,7 @@ function TariffPage() {
   const [tariffData, setTariffData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://on-wifi.ru/api/getTariff/${idTariff}`)
+    fetch(`http://localhost:5030/api/v1/tariff/${idTariff}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

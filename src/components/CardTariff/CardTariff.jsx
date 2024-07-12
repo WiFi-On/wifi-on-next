@@ -10,6 +10,12 @@ const CardTariff = ({ tariff }) => {
   const router = useRouter();
   const { city, idTariff } = router.query;
 
+  const imgProviders = {
+    1: "/imgs/providersColor/ruscom.svg",
+    2: "/imgs/providersColor/mts.svg",
+    3: "/imgs/providersColor/megafon.svg",
+  };
+
   const handleConnectClick = () => {
     localStorage.setItem("nameProvider", tariff.provider.name);
     localStorage.setItem("nameTariff", tariff.name);
@@ -60,7 +66,7 @@ const CardTariff = ({ tariff }) => {
       <Link href={`/${city}/tariff/${tariff.id}`} className={styles.link}>
         <div className={styles.logoAndName}>
           <Image
-            src={`/imgs/providersColor/${tariff.provider.img}`}
+            src={imgProviders[tariff.provider.id]}
             alt=""
             width={50}
             height={50}
@@ -70,25 +76,86 @@ const CardTariff = ({ tariff }) => {
 
         <p className={styles.nameTariff}>{tariff.name}</p>
         <div className={styles.params}>
-          {tariff.cardparams.map((paramMain, i) => (
-            <div key={i} className={styles.param}>
+          {tariff.internet_speed && (
+            <div className={styles.param}>
               <div className={styles.wrapperImgParam}>
                 <Image
-                  src={`/imgs/cardTariff/params/${paramMain.img}`}
+                  src={"/imgs/cardTariff/params/iconInternet.svg"}
                   alt=""
                   width={20}
                   height={20}
                 />
               </div>
               <div className={styles.paramText}>
-                <p>{paramMain.name}</p>
-                <p>
-                  {paramMain.params[0].name} {paramMain.params[0].value}{" "}
-                  {paramMain.params[0].value_type}
-                </p>
+                <p>Домашний интернет</p>
+                <p>Скорость: {tariff.internet_speed} Мбит/сек</p>
               </div>
             </div>
-          ))}
+          )}
+          {tariff.channels_count && (
+            <div className={styles.param}>
+              <div className={styles.wrapperImgParam}>
+                <Image
+                  src={"/imgs/cardTariff/params/iconTv.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className={styles.paramText}>
+                <p>Телевидение</p>
+                <p>Кол-во каналов: {tariff.channels_count}</p>
+              </div>
+            </div>
+          )}
+          {tariff.minutes && (
+            <div className={styles.param}>
+              <div className={styles.wrapperImgParam}>
+                <Image
+                  src={"/imgs/cardTariff/params/iconMob.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className={styles.paramText}>
+                <p>Мобильная связь</p>
+                <p>Кол-во минут: {tariff.minutes}</p>
+              </div>
+            </div>
+          )}
+          {tariff.router_rent && (
+            <div className={styles.param}>
+              <div className={styles.wrapperImgParam}>
+                <Image
+                  src={"/imgs/cardTariff/params/iconWifi.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className={styles.paramText}>
+                <p>Роутер</p>
+                <p>Аренда: {tariff.router_rent} ₽</p>
+              </div>
+            </div>
+          )}
+          {tariff.tv_box_rent && (
+            <div className={styles.param}>
+              <div className={styles.wrapperImgParam}>
+                <Image
+                  src={"/imgs/cardTariff/params/iconDecoder.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className={styles.paramText}>
+                <p>ТВ приставка</p>
+                <p>Аренда: {tariff.tv_box_rent} ₽</p>
+              </div>
+            </div>
+          )}
         </div>
       </Link>
 
@@ -180,13 +247,11 @@ const CardTariff = ({ tariff }) => {
           <p>Абонентская плата</p>
           <div className={styles.prices}>
             <span className={styles.newPrice}>
-              {tariff.min_tariff_cost
-                ? tariff.min_tariff_cost
-                : tariff.max_tariff_cost}
+              {tariff.sale_cost ? tariff.sale_cost : tariff.cost}
             </span>
             <div className={styles.oldPriceContainer}>
               <span className={styles.oldPrice}>
-                {tariff.min_tariff_cost ? tariff.max_tariff_cost : ""}
+                {tariff.sale_cost ? tariff.cost : ""}
               </span>
               <span className={styles.rubles}>₽/мес</span>
             </div>

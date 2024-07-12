@@ -8,6 +8,12 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
   const [windowWidth, setWindowWidth] = useState(null);
   const router = useRouter();
   const { city } = router.query;
+  const imgProviders = {
+    1: "/imgs/providersWhite/ruscom.svg",
+    2: "/imgs/providersWhite/mts.svg",
+    3: "/imgs/providersWhite/megafon.svg",
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -34,7 +40,7 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
             >
               <Image
                 className={styles.providersImg}
-                src={`/imgs/providersWhite/${provider.img}`}
+                src={imgProviders[provider.id]}
                 width={105}
                 height={105}
                 alt={provider.name}
@@ -56,7 +62,7 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
             >
               <Image
                 className={styles.providersImg}
-                src={`/imgs/providersWhite/${provider.img}`}
+                src={imgProviders[provider.id]}
                 width={90}
                 height={90}
                 alt={provider.name}
@@ -78,7 +84,7 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
             >
               <Image
                 className={styles.providersImg}
-                src={`/imgs/providersWhite/${provider.img}`}
+                src={imgProviders[provider.id]}
                 width={70}
                 height={70}
                 alt={provider.name}
