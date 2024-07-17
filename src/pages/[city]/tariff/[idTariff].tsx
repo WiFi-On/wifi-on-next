@@ -10,6 +10,7 @@ import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import api from "../../../../public/host/host.js";
 
 function TariffPage() {
   const router = useRouter();
@@ -18,7 +19,7 @@ function TariffPage() {
   const [tariffData, setTariffData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5030/api/v1/tariff/${idTariff}`)
+    fetch(`${api}/tariff/${idTariff}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

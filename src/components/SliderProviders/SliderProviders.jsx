@@ -5,6 +5,12 @@ import CardProvider from "./CardProvider/CardProvider";
 import styles from "./SliderProviders.module.css";
 
 const SliderProviders = ({ providers = [] }) => {
+  const imgProviders = {
+    1: "/imgs/providersColor/ruscom.svg",
+    2: "/imgs/providersColor/mts.svg",
+    3: "/imgs/providersColor/megafon.svg",
+  };
+
   if (providers.length < 1)
     return (
       <div className={styles.main}>
@@ -25,7 +31,7 @@ const SliderProviders = ({ providers = [] }) => {
           <CardProvider
             key={provider.id}
             id={provider.id}
-            img={`/imgs/providersColor/${provider.img}`}
+            img={imgProviders[provider.id]}
           />
         ))}
       </div>

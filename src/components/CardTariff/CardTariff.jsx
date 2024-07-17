@@ -30,10 +30,9 @@ const CardTariff = ({ tariff }) => {
     const tariffComparison = {
       id: tariff.id,
       name: tariff.name,
-      provider: tariff.provider.name,
-      imgProvider: tariff.provider.img,
-      price: tariff.max_tariff_cost + "₽",
-      newPrice: tariff.min_tariff_cost ? tariff.min_tariff_cost + "₽" : "-",
+      provider: tariff.provider,
+      price: tariff.cost + "₽",
+      newPrice: tariff.sale_cost ? tariff.sale_cost + "₽" : "-",
       internet_speed: tariff.internet_speed
         ? tariff.internet_speed + "Мбит/с"
         : "-",

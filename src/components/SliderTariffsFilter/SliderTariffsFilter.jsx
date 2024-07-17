@@ -77,7 +77,7 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
       }
     }
     if (discount) {
-      filtered = filtered.filter((tariff) => tariff.min_tariff_cost);
+      filtered = filtered.filter((tariff) => tariff.sale_cost);
     }
     if (freeConnection) {
       filtered = filtered.filter((tariff) => !tariff.connection_cost);
@@ -86,8 +86,8 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
       const [minPrice, maxPrice] = priceRange.split("-");
       filtered = filtered.filter(
         (tariff) =>
-          tariff.max_tariff_cost >= parseInt(minPrice, 10) &&
-          tariff.max_tariff_cost <= parseInt(maxPrice, 10)
+          tariff.cost >= parseInt(minPrice, 10) &&
+          tariff.cost <= parseInt(maxPrice, 10)
       );
     }
     if (speedRange) {

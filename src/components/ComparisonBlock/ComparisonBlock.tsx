@@ -8,6 +8,11 @@ import { openPopUpLead } from "@/redux/reducers/modalSlice";
 const ComparisonBlock = () => {
   const [tariffs, setTariffs] = useState([]);
   const dispatch = useDispatch();
+  const imgProviders = {
+    1: "/imgs/providersColor/ruscom.svg",
+    2: "/imgs/providersColor/mts.svg",
+    3: "/imgs/providersColor/megafon.svg",
+  };
 
   useEffect(() => {
     let tariffsComparison = localStorage.getItem("listComparisons") || "[]";
@@ -51,13 +56,13 @@ const ComparisonBlock = () => {
               <th></th>
               <th>
                 <Image
-                  src={`/imgs/providersColor/${tariffs[0].imgProvider}`}
+                  src={imgProviders[tariffs[0].provider.id]}
                   width={70}
                   height={70}
                   alt=""
                 ></Image>
                 <span className={styles.providerName}>
-                  {tariffs[0].provider}
+                  {tariffs[0].provider.name}
                 </span>
                 <Image
                   onClick={() => handleClickDelete(tariffs[0].id)}
@@ -72,13 +77,13 @@ const ComparisonBlock = () => {
                 {tariffs[1] ? (
                   <>
                     <Image
-                      src={`/imgs/providersColor/${tariffs[1].imgProvider}`}
+                      src={imgProviders[tariffs[1].provider.id]}
                       width={70}
                       height={70}
                       alt=""
                     ></Image>
                     <span className={styles.providerName}>
-                      {tariffs[1].provider}
+                      {tariffs[1].provider.name}
                     </span>
                     <Image
                       onClick={() => handleClickDelete(tariffs[1].id)}
@@ -97,13 +102,13 @@ const ComparisonBlock = () => {
                 {tariffs[2] ? (
                   <>
                     <Image
-                      src={`/imgs/providersColor/${tariffs[2].imgProvider}`}
+                      src={imgProviders[tariffs[2].provider.id]}
                       width={70}
                       height={70}
                       alt=""
                     ></Image>
                     <span className={styles.providerName}>
-                      {tariffs[2].provider}
+                      {tariffs[2].provider.name}
                     </span>
                     <Image
                       onClick={() => handleClickDelete(tariffs[2].id)}

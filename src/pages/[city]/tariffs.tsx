@@ -14,6 +14,7 @@ import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import NotTariffs from "@/components/NotTariffs/NotTariffs";
 import Head from "next/head";
+import api from "../../../public/host/host.js";
 
 const Tariffs = () => {
   const router = useRouter();
@@ -27,8 +28,8 @@ const Tariffs = () => {
   const [minSpeed, setMinSpeed] = useState(0);
   const [maxSpeed, setMaxSpeed] = useState(5000);
 
-  const fetchGetTariffsHouse = async (id) => {
-    fetch(`https://on-wifi.ru/api/fullInfoByHouse/${id}`)
+  const fetchGetTariffsHouse = async (hashAddress) => {
+    fetch(`${api}/tariffsAndProvidersOnAddressByHash/${hashAddress}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -45,7 +46,7 @@ const Tariffs = () => {
       });
   };
   const fetchGetTariffsDistrict = async (engName) => {
-    fetch(`https://on-wifi.ru/api/fullInfoDistrictByEndName/${engName}`)
+    fetch(`${api}/fullInfoDistrictByEndName/${engName}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -62,10 +63,11 @@ const Tariffs = () => {
       });
   };
   const minAndMaxPrice = (tariffs) => {
+    console.log(tariffs);
     let min = 30000;
     let max = 0;
     tariffs.forEach((tariff) => {
-      const maxTariffCost = parseFloat(tariff.max_tariff_cost);
+      const maxTariffCost = parseFloat(tariff.cost);
       if (maxTariffCost < min) {
         min = maxTariffCost;
       }
@@ -109,9 +111,6 @@ const Tariffs = () => {
     }
   }, [tariffs]);
 
-  console.log(tariffs);
-  console.log(providers);
-  console.log(loading);
   return (
     <>
       <Head>
