@@ -894,7 +894,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const res = await fetch(`${api}/fullInfoDistrictByEndName/${params.city}`);
+  const res = await fetch(`${api}/fullInfoDistrictByEndName/${params.city}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+    },
+  });
+
   const cityData = await res.json();
 
   return {

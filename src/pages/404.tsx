@@ -20,7 +20,7 @@ const NotFoundPage = () => {
           ></Image>
           <p>404</p>
           <h4>Такой страницы не существует;(</h4>
-          <button onClick={() => router.push("/")}>На главную</button>
+          <button onClick={() => router.push("/Moscow")}>На главную</button>
         </div>
       </div>
     </>

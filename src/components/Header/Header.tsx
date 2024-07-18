@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = () => {
       <header className={styles.main}>
         <div className={styles.container}>
           <div className={styles.top}>
-            <Link href="/">
+            <Link href="/Moscow">
               <Image src={logo} alt="логотип" className={styles.logo}></Image>
             </Link>
             <Nav></Nav>

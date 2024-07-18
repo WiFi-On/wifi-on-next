@@ -22,7 +22,7 @@ const ComparisonBlock = () => {
   }, []);
 
   const handleConnectClick = (id) => {
-    localStorage.setItem("nameProvider", tariffs[id].provider);
+    localStorage.setItem("nameProvider", tariffs[id].provider.name);
     localStorage.setItem("nameTariff", tariffs[id].name);
     localStorage.setItem("priceTariff", tariffs[id].price.split("₽")[0]);
     dispatch(openPopUpLead());

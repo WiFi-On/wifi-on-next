@@ -16,54 +16,15 @@ import NotTariffs from "@/components/NotTariffs/NotTariffs";
 import Head from "next/head";
 import api from "../../../public/host/host.js";
 
-const Tariffs = () => {
+const Tariffs = ({ tariffs, providers, loading }) => {
   const router = useRouter();
-  const { address } = router.query;
-  const { city } = router.query;
-  const [tariffs, setTariffs] = useState([]);
-  const [providers, setProviders] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(5000);
   const [minSpeed, setMinSpeed] = useState(0);
   const [maxSpeed, setMaxSpeed] = useState(5000);
 
-  const fetchGetTariffsHouse = async (hashAddress) => {
-    fetch(`${api}/tariffsAndProvidersOnAddressByHash/${hashAddress}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTariffs(data.tariffs);
-        setProviders(data.providers);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-  };
-  const fetchGetTariffsDistrict = async (engName) => {
-    fetch(`${api}/fullInfoDistrictByEndName/${engName}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTariffs(data.tariffs);
-        setProviders(data.providers);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-  };
   const minAndMaxPrice = (tariffs) => {
-    console.log(tariffs);
     let min = 30000;
     let max = 0;
     tariffs.forEach((tariff) => {
@@ -78,6 +39,7 @@ const Tariffs = () => {
     setMinPrice(min);
     setMaxPrice(max);
   };
+
   const minAndMaxSpeed = (tariffs) => {
     let min = Infinity;
     let max = -Infinity;
@@ -95,16 +57,6 @@ const Tariffs = () => {
   };
 
   useEffect(() => {
-    if (address) {
-      setLoading(false);
-      fetchGetTariffsHouse(address);
-    } else if (city) {
-      setLoading(true);
-      fetchGetTariffsDistrict(city);
-    }
-  }, [address, city]);
-
-  useEffect(() => {
     if (tariffs.length > 0) {
       minAndMaxPrice(tariffs);
       minAndMaxSpeed(tariffs);
@@ -115,7 +67,6 @@ const Tariffs = () => {
     <>
       <Head>
         <title>Тарифы</title>
-
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
       </Head>
 
@@ -139,5 +90,64 @@ const Tariffs = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { address } = context.query;
+  const { city } = context.query;
+  let tariffs = [];
+  let providers = [];
+  let loading = true;
+
+  try {
+    if (address) {
+      const response = await fetch(
+        `${api}/tariffsAndProvidersOnAddressByHash/${address}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      tariffs = data.tariffs;
+      providers = data.providers;
+      loading = false;
+    } else if (city) {
+      const response = await fetch(`${api}/fullInfoDistrictByEndName/${city}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      tariffs = data.tariffs;
+      providers = data.providers;
+      loading = false;
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+
+  return {
+    props: {
+      tariffs,
+      providers,
+      loading,
+    },
+  };
+}
 
 export default Tariffs;

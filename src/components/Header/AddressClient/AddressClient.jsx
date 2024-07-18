@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import CryptoJS from "crypto-js";
 
 const AddressClient = ({ mobile }) => {
   const addressStorage = localStorage.getItem("address");
@@ -105,7 +106,9 @@ const AddressClient = ({ mobile }) => {
               <Link
                 onClick={clickSuggestion}
                 key={i}
-                href={`/${city}/tariffs?address=${suggestion.data.kladr_id}`}
+                href={`/${city}/tariffs?address=${CryptoJS.MD5(
+                  suggestion.value
+                ).toString()}`}
                 className={styles.suggestion}
               >
                 {suggestion.value}

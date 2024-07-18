@@ -33,12 +33,9 @@ function Tariff({ tariffInfo }) {
     const tariffComparison = {
       id: tariffInfo.id,
       name: tariffInfo.name,
-      provider: tariffInfo.provider.name,
-      imgProvider: tariffInfo.provider.img,
-      price: tariffInfo.max_tariff_cost + "₽",
-      newPrice: tariffInfo.min_tariff_cost
-        ? tariffInfo.min_tariff_cost + "₽"
-        : "-",
+      provider: tariffInfo.provider,
+      price: tariffInfo.cost + "₽",
+      newPrice: tariffInfo.sale_cost ? tariffInfo.sale_cost + "₽" : "-",
       internet_speed: tariffInfo.internet_speed
         ? tariffInfo.internet_speed + "Мбит/с"
         : "-",
@@ -70,9 +67,7 @@ function Tariff({ tariffInfo }) {
     localStorage.setItem("nameTariff", tariffInfo.name);
     localStorage.setItem(
       "priceTariff",
-      tariffInfo.min_tariff_cost
-        ? tariffInfo.min_tariff_cost
-        : tariffInfo.max_tariff_cost
+      tariffInfo.sale_cost ? tariffInfo.sale_cost : tariffInfo.cost
     );
     dispatch(openPopUpLead());
   };
@@ -267,9 +262,7 @@ function Tariff({ tariffInfo }) {
         </div>
         <div className={styles.twoTextMobile}>
           <p className={styles.textPriceMobile}>Абонентская плата</p>
-          <p className={styles.priceMobile}>
-            {tariffInfo.max_tariff_cost} ₽/мес
-          </p>
+          <p className={styles.priceMobile}>{tariffInfo.cost} ₽/мес</p>
         </div>
         <div className={styles.paramsMobile}>
           {tariffInfo.internet_speed && (
