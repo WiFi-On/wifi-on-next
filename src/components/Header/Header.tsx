@@ -12,14 +12,16 @@ import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import styles from "./Header.module.css";
 import logo from "../../../public/imgs/iconLogo.png";
 import menu from "./iconMenu.svg";
+import { useRouter } from "next/router";
 
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   const [htmlWidth, setHtmlWidth] = useState<number | null>(null);
+  const router = useRouter();
+  const { city } = router.query;
   const [statusHamburgerMenu, setStatusHamburgerMenu] =
     useState<boolean>(false);
-
   const openHamburgerMenu: () => void = () => {
     setStatusHamburgerMenu(true);
   };
@@ -51,7 +53,7 @@ const Header: React.FC<HeaderProps> = () => {
       <header className={styles.main}>
         <div className={styles.container}>
           <div className={styles.top}>
-            <Link href="/Moscow">
+            <Link href={city ? `/${city}` : "/"}>
               <Image src={logo} alt="логотип" className={styles.logo}></Image>
             </Link>
             <Nav></Nav>
@@ -70,7 +72,7 @@ const Header: React.FC<HeaderProps> = () => {
     return (
       <header className={styles.main}>
         <div className={styles.containerTablet}>
-          <Link href="/">
+          <Link href={city ? `/${city}` : "/"}>
             <Image className={styles.logo} src={logo} alt="" />
           </Link>
           <AddressClient mobile={false}></AddressClient>
@@ -93,7 +95,7 @@ const Header: React.FC<HeaderProps> = () => {
   } else {
     return (
       <header className={styles.main}>
-        <Link href="/">
+        <Link href={city ? `/${city}` : "/"}>
           <Image className={styles.logo} src={logo} alt="" />
         </Link>
 

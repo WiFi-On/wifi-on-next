@@ -23,20 +23,13 @@ const AddressClient = ({ mobile }) => {
     const newQuery = event.target.value;
     setQuery(newQuery);
 
-    const token = "bbbdb08051ba3df93014d80a721660db6c19f0db";
-
-    fetch(
-      "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Token " + token,
-        },
-        body: JSON.stringify({ query: newQuery, count: 3 }),
-      }
-    )
+    fetch("/api/searchAddress", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query: newQuery, count: 4 }),
+    })
       .then((response) => response.json())
       .then((data) => {
         setSuggestions(data.suggestions);
@@ -47,8 +40,23 @@ const AddressClient = ({ mobile }) => {
       });
   };
 
-  const handlefocus = (event) => {
+  const delFlatOnAddress = (address) => {
+    const addressParts = address.split(",");
+    const addressWithoutFlat = addressParts
+      .slice(0, addressParts.length - 1)
+      .join(",");
+    return addressWithoutFlat;
+  };
+
+  const handleFocus = (event) => {
     inputRef.current.select();
+    handleSearch(event);
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setActiveSuggestions(false);
+    }, 200);
   };
 
   const clickSuggestion = (event) => {
@@ -84,24 +92,31 @@ const AddressClient = ({ mobile }) => {
           value={query}
           type="text"
           ref={inputRef}
-          onFocus={handlefocus}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       </div>
       <div
         className={cn(styles.bot, { [styles.botActive]: activeSuggestions })}
       >
         {suggestions.map((suggestion, i) => {
-          if (suggestion.data.fias_level !== "8") {
-            return (
-              <p
-                className={styles.suggestion}
-                key={i}
-                onClick={clickSuggestion}
-              >
-                {suggestion.value}
-              </p>
-            );
-          } else {
+          if (suggestion.data.fias_level >= "8") {
+            let address;
+            if (suggestion.data.flat) {
+              address = delFlatOnAddress(suggestion.value);
+              return (
+                <Link
+                  onClick={clickSuggestion}
+                  key={i}
+                  href={`/${city}/tariffs?address=${CryptoJS.MD5(
+                    address
+                  ).toString()}`}
+                  className={styles.suggestion}
+                >
+                  {suggestion.value}
+                </Link>
+              );
+            }
             return (
               <Link
                 onClick={clickSuggestion}
@@ -113,6 +128,12 @@ const AddressClient = ({ mobile }) => {
               >
                 {suggestion.value}
               </Link>
+            );
+          } else {
+            return (
+              <p key={i} onClick={clickSuggestion}>
+                {suggestion.value}
+              </p>
             );
           }
         })}

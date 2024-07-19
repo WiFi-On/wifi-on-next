@@ -10,31 +10,51 @@ const Search = ({ device }) => {
   const [suggestions, setSuggestions] = useState([]);
   const { city } = useRouter().query;
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    setQuery(event.target.value);
-
-    console.log("тут");
-    const token = "bbbdb08051ba3df93014d80a721660db6c19f0db";
-    fetch(
-      "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Token " + token,
-        },
-        body: JSON.stringify({ query: query }),
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (query) {
+        fetch("/api/searchAddress", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query: query, count: 10 }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            setSuggestions(data.suggestions);
+          })
+          .catch((error) => {
+            console.error("Ошибка:", error);
+          });
+      } else {
+        setSuggestions([]);
       }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setSuggestions(data.suggestions);
-      })
-      .catch((error) => {
-        console.error("Ошибка:", error);
-      });
+    }, 300); // задержка в 300мс
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [query]);
+
+  const delFlatOnAddress = (address) => {
+    const addressParts = address.split(",");
+    const addressWithoutFlat = addressParts
+      .slice(0, addressParts.length - 1)
+      .join(",");
+    return addressWithoutFlat;
+  };
+
+  const handleSearch = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setSuggestions([]);
+    }, 200);
+  };
+
+  const handleFocus = (event) => {
+    event.target.select();
   };
 
   const clickSuggestion = (event) => {
@@ -54,6 +74,8 @@ const Search = ({ device }) => {
       >
         <input
           onChange={handleSearch}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           value={query}
           type="text"
           placeholder="Введите ваш адрес"
@@ -66,6 +88,22 @@ const Search = ({ device }) => {
       >
         {suggestions.map((suggestion, i) => {
           if (suggestion.data.fias_level >= "8") {
+            let address;
+            if (suggestion.data.flat) {
+              address = delFlatOnAddress(suggestion.value);
+              return (
+                <Link
+                  onClick={clickSuggestion}
+                  key={i}
+                  href={`/${city}/tariffs?address=${CryptoJS.MD5(
+                    address
+                  ).toString()}`}
+                  className={styles.suggestion}
+                >
+                  {suggestion.value}
+                </Link>
+              );
+            }
             return (
               <Link
                 onClick={clickSuggestion}

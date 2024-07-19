@@ -6,7 +6,6 @@ const HomePage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const city = localStorage.getItem("city");
     const fetchIp = async () => {
       try {
         const response = await fetch(`${api}/ipAndCity`, {
@@ -17,9 +16,10 @@ const HomePage = () => {
           },
         });
         const data = await response.json();
-        if (data.city) {
-          localStorage.setItem("city", data.city);
-          router.push(`/${data.city}`);
+        console.log(data.engName);
+        if (data.engName) {
+          localStorage.setItem("city", data.engName);
+          router.push(`/${data.engName}`);
         } else {
           localStorage.setItem("city", "Moscow");
           router.push(`/Moscow`);
