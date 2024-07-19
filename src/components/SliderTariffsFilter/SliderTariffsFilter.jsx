@@ -32,48 +32,14 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
       const typeTariffIds = connectType
         .split(",")
         .map((id) => parseInt(id, 10));
-      if (typeTariffIds.length === 1) {
-        if (typeTariffIds.includes(1)) {
-          filtered = filtered.filter(
-            (tariff) =>
-              tariff.internet_speed && !tariff.channels_count && !tariff.minutes
-          );
-        }
-        if (typeTariffIds.includes(2)) {
-          filtered = filtered.filter(
-            (tariff) =>
-              tariff.internet_speed && tariff.channels_count && !tariff.minutes
-          );
-        }
-        if (typeTariffIds.includes(3)) {
-          filtered = filtered.filter((tariff) => tariff.minutes);
-        }
+      if (typeTariffIds.includes(1)) {
+        filtered = filtered.filter((tariff) => tariff.internet_speed);
       }
-      if (typeTariffIds.length === 2) {
-        if (typeTariffIds.includes(1) && typeTariffIds.includes(2)) {
-          filtered = filtered.filter(
-            (tariff) =>
-              tariff.internet_speed && tariff.channels_count && !tariff.minutes
-          );
-        }
-        if (typeTariffIds.includes(2) && typeTariffIds.includes(3)) {
-          filtered = filtered.filter(
-            (tariff) =>
-              tariff.internet_speed && tariff.channels_count && tariff.minutes
-          );
-        }
-        if (typeTariffIds.includes(1) && typeTariffIds.includes(3)) {
-          filtered = filtered.filter(
-            (tariff) =>
-              tariff.internet_speed && !tariff.channels_count && tariff.minutes
-          );
-        }
+      if (typeTariffIds.includes(2)) {
+        filtered = filtered.filter((tariff) => tariff.channels_count);
       }
-      if (typeTariffIds.length === 3) {
-        filtered = filtered.filter(
-          (tariff) =>
-            tariff.internet_speed && tariff.channels_count && tariff.minutes
-        );
+      if (typeTariffIds.includes(3)) {
+        filtered = filtered.filter((tariff) => tariff.minutes);
       }
     }
     if (discount) {
