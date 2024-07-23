@@ -6,13 +6,35 @@ const RangeSlider = ({ name, min, max, onChange }) => {
   const [maxValue, setMaxValue] = useState(max);
 
   const handleMinChange = (e) => {
-    const value = Math.min(Number(e.target.value), maxValue - 1);
-    setMinValue(value);
+    const value = e.target.value;
+    if (/^\d*\.?\d*$/.test(value) && value <= maxValue - 1) {
+      setMinValue(Number(value));
+      onChange(Number(value), maxValue); // Notify parent of change
+    }
   };
 
   const handleMaxChange = (e) => {
-    const value = Math.max(Number(e.target.value), minValue + 1);
-    setMaxValue(value);
+    const value = e.target.value;
+    if (/^\d*\.?\d*$/.test(value) && value >= minValue + 1) {
+      setMaxValue(Number(value));
+      onChange(minValue, Number(value)); // Notify parent of change
+    }
+  };
+
+  const handleMinRangeChange = (e) => {
+    const value = Number(e.target.value);
+    if (value <= maxValue - 1) {
+      setMinValue(value);
+      onChange(value, maxValue); // Notify parent of change
+    }
+  };
+
+  const handleMaxRangeChange = (e) => {
+    const value = Number(e.target.value);
+    if (value >= minValue + 1) {
+      setMaxValue(value);
+      onChange(minValue, value); // Notify parent of change
+    }
   };
 
   const handleMouseUp = () => {
@@ -26,9 +48,25 @@ const RangeSlider = ({ name, min, max, onChange }) => {
         <span className={styles.dashName}></span>
       </div>
       <div className={styles.priceDisplay}>
-        <span className={styles.priceMin}>от {minValue}</span>
+        <div className={styles.priceMin}>
+          <span>от </span>
+          <input
+            className={styles.minInput}
+            type="text"
+            value={minValue}
+            onChange={handleMinChange}
+          />
+        </div>
         <span className={styles.dash}></span>
-        <span className={styles.priceMax}>до {maxValue}</span>
+        <div className={styles.priceMax}>
+          <span>до </span>
+          <input
+            className={styles.maxInput}
+            type="text"
+            value={maxValue}
+            onChange={handleMaxChange}
+          />
+        </div>
       </div>
       <div className={styles.rangeSlider}>
         <input
@@ -36,7 +74,7 @@ const RangeSlider = ({ name, min, max, onChange }) => {
           min={min}
           max={max}
           value={minValue}
-          onChange={handleMinChange}
+          onChange={handleMinRangeChange}
           onMouseUp={handleMouseUp}
           className={styles.rangeInput}
         />
@@ -45,7 +83,7 @@ const RangeSlider = ({ name, min, max, onChange }) => {
           min={min}
           max={max}
           value={maxValue}
-          onChange={handleMaxChange}
+          onChange={handleMaxRangeChange}
           onMouseUp={handleMouseUp}
           className={styles.rangeInput}
         />

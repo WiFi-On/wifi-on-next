@@ -40,8 +40,8 @@
   -webkit-appearance: none;
   appearance: none;
   pointer-events: all;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
   background: linear-gradient(83.24deg, #284fdc -22.56%, #578fec 106.47%);
   border-radius: 50%;
   cursor: pointer;
@@ -85,6 +85,19 @@
   width: 126px;
   border-radius: 10px;
 
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20.8px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.minInput,
+.maxInput {
+  border: none;
+  outline: none;
+  max-width: 70px;
+  background-color: transparent;
   font-family: Raleway;
   font-size: 16px;
   font-weight: 500;

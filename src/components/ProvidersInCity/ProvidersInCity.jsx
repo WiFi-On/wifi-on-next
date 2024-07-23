@@ -12,6 +12,8 @@ const ProvidersInCity = ({ providers, nameLocationWhere }) => {
     1: "/imgs/providersWhite/ruscom.svg",
     2: "/imgs/providersWhite/mts.svg",
     3: "/imgs/providersWhite/megafon.svg",
+    4: "/imgs/providersWhite/ttk.svg",
+    5: "/imgs/providersWhite/almatel.svg",
   };
 
   useEffect(() => {

@@ -9,6 +9,8 @@ const SliderProviders = ({ providers = [] }) => {
     1: "/imgs/providersColor/ruscom.svg",
     2: "/imgs/providersColor/mts.svg",
     3: "/imgs/providersColor/megafon.svg",
+    4: "/imgs/providersColor/ttk.svg",
+    5: "/imgs/providersColor/almatel.svg",
   };
 
   if (providers.length < 1)

@@ -6,6 +6,7 @@ import Input from "../Input/Input";
 import Image from "next/image";
 import { Element } from "react-scroll";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const HelpForm = (props) => {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -14,6 +15,9 @@ const HelpForm = (props) => {
   const [address, setAddress] = useState("");
   const [numberValidation, setNumberValidation] = useState(false);
   const [sent, setSent] = useState(false);
+
+  const router = useRouter();
+  const { city } = router.query;
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -129,7 +133,9 @@ const HelpForm = (props) => {
             <p>
               Нажимая кнопку «Отправить» вы соглашаетесь с{" "}
               <span>
-                <Link href={"/policy"}>Политикой конфиденциальности</Link>
+                <Link href={`/${city}/policy`}>
+                  Политикой конфиденциальности
+                </Link>
               </span>
             </p>
           </div>

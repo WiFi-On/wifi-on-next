@@ -14,15 +14,14 @@ const AddressClient = ({ mobile }) => {
   const [query, setQuery] = useState("");
   const [activeSuggestions, setActiveSuggestions] = useState(false);
 
+  // Дебаунсинг
+  const debounceTimeoutRef = useRef(null);
+
   const router = useRouter();
   const { city } = router.query;
   const inputRef = useRef(null);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    const newQuery = event.target.value;
-    setQuery(newQuery);
-
+  const fetchSuggestions = (newQuery) => {
     fetch("/api/searchAddress", {
       method: "POST",
       headers: {
@@ -40,6 +39,26 @@ const AddressClient = ({ mobile }) => {
       });
   };
 
+  const handleSearch = (event) => {
+    const newQuery = event.target.value;
+    setQuery(newQuery);
+
+    // Очистка предыдущего таймера
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+
+    // Установка нового таймера
+    debounceTimeoutRef.current = setTimeout(() => {
+      if (newQuery.trim() !== "") {
+        fetchSuggestions(newQuery);
+      } else {
+        setSuggestions([]);
+        setActiveSuggestions(false);
+      }
+    }, 300); // задержка в 300мс
+  };
+
   const delFlatOnAddress = (address) => {
     const addressParts = address.split(",");
     const addressWithoutFlat = addressParts
@@ -49,8 +68,10 @@ const AddressClient = ({ mobile }) => {
   };
 
   const handleFocus = (event) => {
-    inputRef.current.select();
-    handleSearch(event);
+    if (event.target.value !== "") {
+      inputRef.current.select();
+      handleSearch(event);
+    }
   };
 
   const handleBlur = () => {

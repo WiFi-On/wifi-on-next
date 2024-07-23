@@ -63,22 +63,28 @@ const Tariffs = ({ tariffs, providers, loading }) => {
     }
   }, [tariffs]);
 
+  console.log(tariffs, providers, loading);
   return (
     <>
       <Head>
         <title>Тарифы</title>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
       </Head>
-
       <Header />
-      <SliderProviders providers={providers} />
-      <Filter
-        providersProp={providers}
-        minPriceProp={minPrice}
-        maxPriceProp={maxPrice}
-        minSpeedProp={minSpeed}
-        maxSpeedProp={maxSpeed}
-      />
+
+      {providers.length === 0 ? null : (
+        <SliderProviders providers={providers} />
+      )}
+      {tariffs.length === 0 ? null : (
+        <Filter
+          providersProp={providers}
+          minPriceProp={minPrice}
+          maxPriceProp={maxPrice}
+          minSpeedProp={minSpeed}
+          maxSpeedProp={maxSpeed}
+        />
+      )}
+
       <SliderTariffsFilter loading={loading} allTariffs={tariffs} />
       <AboutUs />
       <HelpForm />

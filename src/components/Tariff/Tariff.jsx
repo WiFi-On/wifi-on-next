@@ -13,7 +13,10 @@ function Tariff({ tariffInfo }) {
     1: "/imgs/providersColor/ruscom.svg",
     2: "/imgs/providersColor/mts.svg",
     3: "/imgs/providersColor/megafon.svg",
+    4: "/imgs/providersColor/ttk.svg",
+    5: "/imgs/providersColor/almatel.svg",
   };
+  const [compareTariffsIds, setCompareTariffsIds] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,16 +54,27 @@ function Tariff({ tariffInfo }) {
     const listComparisons = localStorage.getItem("listComparisons") || "[]";
     const list = JSON.parse(listComparisons);
 
-    if (!list.some((item) => item.id === tariffComparison.id)) {
-      if (list.length === 3) {
-        list.shift();
-      }
-      list.push(tariffComparison);
-      localStorage.setItem("listComparisons", JSON.stringify(list));
-      console.log(list);
+    // Проверка, есть ли уже тариф в списке
+    const exists = list.some((item) => item.id === tariffComparison.id);
+
+    let updatedList;
+    if (exists) {
+      // Если тариф уже есть, удаляем его из списка
+      updatedList = list.filter((item) => item.id !== tariffComparison.id);
     } else {
-      console.log("Tariff already exists in comparison list");
+      // Если тариф отсутствует, добавляем его
+      updatedList = [...list, tariffComparison];
     }
+
+    // Если список превышает 3 элемента, удаляем первый
+    if (updatedList.length > 3) {
+      updatedList.shift(); // удаляет первый элемент из массива
+    }
+
+    localStorage.setItem("listComparisons", JSON.stringify(updatedList));
+
+    // Обновляем состояние compareTariffsIds
+    setCompareTariffsIds(updatedList.map((item) => item.id));
   };
   const handleConnectClick = () => {
     localStorage.setItem("nameProvider", tariffInfo.provider.name);
@@ -72,6 +86,11 @@ function Tariff({ tariffInfo }) {
     dispatch(openPopUpLead());
   };
 
+  useEffect(() => {
+    const listComparisons = localStorage.getItem("listComparisons") || "[]";
+    const list = JSON.parse(listComparisons);
+    setCompareTariffsIds(list.map((item) => item.id));
+  }, []);
   if (tariffInfo.provider && windowWidth >= 650) {
     console.log(tariffInfo);
     return (
@@ -87,7 +106,52 @@ function Tariff({ tariffInfo }) {
             <p>{tariffInfo.provider.name}</p>
           </div>
           <div className={styles.buttons}>
-            <Image onClick={handleClickComparison} src={compare} alt="" />
+            <svg
+              width="23"
+              height="25"
+              viewBox="0 0 23 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke={
+                compareTariffsIds.includes(tariffInfo.id)
+                  ? "#5685f5"
+                  : "#545454"
+              }
+              onClick={handleClickComparison}
+            >
+              <rect
+                x="0.912893"
+                y="1.28753"
+                width="21.7"
+                height="22.425"
+                rx="3.48752"
+                strokeWidth="0.775005"
+              />
+              <line
+                x1="5.98907"
+                y1="15.0627"
+                x2="5.98907"
+                y2="19.3627"
+                strokeWidth="0.775005"
+                strokeLinecap="round"
+              />
+              <line
+                x1="11.0652"
+                y1="4.91253"
+                x2="11.0652"
+                y2="19.3625"
+                strokeWidth="0.775005"
+                strokeLinecap="round"
+              />
+              <line
+                x1="16.1375"
+                y1="9.2625"
+                x2="16.1375"
+                y2="19.3625"
+                strokeWidth="0.775005"
+                strokeLinecap="round"
+              />
+            </svg>
             <button onClick={handleConnectClick}>Подключить</button>
           </div>
         </div>
@@ -258,7 +322,50 @@ function Tariff({ tariffInfo }) {
         </div>
         <div className={styles.nameAndCompareMobile}>
           <h2>{tariffInfo.name}</h2>
-          <Image onClick={handleClickComparison} src={compare} alt="" />
+          <svg
+            width="23"
+            height="25"
+            viewBox="0 0 23 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke={
+              compareTariffsIds.includes(tariffInfo.id) ? "#5685f5" : "#545454"
+            }
+            onClick={handleClickComparison}
+          >
+            <rect
+              x="0.912893"
+              y="1.28753"
+              width="21.7"
+              height="22.425"
+              rx="3.48752"
+              strokeWidth="0.775005"
+            />
+            <line
+              x1="5.98907"
+              y1="15.0627"
+              x2="5.98907"
+              y2="19.3627"
+              strokeWidth="0.775005"
+              strokeLinecap="round"
+            />
+            <line
+              x1="11.0652"
+              y1="4.91253"
+              x2="11.0652"
+              y2="19.3625"
+              strokeWidth="0.775005"
+              strokeLinecap="round"
+            />
+            <line
+              x1="16.1375"
+              y1="9.2625"
+              x2="16.1375"
+              y2="19.3625"
+              strokeWidth="0.775005"
+              strokeLinecap="round"
+            />
+          </svg>
         </div>
         <div className={styles.twoTextMobile}>
           <p className={styles.textPriceMobile}>Абонентская плата</p>
@@ -381,21 +488,6 @@ function Tariff({ tariffInfo }) {
               img="iconTv.svg"
             />
           )}
-
-          {/* <ParamTariff
-            key={i}
-            title={param.name}
-            params={param.params}
-            img={param.img}
-            equipmen={true}
-          />
-
-          <ParamTariff
-            key={i}
-            title={param.name}
-            params={param.params}
-            img={param.img}
-          /> */}
         </div>
       </div>
     );

@@ -20,7 +20,6 @@ import api from "../../public/host/host.js";
 
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
-  console.log(cityData);
   return (
     <>
       <Head>

@@ -64,6 +64,7 @@ const Search = ({ device }) => {
     setSuggestions([]);
   };
 
+  console.log(suggestions[0]);
   return (
     <div className={styles.main}>
       <div

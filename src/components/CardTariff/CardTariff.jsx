@@ -4,16 +4,20 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { openPopUpLead } from "@/redux/reducers/modalSlice";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const CardTariff = ({ tariff }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { city, idTariff } = router.query;
+  const { city } = router.query;
+  const [compareTariffsIds, setCompareTariffsIds] = useState([]);
 
   const imgProviders = {
     1: "/imgs/providersColor/ruscom.svg",
     2: "/imgs/providersColor/mts.svg",
     3: "/imgs/providersColor/megafon.svg",
+    4: "/imgs/providersColor/ttk.svg",
+    5: "/imgs/providersColor/almatel.svg",
   };
 
   const handleConnectClick = () => {
@@ -46,17 +50,34 @@ const CardTariff = ({ tariff }) => {
     const listComparisons = localStorage.getItem("listComparisons") || "[]";
     const list = JSON.parse(listComparisons);
 
-    if (!list.some((item) => item.id === tariffComparison.id)) {
-      if (list.length === 3) {
-        list.shift();
-      }
-      list.push(tariffComparison);
-      localStorage.setItem("listComparisons", JSON.stringify(list));
-      console.log(list);
+    // Проверка, есть ли уже тариф в списке
+    const exists = list.some((item) => item.id === tariffComparison.id);
+
+    let updatedList;
+    if (exists) {
+      // Если тариф уже есть, удаляем его из списка
+      updatedList = list.filter((item) => item.id !== tariffComparison.id);
     } else {
-      console.log("Tariff already exists in comparison list");
+      // Если тариф отсутствует, добавляем его
+      updatedList = [...list, tariffComparison];
     }
+
+    // Если список превышает 3 элемента, удаляем первый
+    if (updatedList.length > 3) {
+      updatedList.shift(); // удаляет первый элемент из массива
+    }
+
+    localStorage.setItem("listComparisons", JSON.stringify(updatedList));
+
+    // Обновляем состояние compareTariffsIds
+    setCompareTariffsIds(updatedList.map((item) => item.id));
   };
+
+  useEffect(() => {
+    const listComparisons = localStorage.getItem("listComparisons") || "[]";
+    const list = JSON.parse(listComparisons);
+    setCompareTariffsIds(list.map((item) => item.id));
+  }, []);
 
   if (!tariff) return <div>Loading...</div>;
 
@@ -201,6 +222,7 @@ const CardTariff = ({ tariff }) => {
           viewBox="0 0 23 25"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          stroke={compareTariffsIds.includes(tariff.id) ? "#5685f5" : "#545454"}
           onClick={handleClickComparison}
         >
           <rect
@@ -209,7 +231,6 @@ const CardTariff = ({ tariff }) => {
             width="21.7"
             height="22.425"
             rx="3.48752"
-            stroke="#545454"
             strokeWidth="0.775005"
           />
           <line
@@ -217,7 +238,6 @@ const CardTariff = ({ tariff }) => {
             y1="15.0627"
             x2="5.98907"
             y2="19.3627"
-            stroke="#545454"
             strokeWidth="0.775005"
             strokeLinecap="round"
           />
@@ -226,7 +246,6 @@ const CardTariff = ({ tariff }) => {
             y1="4.91253"
             x2="11.0652"
             y2="19.3625"
-            stroke="#545454"
             strokeWidth="0.775005"
             strokeLinecap="round"
           />
@@ -235,7 +254,6 @@ const CardTariff = ({ tariff }) => {
             y1="9.2625"
             x2="16.1375"
             y2="19.3625"
-            stroke="#545454"
             strokeWidth="0.775005"
             strokeLinecap="round"
           />
