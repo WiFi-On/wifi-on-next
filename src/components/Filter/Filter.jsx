@@ -199,7 +199,6 @@ const Filter = ({
               <div className={styles.checkboxesContainer}>
                 <div className={styles.nameCheckboxes}>
                   <span>Провайдер</span>
-                  <p></p>
                 </div>
                 {providersProp.map((provider) => (
                   <Checkbox
@@ -213,7 +212,6 @@ const Filter = ({
               <div className={styles.checkboxesContainer}>
                 <div className={styles.nameCheckboxes}>
                   <span>Тип тарифа</span>
-                  <p></p>
                 </div>
                 <Checkbox
                   checked={connectType?.includes("1") || false}

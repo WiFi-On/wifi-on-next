@@ -1,6 +1,6 @@
 import styles from "./Question.module.css";
-import iconPlus from "./imgs/iconPlus.png";
-import iconMinus from "./imgs/iconMinus.png";
+import iconPlus from "./imgs/iconPlus.svg";
+import iconMinus from "./imgs/iconMinus.svg";
 import { useState, useRef } from "react";
 import cn from "classnames";
 import Image from "next/image";

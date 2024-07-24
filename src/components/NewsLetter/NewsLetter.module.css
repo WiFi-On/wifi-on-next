@@ -30,6 +30,28 @@
   bottom: 0;
   opacity: 0.3;
 }
+.input {
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: 240px;
+  height: 45px;
+  background-color: transparent;
+
+  color: #fff;
+
+  border: 1px solid #ffffff4d;
+  outline: none;
+  box-sizing: border-box;
+
+  font-family: Raleway;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.44px;
+  text-align: left;
+}
+.input::placeholder {
+  color: #ffffffcc;
+}
 .wifiIcon {
   position: absolute;
   right: 0;
@@ -134,7 +156,7 @@
 }
 @media screen and (max-width: 640px) {
   .main {
-    margin: 50px auto 0 auto;
+    margin: 50px auto 100px auto;
     padding: 10px;
     border-radius: 40px;
     height: 428px;
@@ -145,9 +167,11 @@
   }
   .saleIcon {
     height: 90px;
+    width: 90px;
   }
   .wifiIcon {
     height: 90px;
+    width: 90px;
   }
   .containerText {
     max-width: 253px;
@@ -198,6 +222,7 @@
     border: none;
     border-radius: 40px;
     height: 45px;
+    width: 240px;
     cursor: pointer;
 
     font-family: Raleway;

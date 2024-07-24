@@ -1,8 +1,8 @@
 import styles from "./NewsLetter.module.css";
 import cn from "classnames";
 import Input from "../Input/Input";
-import saleIcon from "./imgs/saleIcon.png";
-import wifiIcon from "./imgs/wifiIcon.png";
+import saleIcon from "./imgs/saleIcon.svg";
+import wifiIcon from "./imgs/wifiIcon.svg";
 import Image from "next/image";
 
 const Newsletter = () => {
@@ -14,7 +14,11 @@ const Newsletter = () => {
       </div>
       <div className={styles.inputAndText}>
         <div className={styles.inputAndButton}>
-          <Input placeholder="Введите email" typeInput="email"></Input>
+          <input
+            type="email"
+            placeholder="Ваша почта"
+            className={styles.input}
+          />
           <button>Подписаться</button>
         </div>
         <p>

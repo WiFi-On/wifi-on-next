@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
 import { useState, useEffect } from "react";
 import iconLogo from "./imgs/iconLogo.svg";
-import tgIcon from "./imgs/iconTG.png";
-import waIcon from "./imgs/iconWA.png";
+import tgIcon from "./imgs/iconTG.svg";
+import waIcon from "./imgs/iconWA.svg";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
 import Image from "next/image";

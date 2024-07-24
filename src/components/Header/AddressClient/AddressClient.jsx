@@ -109,7 +109,10 @@ const AddressClient = ({ mobile }) => {
         )}
         <input
           onChange={handleSearch}
-          className={styles.address}
+          className={cn(styles.address, {
+            [styles.inputMobile]: mobile,
+            [styles.inputDesk]: !mobile,
+          })}
           value={query}
           type="text"
           ref={inputRef}
