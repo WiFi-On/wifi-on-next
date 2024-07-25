@@ -75,7 +75,9 @@ const Tariffs = ({ tariffs, providers, loading }) => {
       {providers.length === 0 ? null : (
         <SliderProviders providers={providers} />
       )}
-      {tariffs.length === 0 ? null : (
+      {tariffs.length === 0 ? (
+        <NotTariffs status={1} />
+      ) : (
         <Filter
           providersProp={providers}
           minPriceProp={minPrice}
