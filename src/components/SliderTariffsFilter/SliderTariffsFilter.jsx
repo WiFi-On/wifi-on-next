@@ -84,34 +84,6 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
   const pageCount = Math.ceil(filteredTariffs.length / tariffsPerPage);
   const offset = currentPage * tariffsPerPage;
 
-  if (loading) {
-    return (
-      <div className={styles.main}>
-        <div className={styles.sliderContainer}>
-          {Array.from({ length: tariffsPerPage }).map((_, index) => (
-            <div key={index} className={styles.cardTariffLoading}></div>
-          ))}
-        </div>
-        <ReactPaginate
-          pageCount={pageCount}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={1}
-          onPageChange={handlePageChange}
-          containerClassName={styles.pagination}
-          activeClassName={styles.active}
-          previousClassName={styles.previous}
-          nextClassName={styles.next}
-          previousLabel={"<"}
-          nextLabel={">"}
-          renderOnZeroPageCount={null}
-          breakLabel="..."
-        />
-      </div>
-    );
-  }
-  if (filteredTariffs.length < 1) {
-    return <NotTariffs status={0}></NotTariffs>;
-  }
   return (
     <div className={styles.main}>
       <div className={styles.sliderContainer}>

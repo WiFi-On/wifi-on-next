@@ -13,6 +13,7 @@ import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import NotTariffs from "@/components/NotTariffs/NotTariffs";
+import CookieAgreement from "@/components/CookieAgreement/CookieAgreement.tsx";
 import Head from "next/head";
 import api from "../../../public/host/host.js";
 
@@ -23,6 +24,8 @@ const Tariffs = ({ tariffs, providers, loading }) => {
   const [maxPrice, setMaxPrice] = useState(5000);
   const [minSpeed, setMinSpeed] = useState(0);
   const [maxSpeed, setMaxSpeed] = useState(5000);
+
+  const [tariffsFilter, setTariffsFilter] = useState(tariffs);
 
   const minAndMaxPrice = (tariffs) => {
     let min = 30000;
@@ -57,13 +60,12 @@ const Tariffs = ({ tariffs, providers, loading }) => {
   };
 
   useEffect(() => {
-    if (tariffs.length > 0) {
-      minAndMaxPrice(tariffs);
-      minAndMaxSpeed(tariffs);
+    if (tariffsFilter.length > 0) {
+      minAndMaxPrice(tariffsFilter);
+      minAndMaxSpeed(tariffsFilter);
     }
-  }, [tariffs]);
+  }, [tariffsFilter]);
 
-  console.log(tariffs, providers, loading);
   return (
     <>
       <Head>
@@ -72,10 +74,8 @@ const Tariffs = ({ tariffs, providers, loading }) => {
       </Head>
       <Header />
 
-      {providers.length === 0 ? null : (
-        <SliderProviders providers={providers} />
-      )}
-      {tariffs.length === 0 ? (
+      {providers.length > 0 ? <SliderProviders providers={providers} /> : null}
+      {providers.length === 0 ? (
         <NotTariffs status={1} />
       ) : (
         <Filter
@@ -87,7 +87,7 @@ const Tariffs = ({ tariffs, providers, loading }) => {
         />
       )}
 
-      <SliderTariffsFilter loading={loading} allTariffs={tariffs} />
+      <SliderTariffsFilter loading={loading} allTariffs={tariffsFilter} />
       <AboutUs />
       <HelpForm />
       <Questions />
@@ -95,6 +95,7 @@ const Tariffs = ({ tariffs, providers, loading }) => {
       <PopUpLead></PopUpLead>
       <PopUpAgreement></PopUpAgreement>
       <PopUpPolicy></PopUpPolicy>
+      <CookieAgreement></CookieAgreement>
     </>
   );
 };

@@ -27,25 +27,27 @@
   border-radius: 30px;
 }
 .wrapperImg {
-  height: 150px;
-  width: 150px;
+  height: 190px;
+  width: 190px;
+  border-radius: 50%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  background: linear-gradient(83.24deg, #284fdc -22.56%, #578fec 106.47%);
 }
 .wrapperImgTablet {
   height: 151px;
   width: 151px;
 }
 .wrapperImgTablet img {
-  width: 100%;
+  width: 70%;
 }
 .wrapperImgMobile {
   height: 102px;
   width: 102px;
 }
 .wrapperImgMobile img {
-  width: 100%;
+  width: 70%;
 }
 .main h4 {
   font-family: Raleway;

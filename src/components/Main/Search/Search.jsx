@@ -8,9 +8,8 @@ import CryptoJS from "crypto-js";
 const Search = ({ device }) => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [cityApi, setCityApi] = useState(null);
   const router = useRouter();
-  const city = cityApi ? cityApi : router.query.city;
+  const { city } = router.query;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -86,8 +85,15 @@ const Search = ({ device }) => {
 
   const clickSuggestion = async (address, fiasId) => {
     const cityData = await checkCity(fiasId);
-    setCityApi(cityData.city);
+    const cityURL = cityData.engNameDistrict ? cityData.engNameDistrict : city;
+    router.push(
+      `/${cityURL}/tariffs?address=${CryptoJS.MD5(address).toString()}`
+    );
     localStorage.setItem("address", address);
+    localStorage.setItem(
+      "city",
+      cityData.engNameDistrict.engname ? cityData.engNameDistrict.engname : city
+    );
     setQuery(address);
     setSuggestions([]);
   };
@@ -120,7 +126,7 @@ const Search = ({ device }) => {
             if (suggestion.data.flat) {
               address = delFlatOnAddress(suggestion.value);
               return (
-                <Link
+                <p
                   onClick={() =>
                     clickSuggestion(
                       suggestion.value,
@@ -130,17 +136,14 @@ const Search = ({ device }) => {
                     )
                   }
                   key={i}
-                  href={`/${city}/tariffs?address=${CryptoJS.MD5(
-                    address
-                  ).toString()}`}
                   className={styles.suggestion}
                 >
                   {suggestion.value}
-                </Link>
+                </p>
               );
             }
             return (
-              <Link
+              <p
                 onClick={() =>
                   clickSuggestion(
                     suggestion.value,
@@ -150,13 +153,10 @@ const Search = ({ device }) => {
                   )
                 }
                 key={i}
-                href={`/${city}/tariffs?address=${CryptoJS.MD5(
-                  suggestion.value
-                ).toString()}`}
                 className={styles.suggestion}
               >
                 {suggestion.value}
-              </Link>
+              </p>
             );
           } else {
             return (
