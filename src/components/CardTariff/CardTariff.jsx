@@ -18,6 +18,9 @@ const CardTariff = ({ tariff }) => {
     3: "/imgs/providersColor/megafon.svg",
     4: "/imgs/providersColor/ttk.svg",
     5: "/imgs/providersColor/almatel.svg",
+    6: "/imgs/providersColor/avatell.svg",
+    7: "/imgs/providersColor/beeline.svg",
+    8: "/imgs/providersColor/domru.svg",
   };
 
   const handleConnectClick = () => {
@@ -144,7 +147,7 @@ const CardTariff = ({ tariff }) => {
               </div>
             </div>
           )}
-          {tariff.router_rent && (
+          {tariff.router_rent ? (
             <div className={styles.param}>
               <div className={styles.wrapperImgParam}>
                 <Image
@@ -157,6 +160,21 @@ const CardTariff = ({ tariff }) => {
               <div className={styles.paramText}>
                 <p>Роутер</p>
                 <p>Аренда: {tariff.router_rent} ₽</p>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.param}>
+              <div className={styles.wrapperImgParam}>
+                <Image
+                  src={"/imgs/cardTariff/params/iconWifi.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className={styles.paramText}>
+                <p>Роутер</p>
+                <p>Стоимость: {tariff.router_cost} ₽</p>
               </div>
             </div>
           )}
