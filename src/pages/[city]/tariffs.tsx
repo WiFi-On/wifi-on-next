@@ -17,7 +17,7 @@ import CookieAgreement from "@/components/CookieAgreement/CookieAgreement.tsx";
 import Head from "next/head";
 import api from "../../../public/host/host.js";
 
-const Tariffs = ({ tariffs, providers, loading }) => {
+const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   const router = useRouter();
 
   const [minPrice, setMinPrice] = useState(0);
@@ -69,7 +69,16 @@ const Tariffs = ({ tariffs, providers, loading }) => {
   return (
     <>
       <Head>
-        <title>Тарифы</title>
+        <title>
+          Доступные провайдеры по городу {cityApi.name} 🙋‍♂️ Подключение домашнего
+          интернета по выгодным условиям | Все тарифы на интернет, тв и
+          мобильную связь
+        </title>
+        <meta
+          name="description"
+          content="Оставь заявку чтобы подключить интернет от крупных провайдеров 🌐 Наш сервис помогает провести интернет от Ростелекома, мтс, мегафон и более 20 провайдеров по вашему городу ➡ У нас все тарифы и актуальные акции на интернет.
+"
+        ></meta>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
       </Head>
       <Header />
@@ -106,7 +115,7 @@ export async function getServerSideProps(context) {
   let tariffs = [];
   let providers = [];
   let loading = true;
-
+  let cityApi = [];
   try {
     if (address) {
       const response = await fetch(
@@ -144,6 +153,7 @@ export async function getServerSideProps(context) {
       const data = await response.json();
       tariffs = data.tariffs;
       providers = data.providers;
+      cityApi = data.infoDistrict;
       loading = false;
     }
   } catch (error) {
@@ -155,6 +165,7 @@ export async function getServerSideProps(context) {
       tariffs,
       providers,
       loading,
+      cityApi,
     },
   };
 }

@@ -15,6 +15,9 @@ function Tariff({ tariffInfo }) {
     3: "/imgs/providersColor/megafon.svg",
     4: "/imgs/providersColor/ttk.svg",
     5: "/imgs/providersColor/almatel.svg",
+    6: "/imgs/providersColor/avatell.svg",
+    7: "/imgs/providersColor/beeline.svg",
+    8: "/imgs/providersColor/domru.svg",
   };
   const [compareTariffsIds, setCompareTariffsIds] = useState([]);
 
