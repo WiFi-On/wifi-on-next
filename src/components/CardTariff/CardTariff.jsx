@@ -2,7 +2,10 @@ import styles from "./CardTariff.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { openPopUpLead } from "@/redux/reducers/modalSlice";
+import {
+  openPopUpLead,
+  openPopUpComparison,
+} from "@/redux/reducers/modalSlice";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
@@ -74,6 +77,8 @@ const CardTariff = ({ tariff }) => {
 
     // Обновляем состояние compareTariffsIds
     setCompareTariffsIds(updatedList.map((item) => item.id));
+
+    dispatch(openPopUpComparison());
   };
 
   useEffect(() => {

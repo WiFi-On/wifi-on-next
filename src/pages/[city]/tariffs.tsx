@@ -13,9 +13,10 @@ import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import NotTariffs from "@/components/NotTariffs/NotTariffs";
-import CookieAgreement from "@/components/CookieAgreement/CookieAgreement.tsx";
+import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 import Head from "next/head";
 import api from "../../../public/host/host.js";
+import PopUpComparison from "@/components/PopUpComparison/PopUpComparison";
 
 const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   const router = useRouter();
@@ -105,6 +106,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
       <PopUpAgreement></PopUpAgreement>
       <PopUpPolicy></PopUpPolicy>
       <CookieAgreement></CookieAgreement>
+      <PopUpComparison></PopUpComparison>
     </>
   );
 };

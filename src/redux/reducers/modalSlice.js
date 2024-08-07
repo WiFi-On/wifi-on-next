@@ -12,6 +12,9 @@ const modalSlice = createSlice({
     popUpAgreement: {
       isOpen: false,
     },
+    PopUpComparison: {
+      isOpen: false,
+    },
   },
   reducers: {
     openPopUpLead: (state) => {
@@ -32,6 +35,12 @@ const modalSlice = createSlice({
     closePopUpAgreement: (state) => {
       state.popUpAgreement.isOpen = false;
     },
+    openPopUpComparison: (state) => {
+      state.PopUpComparison.isOpen = true;
+    },
+    closePopUpComparison: (state) => {
+      state.PopUpComparison.isOpen = false;
+    },
   },
 });
 
@@ -42,6 +51,8 @@ export const {
   closePopUpPolicy,
   openPopUpAgreement,
   closePopUpAgreement,
+  openPopUpComparison,
+  closePopUpComparison,
 } = modalSlice.actions;
 
 export const selectIsOpenPopUpLead = (state) => state.modal.popUpLead.isOpen;
@@ -49,5 +60,7 @@ export const selectIsOpenPopUpPolicy = (state) =>
   state.modal.popUpPolicy.isOpen;
 export const selectIsOpenPopUpAgreement = (state) =>
   state.modal.popUpAgreement.isOpen;
+export const selectIsOpenPopUpComparison = (state) =>
+  state.modal.PopUpComparison.isOpen;
 
 export default modalSlice.reducer;

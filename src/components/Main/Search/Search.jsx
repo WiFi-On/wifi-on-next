@@ -83,7 +83,7 @@ const Search = ({ device }) => {
     event.target.select();
   };
 
-  const clickSuggestion = async (address, fiasId) => {
+  const clickSuggestionlvl8 = async (address, fiasId) => {
     const cityData = await checkCity(fiasId);
     const cityURL = cityData.engNameDistrict ? cityData.engNameDistrict : city;
     router.push(
@@ -94,6 +94,10 @@ const Search = ({ device }) => {
       "city",
       cityData.engNameDistrict.engname ? cityData.engNameDistrict.engname : city
     );
+    setQuery(address);
+    setSuggestions([]);
+  };
+  const clickSuggestion = (address) => {
     setQuery(address);
     setSuggestions([]);
   };
@@ -128,7 +132,7 @@ const Search = ({ device }) => {
               return (
                 <p
                   onClick={() =>
-                    clickSuggestion(
+                    clickSuggestionlvl8(
                       suggestion.value,
                       suggestion.data.settlement_fias_id
                         ? suggestion.data.settlement_fias_id
@@ -145,7 +149,7 @@ const Search = ({ device }) => {
             return (
               <p
                 onClick={() =>
-                  clickSuggestion(
+                  clickSuggestionlvl8(
                     suggestion.value,
                     suggestion.data.settlement_fias_id
                       ? suggestion.data.settlement_fias_id
