@@ -5,6 +5,7 @@ import AboutUs from "@/components/AboutUs/AboutUs";
 import HelpForm from "@/components/HelpForm/HelpForm";
 import Questions from "@/components/Questions/Questions";
 import Head from "next/head";
+import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 
 const PolicyPage = () => {
   return (
@@ -20,6 +21,7 @@ const PolicyPage = () => {
       <HelpForm />
       <Questions />
       <Footer />
+      <CookieAgreement></CookieAgreement>
     </>
   );
 };

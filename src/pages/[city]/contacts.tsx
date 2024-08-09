@@ -9,6 +9,7 @@ import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import Head from "next/head";
+import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 
 const Contacts = () => {
   return (
@@ -25,6 +26,7 @@ const Contacts = () => {
       <HelpForm></HelpForm>
       <Questions></Questions>
       <Footer></Footer>
+      <CookieAgreement></CookieAgreement>
     </>
   );
 };

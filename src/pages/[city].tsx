@@ -17,6 +17,8 @@ import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import Head from "next/head";
 import api from "../../public/host/host.js";
+import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
+import PopUpComparison from "@/components/PopUpComparison/PopUpComparison";
 
 const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
   if (!cityData) return <div>Loading...</div>;
@@ -61,6 +63,8 @@ const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
       <PopUpLead></PopUpLead>
       <PopUpAgreement></PopUpAgreement>
       <PopUpPolicy></PopUpPolicy>
+      <PopUpComparison></PopUpComparison>
+      <CookieAgreement></CookieAgreement>
     </>
   );
 };

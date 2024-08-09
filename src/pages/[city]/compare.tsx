@@ -8,6 +8,7 @@ import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import Head from "next/head";
+import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 
 const compare = () => {
   return (
@@ -27,6 +28,7 @@ const compare = () => {
       <PopUpLead></PopUpLead>
       <PopUpAgreement></PopUpAgreement>
       <PopUpPolicy></PopUpPolicy>
+      <CookieAgreement></CookieAgreement>
     </>
   );
 };
