@@ -46,7 +46,24 @@
 .button:hover {
   background-color: #294ed6;
 }
-
+.enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.enterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.exitActive {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
 @media screen and (max-width: 690px) {
   .main {
     flex-direction: column;

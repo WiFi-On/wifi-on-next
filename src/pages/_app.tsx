@@ -7,9 +7,6 @@ import Head from "next/head";
 function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Head>
-        <link rel="icon" href="imgs/favicon.ico"></link>
-      </Head>
       <Component {...pageProps} />
     </Provider>
   );

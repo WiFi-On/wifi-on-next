@@ -9,6 +9,7 @@ const NotFoundPage = () => {
     <>
       <Head>
         <title>404</title>
+        <link rel="icon" href="imgs/favicon.ico"></link>
       </Head>
       <div className={styles.main}>
         <div className={styles.wrapper}>

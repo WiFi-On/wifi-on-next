@@ -7,7 +7,6 @@ import Footer from "@/components/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Questions from "@/components/Questions/Questions";
-import { Element } from "react-scroll";
 import AboutUs from "@/components/AboutUs/AboutUs";
 import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
@@ -75,12 +74,15 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
           интернета по выгодным условиям | Все тарифы на интернет, тв и
           мобильную связь
         </title>
+        <link rel="icon" href="imgs/favicon.ico"></link>
         <meta
           name="description"
           content="Оставь заявку чтобы подключить интернет от крупных провайдеров 🌐 Наш сервис помогает провести интернет от Ростелекома, мтс, мегафон и более 20 провайдеров по вашему городу ➡ У нас все тарифы и актуальные акции на интернет.
 "
         ></meta>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
+
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
 
@@ -120,7 +122,7 @@ export async function getServerSideProps(context) {
   let cityApi = [];
   try {
     if (address) {
-      const response = await fetch(
+      const responseTariffsAndProviders = await fetch(
         `${api}/tariffsAndProvidersOnAddressByHash/${address}`,
         {
           method: "GET",
@@ -130,14 +132,30 @@ export async function getServerSideProps(context) {
           },
         }
       );
+      if (!responseTariffsAndProviders.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const dataTariffsAndProviders = await responseTariffsAndProviders.json();
 
-      if (!response.ok) {
+      const responseDistrictInfo = await fetch(
+        `${api}/infoDistrictByEngName/${city}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+          },
+        }
+      );
+      if (!responseDistrictInfo.ok) {
         throw new Error("Network response was not ok");
       }
 
-      const data = await response.json();
-      tariffs = data.tariffs;
-      providers = data.providers;
+      const dataDistrictInfo = await responseDistrictInfo.json();
+
+      tariffs = dataTariffsAndProviders.tariffs;
+      providers = dataTariffsAndProviders.providers;
+      cityApi = dataDistrictInfo.districtInfo;
       loading = false;
     } else if (city) {
       const response = await fetch(`${api}/fullInfoDistrictByEndName/${city}`, {

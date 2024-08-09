@@ -1,9 +1,9 @@
-import Header from "../../../components/Header/Header";
-import Tariff from "../../../components/Tariff/Tariff";
-import Footer from "../../../components/Footer/Footer";
-import HelpForm from "../../../components/HelpForm/HelpForm";
-import Questions from "../../../components/Questions/Questions";
-import AboutUs from "../../../components/AboutUs/AboutUs";
+import Header from "../../../components/Header/Header.tsx";
+import Tariff from "../../../components/Tariff/Tariff.jsx";
+import Footer from "../../../components/Footer/Footer.jsx";
+import HelpForm from "../../../components/HelpForm/HelpForm.jsx";
+import Questions from "../../../components/Questions/Questions.jsx";
+import AboutUs from "../../../components/AboutUs/AboutUs.jsx";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
@@ -19,6 +19,7 @@ function TariffPage({ tariffData }) {
           {tariffData.name} - Оставить заявку на подключение проводного
           интернета
         </title>
+        <link rel="icon" href="imgs/favicon.ico"></link>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
         <meta
           name="description"

@@ -1,41 +1,55 @@
 import { useState, useEffect } from "react";
 import styles from "./CookieAgreement.module.css";
+import { CSSTransition } from "react-transition-group";
 
 const CookieAgreement = () => {
   const [isAccepted, setIsAccepted] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Состояние для управления задержкой рендеринга
+  const [isVisible, setIsVisible] = useState(false); // Новое состояние для управления видимостью
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Проверяем, есть ли запись о согласии в localStorage
     const cookieConsent = localStorage.getItem("cookie-consent");
     if (cookieConsent === "true") {
       setIsAccepted(true);
+    } else {
+      setIsVisible(true); // Показываем компонент только если согласие не получено
     }
-    // Задержка, чтобы избежать резкого появления и исчезновения
-    const timer = setTimeout(() => setIsLoading(false), 100); // Можно настроить время задержки
+
+    const timer = setTimeout(() => setIsLoading(false), 100);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleAccept = () => {
-    // Устанавливаем состояние и сохраняем в localStorage
     setIsAccepted(true);
+    setIsVisible(false); // Начинаем анимацию скрытия
     localStorage.setItem("cookie-consent", "true");
   };
 
-  if (isLoading) return null; // Пока состояние загружается, ничего не отображаем
-  if (isAccepted) return null; // Если согласие уже получено, ничего не отображаем
+  if (isLoading) return null;
 
   return (
-    <div className={styles.main}>
-      <p>
-        Посещая сайт, вы даёте согласие на обработку файлов Cookie
-        в соответствии с Политикой обработки персональных данных
-      </p>
-      <button className={styles.button} onClick={handleAccept}>
-        Согласен
-      </button>
-    </div>
+    <CSSTransition
+      in={isVisible && !isAccepted} // Управляем видимостью через isVisible
+      timeout={300}
+      classNames={{
+        enter: styles.enter,
+        enterActive: styles.enterActive,
+        exit: styles.exit,
+        exitActive: styles.exitActive,
+      }}
+      unmountOnExit
+    >
+      <div className={styles.main}>
+        <p>
+          Посещая сайт, вы даёте согласие на обработку файлов Cookie
+          в соответствии с Политикой обработки персональных данных
+        </p>
+        <button className={styles.button} onClick={handleAccept}>
+          Согласен
+        </button>
+      </div>
+    </CSSTransition>
   );
 };
 

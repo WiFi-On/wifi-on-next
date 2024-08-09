@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styles from "./PopUpComparison.module.css";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,11 +14,19 @@ const PopUpComparison = () => {
   const router = useRouter();
   const { city } = router.query;
 
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        dispatch(closePopUpComparison());
+      }, 2000);
+
+      return () => clearTimeout(timer); // Очистка таймера при размонтировании или смене состояния
+    }
+  }, [isOpen, dispatch]);
+
   const handleClose = () => {
     dispatch(closePopUpComparison());
   };
-
-  console.log(isOpen);
 
   return (
     <CSSTransition
@@ -49,9 +58,9 @@ const PopUpComparison = () => {
           </svg>
         </div>
         <div className={styles.body}>
-          <p>Тариф добавлен в список сравнения</p>
+          <p>Тариф добавлен в список сравнения</p>
           <button onClick={() => router.push(`/${city}/compare`)}>
-            Перейти к сравнению
+            Перейти к сравнению
           </button>
         </div>
       </div>

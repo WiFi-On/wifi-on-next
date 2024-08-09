@@ -15,7 +15,7 @@ const Contacts = () => {
     <>
       <Head>
         <title>Контакты</title>
-
+        <link rel="icon" href="imgs/favicon.ico"></link>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
       </Head>
       <Header></Header>

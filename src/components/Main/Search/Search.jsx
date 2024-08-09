@@ -133,7 +133,7 @@ const Search = ({ device }) => {
                 <p
                   onClick={() =>
                     clickSuggestionlvl8(
-                      suggestion.value,
+                      address,
                       suggestion.data.settlement_fias_id
                         ? suggestion.data.settlement_fias_id
                         : suggestion.data.city_fias_id

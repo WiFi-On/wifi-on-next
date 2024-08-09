@@ -27,6 +27,7 @@ const CityPage = ({ cityData }: { cityData: any }): JSX.Element => {
           Тарифы на интернет в {cityData.infoDistrict.namewhere} 🙋‍♂️ Домашний
           интернет в квартиру | Тарифы и акции на интернет - On-wifi
         </title>
+        <link rel="icon" href="imgs/favicon.ico"></link>
         <meta
           name="description"
           content={
@@ -1052,8 +1053,6 @@ export async function getStaticPaths() {
     "9th.Lesosibirsk",
     "Alekseevka.Belgorodskaya-obl1",
     "Alekseevka.Belgorodskaya-obl2",
-    "Arylakh.Sakha/Yakutiya1",
-    "Arylakh.Sakha/Yakutiya2",
     "Baranovka.g-Sochi1",
     "Baranovka.g-Sochi2",
     "Bryokhovo.g-Moskva",
@@ -1091,13 +1090,15 @@ export async function getStaticPaths() {
     "Mendeleevo.g-Tobolsk",
     "Mendeleevo.g-Solnechnogorsk",
     "Mirny.Arkhangelskaya-obl",
-    "Mirny.Resp-Sakha/Yakutiya",
     "Moscow.Pskovskaya-obl",
     "Pavlino.g-Balashikha1",
     "Pavlino.g-Balashikha2",
     "Pervomaysky.g-Saratov",
     "Pervomaysky.Orenburgskaya-obl1",
+    "Arylakh.Sakha_Yakutiya1",
     "Moscow",
+    "Arylakh.Sakha_Yakutiya2",
+    "Mirny.Resp-Sakha_Yakutiya",
     "Pervomaysky.Orenburgskaya-obl2",
     "Pervomaysky.g-Irkutsk",
     "Pervomaysky.g-Istra",

@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = () => {
   };
 
   useEffect(() => {
-    const handleResize = (entries) => {
+    const handleResize = (entries: ResizeObserverEntry[]) => {
       for (let entry of entries) {
         setHtmlWidth(entry.contentRect.width);
       }
