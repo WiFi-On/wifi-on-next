@@ -29,10 +29,7 @@ const CardTariff = ({ tariff }) => {
   const handleConnectClick = () => {
     localStorage.setItem("nameProvider", tariff.provider.name);
     localStorage.setItem("nameTariff", tariff.name);
-    localStorage.setItem(
-      "priceTariff",
-      tariff.min_tariff_cost ? tariff.min_tariff_cost : tariff.max_tariff_cost
-    );
+    localStorage.setItem("priceTariff", tariff.cost);
     dispatch(openPopUpLead());
   };
 
