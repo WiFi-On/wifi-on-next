@@ -18,6 +18,7 @@ function Tariff({ tariffInfo }) {
     6: "/imgs/providersColor/avatell.svg",
     7: "/imgs/providersColor/beeline.svg",
     8: "/imgs/providersColor/domru.svg",
+    9: "/imgs/providersColor/sibseti.svg",
   };
   const [compareTariffsIds, setCompareTariffsIds] = useState([]);
 
