@@ -90,7 +90,7 @@ const PopUpLead = () => {
           },
           body: JSON.stringify({
             fields: {
-              TITLE: "Заявка с сайта on-wifi ТЕСТ",
+              TITLE: "Заявка с сайта on-wifi.ru",
               CONTACT_ID: contactId,
               UF_CRM_1697294773665: idProvidersBitrix[nameProvider],
               UF_CRM_1697294796468: nameTariff,
