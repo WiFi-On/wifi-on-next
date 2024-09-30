@@ -25,6 +25,7 @@ const CardTariff = ({ tariff }) => {
     7: "/imgs/providersColor/beeline.svg",
     8: "/imgs/providersColor/domru.svg",
     9: "/imgs/providersColor/sibseti.svg",
+    10: "/imgs/providersColor/rtk.svg",
   };
 
   const handleConnectClick = () => {
