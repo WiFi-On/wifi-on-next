@@ -151,7 +151,7 @@ const CardTariff = ({ tariff }) => {
               </div>
             </div>
           )}
-          {tariff.router_rent ? (
+          {(tariff.router_rent || tariff.router_cost) && (
             <div className={styles.param}>
               <div className={styles.wrapperImgParam}>
                 <Image
@@ -163,25 +163,15 @@ const CardTariff = ({ tariff }) => {
               </div>
               <div className={styles.paramText}>
                 <p>Роутер</p>
-                <p>Аренда: {tariff.router_rent} ₽</p>
-              </div>
-            </div>
-          ) : (
-            <div className={styles.param}>
-              <div className={styles.wrapperImgParam}>
-                <Image
-                  src={"/imgs/cardTariff/params/iconWifi.svg"}
-                  alt=""
-                  width={20}
-                  height={20}
-                />
-              </div>
-              <div className={styles.paramText}>
-                <p>Роутер</p>
-                <p>Стоимость: {tariff.router_cost} ₽</p>
+                {tariff.router_rent ? (
+                  <p>Аренда: {tariff.router_rent} ₽</p>
+                ) : (
+                  <p>Стоимость: {tariff.router_cost} ₽</p>
+                )}
               </div>
             </div>
           )}
+
           {tariff.tv_box_rent && (
             <div className={styles.param}>
               <div className={styles.wrapperImgParam}>
