@@ -25,7 +25,8 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   const [minSpeed, setMinSpeed] = useState(0);
   const [maxSpeed, setMaxSpeed] = useState(5000);
 
-  const [tariffsFilter, setTariffsFilter] = useState(tariffs);
+  const [tariffsFilter, setTariffsFilter] = useState(tariffs.tariffs);
+  const [providersFilter, setProvidersFilter] = useState(providers.providers);
 
   const minAndMaxPrice = (tariffs) => {
     let min = 30000;
@@ -60,12 +61,61 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   };
 
   useEffect(() => {
+    const fetchTariffsRTK = async () => {
+      const { address } = router.query;
+
+      // Добавляем временный объект "ЗагрузкаРТК"
+      setProvidersFilter((prevProviders) => [
+        { id: 0, name: "ЗагрузкаРТК" },
+        ...prevProviders,
+      ]);
+
+      try {
+        const res = await fetch("/api/checkDistrict", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ address: address }),
+        });
+
+        if (!res.ok) {
+          setProvidersFilter((prevProviders) => [
+            ...prevProviders.filter((provider) => provider.id !== 0), // Удаляем временный объект
+          ]);
+          throw new Error("Network response was not ok");
+        }
+
+        const tariffsRTK = await res.json();
+        // Обновляем состояние после получения данных
+        setTariffsFilter((prevTariffs) => [...tariffsRTK, ...prevTariffs]);
+
+        setProvidersFilter((prevProviders) => [
+          { id: 10, name: "Ростелеком" },
+          ...prevProviders.filter((provider) => provider.id !== 0), // Удаляем временный объект
+        ]);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      } finally {
+        // В блоке finally также можно убедиться, что временный объект удален
+        setProvidersFilter((prevProviders) =>
+          prevProviders.filter((provider) => provider.id !== 0)
+        );
+        // setLoadingData(false); // Если требуется отключить индикацию загрузки
+      }
+    };
+
+    fetchTariffsRTK();
+  }, []);
+
+  useEffect(() => {
     if (tariffsFilter.length > 0) {
       minAndMaxPrice(tariffsFilter);
       minAndMaxSpeed(tariffsFilter);
     }
   }, [tariffsFilter]);
 
+  console.log(providersFilter);
   return (
     <>
       <Head>
@@ -86,19 +136,20 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
       </Head>
       <Header />
 
-      {providers.length > 0 ? <SliderProviders providers={providers} /> : null}
+      {providers.providers.length > 0 ? (
+        <SliderProviders providers={providersFilter} />
+      ) : null}
       {providers.length === 0 ? (
         <NotTariffs status={1} />
       ) : (
         <Filter
-          providersProp={providers}
+          providersProp={providersFilter}
           minPriceProp={minPrice}
           maxPriceProp={maxPrice}
           minSpeedProp={minSpeed}
           maxSpeedProp={maxSpeed}
         />
       )}
-
       <SliderTariffsFilter loading={loading} allTariffs={tariffsFilter} />
       <AboutUs />
       <HelpForm />
@@ -113,67 +164,103 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   );
 };
 
+async function getInfoCity(district) {
+  const res = await fetch(`${api}/get/districtInfo?district=${district}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+    },
+  });
+
+  const cityData = await res.json();
+
+  return {
+    cityData,
+  };
+}
+async function getTariffsOnAddress(address) {
+  const res = await fetch(`${api}/get/tariffs/onAddress?address=${address}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+    },
+  });
+
+  const tariffs = await res.json();
+
+  return {
+    tariffs,
+  };
+}
+async function getProvidersOnAddress(address) {
+  const res = await fetch(`${api}/get/providers/onAddress?address=${address}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+    },
+  });
+
+  const providers = await res.json();
+
+  return {
+    providers,
+  };
+}
+async function getTariffsOnDistrict(district) {
+  const res = await fetch(
+    `${api}/get/tariffs/onDistrict?district=${district}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    }
+  );
+
+  const tariffs = await res.json();
+
+  return {
+    tariffs,
+  };
+}
+async function getProvidersOnDistrict(district) {
+  const res = await fetch(
+    `${api}/get/providers/onDistrict?district=${district}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    }
+  );
+
+  const providers = await res.json();
+
+  return {
+    providers,
+  };
+}
 export async function getServerSideProps(context) {
   const { address } = context.query;
   const { city } = context.query;
-  let tariffs = [];
-  let providers = [];
+
   let loading = true;
-  let cityApi = [];
+
   try {
-    if (address) {
-      const responseTariffsAndProviders = await fetch(
-        `${api}/tariffsAndProvidersOnAddressByHash/${address}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-          },
-        }
-      );
-      if (!responseTariffsAndProviders.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const dataTariffsAndProviders = await responseTariffsAndProviders.json();
-
-      const responseDistrictInfo = await fetch(
-        `${api}/infoDistrictByEngName/${city}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-          },
-        }
-      );
-      if (!responseDistrictInfo.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const dataDistrictInfo = await responseDistrictInfo.json();
-
-      tariffs = dataTariffsAndProviders.tariffs;
-      providers = dataTariffsAndProviders.providers;
-      cityApi = dataDistrictInfo.districtInfo;
+    if (!address) {
+      var tariffs = await getTariffsOnDistrict(city);
+      var providers = await getProvidersOnDistrict(city);
+      var cityApi = await getInfoCity(city);
       loading = false;
-    } else if (city) {
-      const response = await fetch(`${api}/fullInfoDistrictByEndName/${city}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      tariffs = data.tariffs;
-      providers = data.providers;
-      cityApi = data.infoDistrict;
+    } else {
+      var tariffs = await getTariffsOnAddress(address);
+      var providers = await getProvidersOnAddress(address);
+      var cityApi = await getInfoCity(city);
       loading = false;
     }
   } catch (error) {

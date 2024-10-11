@@ -17,7 +17,7 @@ function TariffPage({ tariffData }) {
     <>
       <Head>
         <title>
-          Домашний интернет от провайдера {tariffData.provider} | Тариф
+          Домашний интернет от провайдера {tariffData.provider.name} | Тариф
           {tariffData.name} - Оставить заявку на подключение проводного
           интернета
         </title>
@@ -46,10 +46,8 @@ function TariffPage({ tariffData }) {
 
 export async function getServerSideProps(context) {
   const { idTariff } = context.query;
-  let tariffData = null;
-
   try {
-    const response = await fetch(`${api}/tariff/${idTariff}`, {
+    const response = await fetch(`${api}/get/tariff?id=${idTariff}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -61,8 +59,7 @@ export async function getServerSideProps(context) {
       throw new Error("Network response was not ok");
     }
 
-    const data = await response.json();
-    tariffData = data.tariff;
+    var tariffData = await response.json();
   } catch (error) {
     console.error("Fetch error:", error);
   }

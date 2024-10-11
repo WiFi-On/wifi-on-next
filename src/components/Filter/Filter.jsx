@@ -25,6 +25,8 @@ const Filter = ({
     speedRange,
   } = router.query;
 
+  console.log(providersProp);
+
   const onChangeConnectType = (idConnectType) => {
     const currentQuery = { ...router.query };
     let newConnectType;

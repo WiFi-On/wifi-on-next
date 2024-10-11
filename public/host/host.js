@@ -1,3 +1,1 @@
-const api = "http://localhost:5000/api/v1";
-
-export default api;
+export const api = "http://localhost:3010/api/v1/aggregator";

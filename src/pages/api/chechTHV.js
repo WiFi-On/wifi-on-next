@@ -1,9 +1,8 @@
-import api from "../../../public/host/host.js";
+import host from "../../../public/host/host.js";
 export default async function handler(req, res) {
-  const { districtFiasId } = req.body;
-
+  const { address } = req.body;
   const response = await fetch(
-    `${api}/get/districtEngName/onFiasID?fiasID=${districtFiasId}`,
+    `${host}/get/tarrifsRTK/onAddress?address=${address}`,
     {
       method: "GET",
       headers: {

@@ -3,7 +3,6 @@ import cn from "classnames";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import CryptoJS from "crypto-js";
 
 const Search = ({ device }) => {
   const [query, setQuery] = useState("");
@@ -86,9 +85,7 @@ const Search = ({ device }) => {
   const clickSuggestionlvl8 = async (address, fiasId) => {
     const cityData = await checkCity(fiasId);
     const cityURL = cityData.engNameDistrict ? cityData.engNameDistrict : city;
-    router.push(
-      `/${cityURL}/tariffs?address=${CryptoJS.MD5(address).toString()}`
-    );
+    router.push(`/${cityURL}/tariffs?address=${address}`);
     localStorage.setItem("address", address);
     localStorage.setItem(
       "city",

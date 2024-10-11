@@ -21,7 +21,6 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
       speedRange,
     } = router.query;
     let filtered = allTariffs;
-
     if (providers) {
       const providerIds = providers.split(",").map((id) => parseInt(id, 10));
       filtered = filtered.filter((tariff) =>
@@ -66,7 +65,7 @@ function SliderTariffsFilter({ allTariffs, loading = true }) {
     }
 
     setFilteredTariffs(filtered);
-    setCurrentPage(0); // Сброс текущей страницы при изменении фильтров
+    setCurrentPage(0);
   }, [router.query, allTariffs]);
 
   const handlePageChange = ({ selected }) => {

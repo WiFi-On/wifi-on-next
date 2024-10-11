@@ -16,6 +16,7 @@ const SliderProviders = ({ providers = [] }) => {
     8: "/imgs/providersColor/domru.svg",
     9: "/imgs/providersColor/sibseti.svg",
     10: "/imgs/providersColor/rtk.svg",
+    0: "/imgs/providersColor/loadingRTK.svg",
   };
 
   if (providers.length < 1)
