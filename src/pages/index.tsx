@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import api from "../../public/host/host.js";
+import { api } from "../../public/host/host.js";
 import Head from "next/head";
 
 const HomePage = () => {

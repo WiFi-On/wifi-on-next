@@ -49,57 +49,38 @@ const PopUpLead = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const responseUser = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.contact.add",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fields: {
-              NAME: clientName,
-              SECOND_NAME: clientName,
-              LAST_NAME: clientName,
-              PHONE: [{ VALUE: clientPhone, VALUE_TYPE: "WORK" }],
-              ADDRESS: address,
-            },
-          }),
-        }
-      );
+      const responseUser = await fetch("/api/addContact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clientName: clientName,
+          clientPhone: clientPhone,
+          address: address,
+        }),
+      });
       if (!responseUser.ok) {
         throw new Error("Ошибка при отправке данных");
       }
 
       const userData = await responseUser.json();
       const contactId = userData.result;
-      const idProvidersBitrix = {
-        МТС: 54,
-        Ростелеком: 52,
-        Билайн: 56,
-        Мегафон: 57,
-        "Дом.ру": 60,
-      };
 
-      const responseLead = await fetch(
-        "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.deal.add",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fields: {
-              TITLE: "Заявка с сайта on-wifi.ru",
-              CONTACT_ID: contactId,
-              UF_CRM_1697294773665: idProvidersBitrix[nameProvider],
-              UF_CRM_1697294796468: nameTariff,
-              OPPORTUNITY: priceTariff,
-              UF_CRM_1697646751446: address,
-            },
-          }),
-        }
-      );
+      const responseLead = await fetch("/api/addLead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contactId: contactId,
+          nameProvider: nameProvider,
+          nameTariff: nameTariff,
+          priceTariff: priceTariff,
+          address: address,
+        }),
+      });
+
       if (!responseLead.ok) {
         throw new Error("Ошибка при отправке данных");
       }

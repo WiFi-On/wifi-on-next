@@ -1,8 +1,8 @@
-import host from "../../../public/host/host.js";
+import { api } from "../../../public/host/host.js";
 export default async function handler(req, res) {
   const { address } = req.body;
   const response = await fetch(
-    `${host}/get/tarrifsRTK/onAddress?address=${address}`,
+    `${api}/get/tarrifsRTK/onAddress?address=${address}`,
     {
       method: "GET",
       headers: {

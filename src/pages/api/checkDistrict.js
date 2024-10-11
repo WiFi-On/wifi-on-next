@@ -1,4 +1,4 @@
-import api from "../../../public/host/host.js";
+import { api } from "../../../public/host/host.js";
 export default async function handler(req, res) {
   const { districtFiasId } = req.body;
 

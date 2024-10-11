@@ -14,7 +14,7 @@ import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import NotTariffs from "@/components/NotTariffs/NotTariffs";
 import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 import Head from "next/head";
-import api from "../../../public/host/host.js";
+import { api } from "../../../public/host/host.js";
 import PopUpComparison from "@/components/PopUpComparison/PopUpComparison";
 
 const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
@@ -61,9 +61,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   };
 
   useEffect(() => {
-    const fetchTariffsRTK = async () => {
-      const { address } = router.query;
-
+    const fetchTariffsRTK = async (address) => {
       // Добавляем временный объект "ЗагрузкаРТК"
       setProvidersFilter((prevProviders) => [
         { id: 0, name: "ЗагрузкаРТК" },
@@ -71,7 +69,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
       ]);
 
       try {
-        const res = await fetch("/api/checkDistrict", {
+        const res = await fetch("/api/chechTHV", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -105,7 +103,8 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
       }
     };
 
-    fetchTariffsRTK();
+    const { address } = router.query;
+    address && fetchTariffsRTK(address);
   }, []);
 
   useEffect(() => {
@@ -115,7 +114,6 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
     }
   }, [tariffsFilter]);
 
-  console.log(providersFilter);
   return (
     <>
       <Head>
