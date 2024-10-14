@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import api from "../../../public/host/host.js";
+import { api } from "../../../public/host/host.js";
 import styles from "./UppendFile.module.css";
 
 const ExcelTc = () => {
@@ -50,16 +50,13 @@ const ExcelTc = () => {
     }
 
     const formData = new FormData();
-    formData.append("excelFile", file);
+    formData.append("file", file); // Измените имя поля на 'file'
     setLoading(true);
     setMessage("");
 
     try {
-      const response = await fetch(`${api}/excelTc`, {
+      const response = await fetch(`${api}/excel/upload`, {
         method: "POST",
-        headers: {
-          "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-        },
         body: formData,
       });
 

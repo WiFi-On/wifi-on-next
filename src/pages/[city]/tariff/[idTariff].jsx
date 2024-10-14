@@ -47,13 +47,16 @@ function TariffPage({ tariffData }) {
 export async function getServerSideProps(context) {
   const { idTariff } = context.query;
   try {
-    const response = await fetch(`${api}/get/tariff?id=${idTariff}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-      },
-    });
+    const response = await fetch(
+      `${api}/aggregator/get/tariff?id=${idTariff}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

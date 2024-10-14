@@ -85,6 +85,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
         }
 
         const tariffsRTK = await res.json();
+        console.log(tariffsRTK);
         // Обновляем состояние после получения данных
         setTariffsFilter((prevTariffs) => [...tariffsRTK, ...prevTariffs]);
 
@@ -163,13 +164,16 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
 };
 
 async function getInfoCity(district) {
-  const res = await fetch(`${api}/get/districtInfo?district=${district}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-    },
-  });
+  const res = await fetch(
+    `${api}/aggregator/get/districtInfo?district=${district}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    }
+  );
 
   const cityData = await res.json();
 
@@ -178,13 +182,16 @@ async function getInfoCity(district) {
   };
 }
 async function getTariffsOnAddress(address) {
-  const res = await fetch(`${api}/get/tariffs/onAddress?address=${address}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-    },
-  });
+  const res = await fetch(
+    `${api}/aggregator/get/tariffs/onAddress?address=${address}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    }
+  );
 
   const tariffs = await res.json();
 
@@ -193,13 +200,16 @@ async function getTariffsOnAddress(address) {
   };
 }
 async function getProvidersOnAddress(address) {
-  const res = await fetch(`${api}/get/providers/onAddress?address=${address}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-    },
-  });
+  const res = await fetch(
+    `${api}/aggregator/get/providers/onAddress?address=${address}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    }
+  );
 
   const providers = await res.json();
 
@@ -209,7 +219,7 @@ async function getProvidersOnAddress(address) {
 }
 async function getTariffsOnDistrict(district) {
   const res = await fetch(
-    `${api}/get/tariffs/onDistrict?district=${district}`,
+    `${api}/aggregator/get/tariffs/onDistrict?district=${district}`,
     {
       method: "GET",
       headers: {
@@ -227,7 +237,7 @@ async function getTariffsOnDistrict(district) {
 }
 async function getProvidersOnDistrict(district) {
   const res = await fetch(
-    `${api}/get/providers/onDistrict?district=${district}`,
+    `${api}/aggregator/get/providers/onDistrict?district=${district}`,
     {
       method: "GET",
       headers: {

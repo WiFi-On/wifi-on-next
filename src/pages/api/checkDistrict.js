@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   const { districtFiasId } = req.body;
 
   const response = await fetch(
-    `${api}/get/districtEngName/onFiasID?fiasID=${districtFiasId}`,
+    `${api}/aggregator/get/districtEngName/onFiasID?fiasID=${districtFiasId}`,
     {
       method: "GET",
       headers: {

@@ -3930,13 +3930,16 @@ export async function getStaticPaths() {
 }
 
 async function getInfoCity(district: string) {
-  const res = await fetch(`${api}/get/districtInfo?district=${district}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-    },
-  });
+  const res = await fetch(
+    `${api}/aggregator/get/districtInfo?district=${district}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    }
+  );
 
   const cityData = await res.json();
 
@@ -3946,7 +3949,7 @@ async function getInfoCity(district: string) {
 }
 async function getTariffs(district: string) {
   const res = await fetch(
-    `${api}/get/tariffs/onDistrict?district=${district}`,
+    `${api}/aggregator/get/tariffs/onDistrict?district=${district}`,
     {
       method: "GET",
       headers: {
@@ -3965,7 +3968,7 @@ async function getTariffs(district: string) {
 
 async function getProviders(district: string) {
   const res = await fetch(
-    `${api}/get/providers/onDistrict?district=${district}`,
+    `${api}/aggregator/get/providers/onDistrict?district=${district}`,
     {
       method: "GET",
       headers: {

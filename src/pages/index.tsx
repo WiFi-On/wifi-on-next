@@ -9,7 +9,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchIp = async () => {
       try {
-        const response = await fetch(`${api}/ipAndCity`, {
+        const response = await fetch(`${api}/aggregator/ipAndCity`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
