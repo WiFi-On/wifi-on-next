@@ -55,10 +55,13 @@ const ExcelTc = () => {
     setMessage("");
 
     try {
-      const response = await fetch(`${api}/excel/upload`, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `http://92.63.178.153:3010/api/v1/excel/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (response.ok) {
         const blob = await response.blob();
