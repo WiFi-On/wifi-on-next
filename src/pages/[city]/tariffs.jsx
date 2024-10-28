@@ -77,30 +77,26 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
           body: JSON.stringify({ address: address }),
         });
 
-        if (!res.ok) {
+        const tariffsRTK = await res.json();
+        if (!tariffsRTK.length === 0) {
+          // Обновляем состояние после получения данных
+          setTariffsFilter((prevTariffs) => [...tariffsRTK, ...prevTariffs]);
+
           setProvidersFilter((prevProviders) => [
+            { id: 10, name: "Ростелеком" },
             ...prevProviders.filter((provider) => provider.id !== 0), // Удаляем временный объект
           ]);
-          throw new Error("Network response was not ok");
+        } else {
+          setProvidersFilter((prevProviders) =>
+            prevProviders.filter((provider) => provider.id !== 0)
+          );
         }
-
-        const tariffsRTK = await res.json();
-        console.log(tariffsRTK);
-        // Обновляем состояние после получения данных
-        setTariffsFilter((prevTariffs) => [...tariffsRTK, ...prevTariffs]);
-
-        setProvidersFilter((prevProviders) => [
-          { id: 10, name: "Ростелеком" },
-          ...prevProviders.filter((provider) => provider.id !== 0), // Удаляем временный объект
-        ]);
       } catch (error) {
-        console.error("Fetch error:", error);
       } finally {
         // В блоке finally также можно убедиться, что временный объект удален
         setProvidersFilter((prevProviders) =>
           prevProviders.filter((provider) => provider.id !== 0)
         );
-        // setLoadingData(false); // Если требуется отключить индикацию загрузки
       }
     };
 

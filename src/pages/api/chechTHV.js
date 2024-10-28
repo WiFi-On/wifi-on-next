@@ -21,28 +21,20 @@ export default async function handler(req, res) {
 
     // Проверяем статус ответа
     if (!response.ok) {
-      return res.status(response.status).json({
-        error: `Failed to fetch tariffs. Status code: ${response.status}`,
-      });
+      return res.status(500).json([]);
     }
 
     const data = await response.json();
 
     // Проверка наличия данных
     if (!data || data.length === 0) {
-      return res.status(200).json({ tariffs: [] });
+      return res.status(200).json([]);
     }
 
     // Возвращаем данные в ответе
     return res.status(200).json(data);
   } catch (error) {
-    // Обработка ошибок
-    console.error("Error fetching tariffs:", error.message);
-
     // Возвращаем сообщение об ошибке
-    return res.status(500).json({
-      error:
-        "An error occurred while fetching tariffs. Please try again later.",
-    });
+    return res.status(500).json([]);
   }
 }
