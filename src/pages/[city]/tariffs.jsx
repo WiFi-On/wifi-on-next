@@ -78,7 +78,9 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
         });
 
         const tariffsRTK = await res.json();
-        if (!tariffsRTK.length === 0) {
+        console.log(tariffsRTK); // Логирование ответа
+
+        if (tariffsRTK.length > 0) {
           // Обновляем состояние после получения данных
           setTariffsFilter((prevTariffs) => [...tariffsRTK, ...prevTariffs]);
 
@@ -92,6 +94,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
           );
         }
       } catch (error) {
+        console.error("Ошибка при получении тарифов:", error); // Логирование ошибок
       } finally {
         // В блоке finally также можно убедиться, что временный объект удален
         setProvidersFilter((prevProviders) =>
@@ -102,7 +105,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
 
     const { address } = router.query;
     address && fetchTariffsRTK(address);
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     if (tariffsFilter.length > 0) {
