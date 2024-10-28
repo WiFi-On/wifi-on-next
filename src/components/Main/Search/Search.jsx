@@ -85,12 +85,17 @@ const Search = ({ device }) => {
   const clickSuggestionlvl8 = async (address, fiasId) => {
     const cityData = await checkCity(fiasId);
     const cityURL = cityData.engNameDistrict ? cityData.engNameDistrict : city;
+
     router.push(`/${cityURL}/tariffs?address=${address}`);
     localStorage.setItem("address", address);
+
     localStorage.setItem(
       "city",
-      cityData.engNameDistrict.engname ? cityData.engNameDistrict.engname : city
+      cityData.engNameDistrict && cityData.engNameDistrict.engname
+        ? cityData.engNameDistrict.engname
+        : city
     );
+
     setQuery(address);
     setSuggestions([]);
   };
