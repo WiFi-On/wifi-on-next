@@ -30,7 +30,7 @@ const Main = () => {
           <div className={styles.textAndSearch}>
             <div className={styles.text}>
               <h1>Найди своего идеального провайдера здесь</h1>
-              <h3>Подключи интернет / телевидение / связь</h3>
+              <h2>Подключи интернет / телевидение / связь</h2>
             </div>
             <Search></Search>
           </div>
@@ -55,7 +55,7 @@ const Main = () => {
           <div className={styles.textAndSearchTablet}>
             <div className={styles.textTablet}>
               <h1>Найди своего идеального провайдера здесь</h1>
-              <h3>Подключи интернет / телевидение / связь</h3>
+              <h2>Подключи интернет / телевидение / связь</h2>
             </div>
             <Search device="tablet"></Search>
           </div>
@@ -83,7 +83,7 @@ const Main = () => {
           <div className={styles.textAndSearchMobile}>
             <div className={styles.textMobile}>
               <h1>Найди своего идеального провайдера здесь</h1>
-              <h3>Подключи интернет / телевидение / связь</h3>
+              <h2>Подключи интернет / телевидение / связь</h2>
             </div>
             <Search device="mobile"></Search>
           </div>

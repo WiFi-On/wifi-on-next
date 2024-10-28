@@ -29,6 +29,7 @@ const CityPage = ({
   tariffsData: any;
   providersData: any;
 }): JSX.Element => {
+  console.log(districtInfoData);
   return (
     <>
       <Head>
@@ -3943,9 +3944,7 @@ async function getInfoCity(district: string) {
 
   const cityData = await res.json();
 
-  return {
-    cityData,
-  };
+  return cityData;
 }
 async function getTariffs(district: string) {
   const res = await fetch(
