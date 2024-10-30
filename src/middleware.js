@@ -7,6 +7,8 @@ export function middleware(req) {
   const validKey = [
     "_next",
     "sitemap.xml",
+    "robots.txt",
+    "sitemap-0.xml",
     "api",
     "imgs",
     "Tyumen",
