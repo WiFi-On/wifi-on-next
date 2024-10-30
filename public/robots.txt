@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/*
+
+# Host
+Host: https://on-wifi.ru.
+
+# Sitemaps
+Sitemap: https://on-wifi.ru./sitemap.xml

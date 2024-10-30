@@ -3,7 +3,8 @@
   background-repeat: no-repeat;
   padding-top: 180px;
   display: flex;
-  gap: 40px;
+  gap: 20px;
+  padding-bottom: 52px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -17,8 +18,8 @@
   display: flex;
 }
 .connectionsImg {
-  height: 540px;
-  width: 510px;
+  height: 450px;
+  width: 430px;
 }
 .bot {
   display: flex;
@@ -29,21 +30,21 @@
 }
 .text h1 {
   font-family: Raleway;
-  font-size: 58px;
+  font-size: 54px;
   font-weight: 700;
   line-height: 81.6px;
   text-align: left;
   color: #fff;
-  margin: 20px 0;
+  margin: 16px 0;
 }
 .text h2 {
   font-family: Raleway;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 36px;
   text-align: left;
   color: #fff;
-  margin: 20px 0;
+  margin: 16px 0;
 }
 .mainTablet {
   background-image: url(./bgTablet.svg);
