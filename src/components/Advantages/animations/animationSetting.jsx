@@ -1,15 +1,7 @@
-import { useEffect, useState } from "react";
+// Импорт компонента Lottie и JSON-файла
 import Lottie from "lottie-react";
 
 const AnimationSetting = ({ animation }) => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // Устанавливаем состояние, когда компонент загружен на клиенте
-  }, []);
-
-  if (!isClient) return null; // Возвращаем null до загрузки на клиенте
-
   return (
     <div>
       <Lottie animationData={animation} loop={true} />

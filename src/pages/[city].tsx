@@ -1,11 +1,11 @@
 // pages/[city].js
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Header from "../components/Header/Header";
 import Main from "../components/Main/Main";
 import ProvidersInCity from "../components/ProvidersInCity/ProvidersInCity";
 import AboutUs from "../components/AboutUs/AboutUs";
 import SliderTariffsMain from "../components/SliderTariffsMain/SliderTariffsMain";
-import Advantages from "../components/Advantages/Advantages";
 import ConnectionSteps from "../components/ConnectionSteps/ConnectionSteps";
 import HelpForm from "../components/HelpForm/HelpForm";
 import Questions from "../components/Questions/Questions";
@@ -19,6 +19,10 @@ import Head from "next/head";
 import { api } from "../../public/host/host.js";
 import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 import PopUpComparison from "@/components/PopUpComparison/PopUpComparison";
+
+const Advantages = dynamic(() => import("@/components/Advantages/Advantages"), {
+  ssr: false, // Отключаем серверный рендеринг
+});
 
 const CityPage = ({
   districtInfoData,
