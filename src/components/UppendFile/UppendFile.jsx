@@ -66,7 +66,7 @@ const ExcelTc = () => {
     setMessage("");
 
     try {
-      const response = await fetch(`${api}/excel/upload`, {
+      const response = await fetch(`https://on-wifi.ru/api/v1/excel/upload`, {
         method: "POST",
         body: formData,
         headers: {
