@@ -9,6 +9,7 @@ export function middleware(req) {
     "sitemap.xml",
     "robots.txt",
     "sitemap-0.xml",
+    "auth",
     "api",
     "imgs",
     "Tyumen",

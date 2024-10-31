@@ -11,6 +11,11 @@
 
   transition: 0.5s ease;
 }
+.main div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .main:hover {
   background: #284fdc;
   transform: scale(1.04);

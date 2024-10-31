@@ -27,11 +27,7 @@ const Advantage = ({ title, text, jsonLottie, children }) => {
         <h5>{title}</h5>
         <p>{text}</p>
       </div>
-      {showAnimation ? (
-        <AnimationSetting animation={jsonLottie} /> // Показываем Lottie через 0.6 секунд
-      ) : (
-        children // Показываем SVG
-      )}
+      {showAnimation ? <AnimationSetting animation={jsonLottie} /> : children}
     </div>
   );
 };

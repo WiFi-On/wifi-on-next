@@ -2,11 +2,7 @@
 import Lottie from "lottie-react";
 
 const AnimationSetting = ({ animation }) => {
-  return (
-    <div>
-      <Lottie animationData={animation} loop={true} />
-    </div>
-  );
+  return <Lottie animationData={animation} loop={true} />;
 };
 
 export default AnimationSetting;

@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  max-height: 500px;
+  margin: 8% auto;
+  background: #284fdc;
+  border-radius: 15px;
+  padding: 40px 20px;
+}
+.main h1 {
+  font-family: Raleway;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 61.6px;
+  text-align: center;
+  margin: 0;
+}
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.form input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid transparent; /* начальный прозрачный бордер */
+  border-radius: 10px;
+  outline: none;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.78px;
+  text-align: left;
+  transition: border 0.1s ease; /* добавлено плавное изменение границы */
+}
+
+.form input:focus {
+  border: 1px solid black; /* цвет границы при фокусе */
+}
+
+.form button {
+  width: 60%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #4d90ff;
+  color: #fff;
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.78px;
+  text-align: center;
+  cursor: pointer;
+
+  transition: background 0.1s ease; /* добавлено плавное изменение фона */
+}
+
+.form button:hover {
+  background: #173cc2;
+}
