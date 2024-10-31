@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styles from "./AuthForm.module.css";
-import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   async function loginUser(email, password) {
     const response = await fetch("/api/login", {
@@ -18,7 +20,7 @@ function AuthForm() {
 
     const data = await response.json();
 
-    if (!response.ok || !data.token) {
+    if (!response.ok) {
       throw new Error(data.message || "Ошибка входа");
     }
     return data;
@@ -28,12 +30,10 @@ function AuthForm() {
     e.preventDefault();
     setError("");
     try {
-      const userData = await loginUser(email, password);
-      Cookies.set("token", userData.token, { expires: 7 });
-      console.log("Токен сохранен в куки:", userData.token);
+      await loginUser(email, password);
+      router.push("/admin");
     } catch (error) {
       setError(error.message);
-      console.error("Ошибка:", error);
     }
   };
 
@@ -41,16 +41,16 @@ function AuthForm() {
     <div className={styles.main}>
       <h1>Авторизация</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
+        <p>Логин</p>
         <input
           type="email"
-          placeholder="Почта"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        <p>Пароль</p>
         <input
           type="password"
-          placeholder="Пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

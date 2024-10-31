@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import { api } from "../../../public/host/host.js";
 import styles from "./UppendFile.module.css";
+import Cookies from "js-cookie";
+import isTokenValid from "../../auth/is-token-valid.js";
+import { useRouter } from "next/router";
 
 const ExcelTc = () => {
   const [file, setFile] = useState(null);
@@ -8,6 +11,8 @@ const ExcelTc = () => {
   const [loading, setLoading] = useState(false);
   const dropRef = useRef(null);
   const fileInputRef = useRef(null);
+
+  const router = useRouter();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -49,8 +54,14 @@ const ExcelTc = () => {
       return;
     }
 
+    if (!isTokenValid()) {
+      setMessage("Срок действия токена истек. Пожалуйста, войдите снова.");
+      router.push("/auth"); // Перенаправление на страницу авторизации
+      return;
+    }
+
     const formData = new FormData();
-    formData.append("file", file); // Измените имя поля на 'file'
+    formData.append("file", file);
     setLoading(true);
     setMessage("");
 
@@ -58,6 +69,9 @@ const ExcelTc = () => {
       const response = await fetch(`${api}/excel/upload`, {
         method: "POST",
         body: formData,
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
       });
 
       if (response.ok) {
@@ -65,7 +79,7 @@ const ExcelTc = () => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "archive.zip"; // Укажите имя файла
+        a.download = "archive.zip";
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -75,7 +89,6 @@ const ExcelTc = () => {
         setMessage(`Ошибка: ${result.message}`);
       }
     } catch (error) {
-      console.error("Ошибка загрузки файла:", error);
       setMessage("Ошибка загрузки файла.");
     } finally {
       setLoading(false);

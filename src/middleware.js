@@ -10,6 +10,7 @@ export function middleware(req) {
     "robots.txt",
     "sitemap-0.xml",
     "auth",
+    "admin",
     "api",
     "imgs",
     "Tyumen",
@@ -3852,6 +3853,7 @@ export function middleware(req) {
     "Kurgan-SNT_Nadezhda",
     "Kamyshin-SNT_Teplovik",
   ];
+
   if (key && validKey.includes(key)) {
     return NextResponse.next();
   } else if (key) {
