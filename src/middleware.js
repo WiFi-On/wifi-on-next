@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 const requestCount = new Map();
 
 // Устанавливаем лимит запросов и период
-const REQUEST_LIMIT = 400;
+const REQUEST_LIMIT = 500;
 const TIME_FRAME = 15 * 60 * 1000; // 15 минут
 
 export function middleware(req) {
