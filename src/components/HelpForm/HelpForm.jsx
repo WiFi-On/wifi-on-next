@@ -69,7 +69,7 @@ const HelpForm = (props) => {
           },
           body: JSON.stringify({
             fields: {
-              TITLE: "Заявка с сайта on-wifi ТЕСТ",
+              TITLE: "Заявка с сайта on-wifi.ru",
               CONTACT_ID: contactId,
             },
           }),

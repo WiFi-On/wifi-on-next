@@ -1,9 +1,18 @@
-// pages/[city]/_middleware.js
+// pages/[city]/middleware.js
 import { NextResponse } from "next/server";
+
+// Простая карта для подсчета запросов по IP
+const requestCount = new Map();
+
+// Устанавливаем лимит запросов и период
+const REQUEST_LIMIT = 400;
+const TIME_FRAME = 15 * 60 * 1000; // 15 минут
 
 export function middleware(req) {
   const { pathname } = req.nextUrl;
   const key = pathname.split("/")[1];
+  const ip = req.ip || req.headers.get("x-forwarded-for") || "unknown";
+  const userAgent = req.headers.get("user-agent") || "";
   const validKey = [
     "_next",
     "sitemap.xml",
@@ -3854,11 +3863,41 @@ export function middleware(req) {
     "Kamyshin-SNT_Teplovik",
   ];
 
+  // Проверка допустимости ключа в URL
   if (key && validKey.includes(key)) {
-    return NextResponse.next();
-  } else if (key) {
-    return NextResponse.redirect("http://localhost:3000/Moscow");
-  } else {
+    // Ограничение по IP-адресу
+    const currentTime = Date.now();
+    if (!requestCount.has(ip)) {
+      requestCount.set(ip, []);
+    }
+
+    const timestamps = requestCount.get(ip);
+    timestamps.push(currentTime);
+
+    // Удаление устаревших записей
+    while (timestamps.length > 0 && timestamps[0] <= currentTime - TIME_FRAME) {
+      timestamps.shift();
+    }
+
+    if (timestamps.length > REQUEST_LIMIT) {
+      return new NextResponse("Too many requests", { status: 429 });
+    }
+
+    // Проверка User-Agent на основе списка подозрительных агентов
+    const disallowedAgents = ["curl", "python-requests", "PostmanRuntime"];
+    const isBot = disallowedAgents.some((agent) => userAgent.includes(agent));
+
+    if (isBot) {
+      return NextResponse.redirect("http://localhost:3000/Moscow");
+    }
+
     return NextResponse.next();
   }
+
+  // Перенаправление, если ключ не входит в список разрешенных
+  if (key) {
+    return NextResponse.redirect("http://localhost:3000/Moscow");
+  }
+
+  return NextResponse.next();
 }

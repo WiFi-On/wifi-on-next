@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { api } from "../../../public/host/host.js";
 import styles from "./UppendFile.module.css";
 import Cookies from "js-cookie";
 import isTokenValid from "../../auth/is-token-valid.js";

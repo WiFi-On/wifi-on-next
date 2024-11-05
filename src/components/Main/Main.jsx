@@ -38,6 +38,7 @@ const Main = () => {
             className={styles.connectionsImg}
             src={connectionsImg}
             alt=""
+            fetchPriority="high"
           />
         </div>
         <div className={styles.bot}>
@@ -63,6 +64,7 @@ const Main = () => {
             className={styles.connectionsImgTablet}
             src={connectionsImg}
             alt=""
+            fetchPriority="high"
           />
         </div>
         <div className={styles.botTablet}>
@@ -91,6 +93,7 @@ const Main = () => {
             className={styles.connectionsImgMobile}
             src={connectionsImg}
             alt=""
+            fetchPriority="high"
           />
         </div>
         <div className={styles.botMobile}>
