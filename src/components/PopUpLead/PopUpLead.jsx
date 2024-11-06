@@ -122,7 +122,7 @@ const PopUpLead = () => {
 
   const clickSuggestion = (event) => {
     const selectedAddress = event.target.textContent;
-    console.log(selectedAddress);
+
     const lvl = parseInt(event.target.getAttribute("lvl"), 10);
 
     if (lvl >= 8) {
@@ -174,7 +174,7 @@ const PopUpLead = () => {
           className={styles.close}
           src={close}
           onClick={closeModalHandler}
-          alt=""
+          alt="Закрыть"
         ></Image>
         <div className={styles.wrapper}>
           {sent ? (

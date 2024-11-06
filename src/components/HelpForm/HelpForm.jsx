@@ -59,7 +59,7 @@ const HelpForm = (props) => {
 
       const userData = await responseUser.json();
       const contactId = userData.result;
-      console.log(contactId);
+
       const responseLead = await fetch(
         "https://on-wifi.bitrix24.ru/rest/11940/5ii72jw03e78jrz7/crm.deal.add",
         {
@@ -140,7 +140,7 @@ const HelpForm = (props) => {
             </p>
           </div>
         </form>
-        <Image src={helpDesk} alt="" />
+        <Image src={helpDesk} alt="Консультация подключения" />
       </Element>
     );
   } else if (windowWidth < 1280 && windowWidth > 680) {
@@ -177,7 +177,7 @@ const HelpForm = (props) => {
                 onChange={(e) => setAddress(e.target.value)}
               />
             </div>
-            <Image src={helpDesk} alt="" />
+            <Image src={helpDesk} alt="Консультация подключения" />
           </div>
           {sent && (
             <p className={styles.sent}>
@@ -248,7 +248,7 @@ const HelpForm = (props) => {
               </span>
             </p>
           </div>
-          <Image src={helpDesk} alt="" />
+          <Image src={helpDesk} alt="Консультация подключения" />
         </form>
       </Element>
     );

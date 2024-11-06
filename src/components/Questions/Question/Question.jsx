@@ -24,7 +24,7 @@ const Question = ({ question, answer }) => {
         })}
       >
         <h4>{question}</h4>
-        <Image src={isOpen ? iconMinus : iconPlus} alt="" />
+        <Image src={isOpen ? iconMinus : iconPlus} alt="Закрыть или открыть" />
       </div>
       <div
         className={cn(styles.answerWrapper, { [styles.open]: isOpen })}

@@ -24,8 +24,7 @@ const ComparisonBlock = () => {
   useEffect(() => {
     let tariffsComparison = localStorage.getItem("listComparisons") || "[]";
     setTariffs(JSON.parse(tariffsComparison));
-
-    console.log(tariffs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleConnectClick = (id) => {
@@ -52,7 +51,7 @@ const ComparisonBlock = () => {
         <h2>Выберите тарифы</h2>
       </div>
     );
-  console.log(tariffs);
+
   return (
     <div className={styles.main}>
       <h1>Сравнение тарифов</h1>
@@ -66,7 +65,7 @@ const ComparisonBlock = () => {
                   src={imgProviders[tariffs[0].provider.id]}
                   width={70}
                   height={70}
-                  alt=""
+                  alt={tariffs[0].provider.name}
                 ></Image>
                 <span className={styles.providerName}>
                   {tariffs[0].provider.name}
@@ -76,7 +75,7 @@ const ComparisonBlock = () => {
                   height={24}
                   width={24}
                   src={trash}
-                  alt=""
+                  alt="Мусорное ведро"
                   className={styles.trash}
                 ></Image>
               </th>
@@ -87,7 +86,7 @@ const ComparisonBlock = () => {
                       src={imgProviders[tariffs[1].provider.id]}
                       width={70}
                       height={70}
-                      alt=""
+                      alt={tariffs[1].provider.name}
                     ></Image>
                     <span className={styles.providerName}>
                       {tariffs[1].provider.name}
@@ -97,7 +96,7 @@ const ComparisonBlock = () => {
                       height={24}
                       width={24}
                       src={trash}
-                      alt=""
+                      alt="Мусорное ведро"
                       className={styles.trash}
                     ></Image>
                   </>
@@ -112,7 +111,7 @@ const ComparisonBlock = () => {
                       src={imgProviders[tariffs[2].provider.id]}
                       width={70}
                       height={70}
-                      alt=""
+                      alt={tariffs[2].provider.name}
                     ></Image>
                     <span className={styles.providerName}>
                       {tariffs[2].provider.name}
@@ -122,7 +121,7 @@ const ComparisonBlock = () => {
                       height={24}
                       width={24}
                       src={trash}
-                      alt=""
+                      alt="Мусорное ведро"
                       className={styles.trash}
                     ></Image>
                   </>

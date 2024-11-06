@@ -103,9 +103,9 @@ const AddressClient = ({ mobile }) => {
     >
       <div className={styles.top}>
         {mobile ? (
-          <Image className="" src={iconVectorBlack} alt="icon" />
+          <Image className="" src={iconVectorBlack} alt="Черная иконка" />
         ) : (
-          <Image className="" src={iconVectorWhite} alt="icon" />
+          <Image className="" src={iconVectorWhite} alt="Белая иконка" />
         )}
         <input
           onChange={handleSearch}

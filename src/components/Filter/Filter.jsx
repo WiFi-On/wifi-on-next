@@ -25,8 +25,6 @@ const Filter = ({
     speedRange,
   } = router.query;
 
-  console.log(providersProp);
-
   const onChangeConnectType = (idConnectType) => {
     const currentQuery = { ...router.query };
     let newConnectType;
@@ -149,7 +147,7 @@ const Filter = ({
           <h4>Фильтр</h4>
           <Image
             src={arrowIcon}
-            alt=""
+            alt="Стрелочка"
             className={isBotVisible ? styles.arrowDown : styles.arrowUp}
           />
         </div>

@@ -28,7 +28,7 @@ const PopUpAgreement = () => {
             dispatch(closePopUpAgreement());
           }}
           src={close}
-          alt=""
+          alt="Закрыть"
         ></Image>
         <div className={styles.main}>
           <h1>Пользовательское соглашение</h1>

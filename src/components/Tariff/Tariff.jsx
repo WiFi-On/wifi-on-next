@@ -97,14 +97,13 @@ function Tariff({ tariffInfo }) {
     setCompareTariffsIds(list.map((item) => item.id));
   }, []);
   if (tariffInfo.provider && windowWidth >= 650) {
-    console.log(tariffInfo);
     return (
       <div className={styles.main}>
         <div className={styles.logoAndButton}>
           <div className={styles.logoAndText}>
             <Image
               src={imgProviders[tariffInfo.provider.id]}
-              alt=""
+              alt={tariffInfo.provider.name}
               width={70}
               height={70}
             />
@@ -310,14 +309,13 @@ function Tariff({ tariffInfo }) {
       </div>
     );
   } else {
-    console.log(tariffInfo);
     return (
       <div className={styles.mainMobile}>
         <div className={styles.logoAndButtonMobile}>
           <div className={styles.logoAndTextMobile}>
             <Image
               src={imgProviders[tariffInfo.provider.id]}
-              alt=""
+              alt={tariffInfo.provider.name}
               width={70}
               height={70}
             />

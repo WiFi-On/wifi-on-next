@@ -10,7 +10,12 @@ const NotTariffs = ({ status }) => {
   return (
     <div className={styles.main}>
       <div className={styles.wrapper}>
-        <Image width={180} height={40} src="/imgs/404logo.png" alt="logo" />
+        <Image
+          width={180}
+          height={40}
+          src="/imgs/404logo.png"
+          alt="Логотип компании"
+        />
         <p>418</p>
         {status === 0 && (
           <>

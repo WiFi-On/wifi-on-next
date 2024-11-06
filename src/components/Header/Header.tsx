@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = () => {
         <div className={styles.container}>
           <div className={styles.top}>
             <Link href={city ? `/${city}` : "/"}>
-              <Image src={logo} alt="логотип" className={styles.logo}></Image>
+              <Image src={logo} alt="Логотип" className={styles.logo}></Image>
             </Link>
             <Nav></Nav>
             <ComparisonButton></ComparisonButton>
@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = () => {
       <header className={styles.main}>
         <div className={styles.containerTablet}>
           <Link href={city ? `/${city}` : "/"}>
-            <Image className={styles.logo} src={logo} alt="" />
+            <Image className={styles.logo} src={logo} alt="Логотип" />
           </Link>
           <AddressClient mobile={false}></AddressClient>
         </div>
@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = () => {
           onClick={openHamburgerMenu}
           className={styles.iconMenu}
           src={menu}
-          alt=""
+          alt="Меню"
         />
         {statusHamburgerMenu && (
           <HamburgerMenu
@@ -96,14 +96,14 @@ const Header: React.FC<HeaderProps> = () => {
     return (
       <header className={styles.main}>
         <Link href={city ? `/${city}` : "/"}>
-          <Image className={styles.logo} src={logo} alt="" />
+          <Image className={styles.logo} src={logo} alt="Логотип" />
         </Link>
 
         <Image
           onClick={openHamburgerMenu}
           className={styles.iconMenu}
           src={menu}
-          alt=""
+          alt="Меню"
         />
         {statusHamburgerMenu && (
           <HamburgerMenu

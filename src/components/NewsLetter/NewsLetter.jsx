@@ -26,8 +26,8 @@ const Newsletter = () => {
           персональных данных
         </p>
       </div>
-      <Image className={styles.saleIcon} src={saleIcon} alt="" />
-      <Image className={styles.wifiIcon} src={wifiIcon} alt="" />
+      <Image className={styles.saleIcon} src={saleIcon} alt="Скидка" />
+      <Image className={styles.wifiIcon} src={wifiIcon} alt="Интернет" />
     </div>
   );
 };

@@ -78,7 +78,6 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
         });
 
         const tariffsRTK = await res.json();
-        console.log(tariffsRTK); // Логирование ответа
 
         if (tariffsRTK.length > 0) {
           // Обновляем состояние после получения данных

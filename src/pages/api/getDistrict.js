@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   const clientIp =
     req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
-  console.log(clientIp);
   const response = await fetch(`${api}/aggregator/get/district`, {
     method: "GET",
     headers: {

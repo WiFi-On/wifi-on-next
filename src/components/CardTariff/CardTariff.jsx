@@ -94,7 +94,7 @@ const CardTariff = ({ tariff }) => {
         <div className={styles.logoAndName}>
           <Image
             src={imgProviders[tariff.provider.id]}
-            alt=""
+            alt={tariff.provider.name}
             width={50}
             height={50}
           />
@@ -108,7 +108,7 @@ const CardTariff = ({ tariff }) => {
               <div className={styles.wrapperImgParam}>
                 <Image
                   src={"/imgs/cardTariff/params/iconInternet.svg"}
-                  alt=""
+                  alt="Интернет"
                   width={20}
                   height={20}
                 />
@@ -124,7 +124,7 @@ const CardTariff = ({ tariff }) => {
               <div className={styles.wrapperImgParam}>
                 <Image
                   src={"/imgs/cardTariff/params/iconTv.svg"}
-                  alt=""
+                  alt="Количество каналов"
                   width={20}
                   height={20}
                 />
@@ -140,7 +140,7 @@ const CardTariff = ({ tariff }) => {
               <div className={styles.wrapperImgParam}>
                 <Image
                   src={"/imgs/cardTariff/params/iconMob.svg"}
-                  alt=""
+                  alt="Мобильный интернет"
                   width={20}
                   height={20}
                 />
@@ -156,7 +156,7 @@ const CardTariff = ({ tariff }) => {
               <div className={styles.wrapperImgParam}>
                 <Image
                   src={"/imgs/cardTariff/params/iconWifi.svg"}
-                  alt=""
+                  alt="Роутер"
                   width={20}
                   height={20}
                 />
@@ -177,7 +177,7 @@ const CardTariff = ({ tariff }) => {
               <div className={styles.wrapperImgParam}>
                 <Image
                   src={"/imgs/cardTariff/params/iconDecoder.svg"}
-                  alt=""
+                  alt="Приставка TV"
                   width={20}
                   height={20}
                 />

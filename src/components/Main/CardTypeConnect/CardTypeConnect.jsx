@@ -29,7 +29,11 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <Image fetchPriority="high" src={iconInternetTV} alt="" />
+            <Image
+              fetchPriority="high"
+              src={iconInternetTV}
+              alt="Интернет+ТВ"
+            />
           </div>
 
           <h4>Интернет+ТВ</h4>
@@ -50,7 +54,11 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <Image fetchPriority="high" src={iconInternet} alt="" />
+            <Image
+              fetchPriority="high"
+              src={iconInternet}
+              alt="Домашний интернет"
+            />
           </div>
 
           <h4>Домашний интернет</h4>
@@ -71,7 +79,7 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <Image fetchPriority="high" src={iconTV} alt="" />
+            <Image fetchPriority="high" src={iconTV} alt="Интернет+Связь" />
           </div>
 
           <h4>Интернет+Связь</h4>
@@ -92,7 +100,11 @@ const CardTypeConnect = (props) => {
               [styles.wrapperImgMobile]: device === "mobile",
             })}
           >
-            <Image fetchPriority="high" src={iconConnection} alt="" />
+            <Image
+              fetchPriority="high"
+              src={iconConnection}
+              alt="Связь+Интернет+ТВ"
+            />
           </div>
           <h4>Связь+Интернет+ТВ</h4>
         </Link>

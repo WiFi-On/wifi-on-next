@@ -37,7 +37,7 @@ const Main = () => {
           <Image
             className={styles.connectionsImg}
             src={connectionsImg}
-            alt=""
+            alt="Подключи интернет / телевидение / связь"
             fetchPriority="high"
           />
         </div>
@@ -63,7 +63,7 @@ const Main = () => {
           <Image
             className={styles.connectionsImgTablet}
             src={connectionsImg}
-            alt=""
+            alt="Подключи интернет / телевидение / связь"
             fetchPriority="high"
           />
         </div>
@@ -92,7 +92,7 @@ const Main = () => {
           <Image
             className={styles.connectionsImgMobile}
             src={connectionsImg}
-            alt=""
+            alt="Подключи интернет / телевидение / связь"
             fetchPriority="high"
           />
         </div>

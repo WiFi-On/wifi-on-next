@@ -20,9 +20,9 @@ const ComparisonButton = (props) => {
       href={`/${city}/compare`}
     >
       {mobile === "true" ? (
-        <Image src={iconComparisonBlack} alt="" />
+        <Image src={iconComparisonBlack} alt="Черная иконка" />
       ) : (
-        <Image src={iconComparisonWhite} alt="" />
+        <Image src={iconComparisonWhite} alt="Белан иконка" />
       )}
       <span>Сравнение</span>
     </Link>

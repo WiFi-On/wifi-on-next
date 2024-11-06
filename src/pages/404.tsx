@@ -17,7 +17,7 @@ const NotFoundPage = () => {
             width={180}
             height={40}
             src="/imgs/404logo.png"
-            alt="logo"
+            alt="Логотип компании"
           ></Image>
           <p>404</p>
           <h4>Такой страницы не существует;(</h4>

@@ -14,13 +14,13 @@ const HamburgerMenu = (props) => {
     <div className={styles.main}>
       <div className={styles.logoAndCross}>
         <Link href="/">
-          <Image src={iconLogo} alt="" />
+          <Image src={iconLogo} alt="Логотип компании" />
         </Link>
         <Image
           className={styles.cross}
           onClick={onClose}
           src={iconCross}
-          alt=""
+          alt="Крестик"
         />
       </div>
       <Nav mobile="true"></Nav>

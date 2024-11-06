@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { api } from "../../public/host/host.js";
-import Head from "next/head";
 
 const HomePage = () => {
   const router = useRouter();
@@ -31,7 +29,7 @@ const HomePage = () => {
       }
     };
     fetchIp();
-  }, []);
+  }, [router]);
 
   return <></>;
 };

@@ -39,21 +39,21 @@ const AboutUs = (props) => {
           <tbody>
             <tr>
               <td className={styles.mobileBlock}>
-                <Image src={calendarImg} alt="" />
+                <Image src={calendarImg} alt="Календарь" />
                 <div className={styles.blockText}>
                   <h2>10 лет</h2>
                   <p>сотрудничаем с ведущими интернет — провайдерами страны</p>
                 </div>
               </td>
               <td className={cn(styles.mobileBlock, styles.mobileBlock2)}>
-                <Image src={groupImg} alt="" />
+                <Image src={groupImg} alt="Группа людей" />
                 <div className={styles.blockText}>
-                  <h2>31452</h2>
+                  <h2>31452</h2>Группа людей
                   <p>подключённых клиентов через наш сервис</p>
                 </div>
               </td>
               <td className={styles.mobileBlock}>
-                <Image src={mapImg} alt="" />
+                <Image src={mapImg} alt="Карта" />
                 <div className={styles.blockText}>
                   <h2>89</h2>
                   <p>регионов, в которых мы подключаем Интернет и ТВ</p>
@@ -80,14 +80,14 @@ const AboutUs = (props) => {
           <tbody>
             <tr>
               <td className={cn(styles.block, styles.block1)}>
-                <Image src={calendarImg} alt="" />
+                <Image src={calendarImg} alt="Календарь" />
               </td>
               <td className={styles.block}>
                 <h2>10 лет</h2>
                 <p>сотрудничаем с ведущими интернет — провайдерами страны</p>
               </td>
               <td className={cn(styles.block, styles.block3)}>
-                <Image src={mapImg} alt="" />
+                <Image src={mapImg} alt="Карта" />
               </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@ const AboutUs = (props) => {
                 <p>подключённых клиентов через наш сервис</p>
               </td>
               <td className={styles.block}>
-                <Image src={groupImg} alt="" />
+                <Image src={groupImg} alt="Группа людей" />
               </td>
               <td className={cn(styles.block, styles.block6)}>
                 <h2>89</h2>

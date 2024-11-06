@@ -47,7 +47,7 @@ const CardProvider = ({ img, id }) => {
   return (
     <div onClick={handleClick} className={cn(styles.main, { [styles.on]: on })}>
       <div className={styles.wrapper}>
-        <Image height={100} width={100} src={img} alt="" />
+        <Image height={100} width={100} src={img} alt="Логотип провайдера" />
       </div>
     </div>
   );

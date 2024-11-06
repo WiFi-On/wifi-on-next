@@ -33,7 +33,6 @@ const CityPage = ({
   tariffsData: any;
   providersData: any;
 }): JSX.Element => {
-  console.log(districtInfoData);
   return (
     <>
       <Head>
@@ -100,6 +99,19 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+export async function getStaticProps({ params }: any) {
+  const districtInfoData = await getInfoCity(params.city);
+  const tariffsData = await getTariffs(params.city);
+  const providersData = await getProviders(params.city);
+
+  return {
+    props: {
+      districtInfoData,
+      tariffsData,
+      providersData,
+    },
+  };
+}
 
 async function getInfoCity(district: string) {
   const res = await fetch(
@@ -135,7 +147,6 @@ async function getTariffs(district: string) {
     tariffs,
   };
 }
-
 async function getProviders(district: string) {
   const res = await fetch(
     `${api}/aggregator/get/providers/onDistrict?district=${district}`,
@@ -152,20 +163,6 @@ async function getProviders(district: string) {
 
   return {
     providers,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const districtInfoData = await getInfoCity(params.city);
-  const tariffsData = await getTariffs(params.city);
-  const providersData = await getProviders(params.city);
-
-  return {
-    props: {
-      districtInfoData,
-      tariffsData,
-      providersData,
-    },
   };
 }
 

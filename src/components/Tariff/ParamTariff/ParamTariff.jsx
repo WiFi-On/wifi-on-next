@@ -17,7 +17,7 @@ function ParamTariff({ title, params, img, equipmen = false }) {
             width={25}
             height={25}
             src={`/imgs/paramsTariff/${img}`}
-            alt=""
+            alt="Параметр"
           />
           <h5>{title}</h5>
         </div>
@@ -44,7 +44,7 @@ function ParamTariff({ title, params, img, equipmen = false }) {
             width={25}
             height={25}
             src={`/imgs/paramsTariff/${img}`}
-            alt=""
+            alt="Параметр"
           />
           <h5>{title}</h5>
         </div>

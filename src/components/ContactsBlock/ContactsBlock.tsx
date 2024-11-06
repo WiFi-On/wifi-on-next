@@ -13,14 +13,14 @@ const ContactsBlock = () => {
         <h2>Контакты</h2>
         <div className={styles.infos}>
           <div className={styles.info}>
-            <Image src={geo} alt=""></Image>
+            <Image src={geo} alt="Геолакация"></Image>
             <div className={styles.text}>
               <p>Адрес</p>
               <p>г. Москва, улица Коровий Вал, 5</p>
             </div>
           </div>
           <div className={styles.info}>
-            <Image src={tel} alt="" />
+            <Image src={tel} alt="Телефон" />
             <div className={styles.text}>
               <p>Телефон для подключения</p>
               <a href="tel:+78003332450">+7 (800) 333-24-50</a>

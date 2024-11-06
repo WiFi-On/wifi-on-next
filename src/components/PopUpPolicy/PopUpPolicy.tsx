@@ -26,7 +26,7 @@ const PopUpPolicy = () => {
         <Image
           onClick={() => dispatch(closePopUpPolicy())}
           src={close}
-          alt=""
+          alt="Закрыть"
         ></Image>
         <div className={styles.main}>
           <h1>Политика конфиденциальности</h1>

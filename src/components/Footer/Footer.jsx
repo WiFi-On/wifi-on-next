@@ -29,7 +29,7 @@ const Footer = () => {
       <div className={styles.main}>
         <div className={styles.policyAndAgreement}>
           <Link href="/">
-            <Image src={iconLogo} alt="" />
+            <Image src={iconLogo} alt="Логотип компании" />
           </Link>
           <p>
             <Link href={`/${city}/policy`}>Политика конфиденциальности</Link>
@@ -77,10 +77,10 @@ const Footer = () => {
           <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
           <div className={styles.links}>
             <a target="_blank" href="https://web.telegram.org/a/#5162024826">
-              <Image src={tgIcon} alt="" />
+              <Image src={tgIcon} alt="Логотип Telegram" />
             </a>
             <a target="_blank" href="https://wa.me/79526896473">
-              <Image src={waIcon} alt="" />
+              <Image src={waIcon} alt="Логотип Whatsapp" />
             </a>
           </div>
         </div>
@@ -91,7 +91,7 @@ const Footer = () => {
       <div className={styles.mainTablet}>
         <div className={styles.topTablet}>
           <Link href="/">
-            <Image src={iconLogo} alt="" />
+            <Image src={iconLogo} alt="Логотип компании" />
           </Link>
           <div className={styles.navTablet}>
             <div className={styles.wrapperNavTablet}>
@@ -150,10 +150,10 @@ const Footer = () => {
           </div>
           <div className={styles.linksTablet}>
             <a target="_blank" href="https://web.telegram.org/a/#5162024826">
-              <Image src={tgIcon} alt="" />
+              <Image src={tgIcon} alt="Логотип Telegram" />
             </a>
             <a target="_blank" href="https://wa.me/79526896473">
-              <Image src={waIcon} alt="" />
+              <Image src={waIcon} alt="Логотип Whatsapp" />
             </a>
           </div>
         </div>
@@ -164,7 +164,7 @@ const Footer = () => {
       <div className={styles.mainMobile}>
         <div className={styles.topOrLeft}>
           <Link href="/">
-            <Image src={iconLogo} alt="" />
+            <Image src={iconLogo} alt="Логотип компании" />
           </Link>
 
           <div className={styles.navMobile}>
@@ -206,10 +206,10 @@ const Footer = () => {
           </div>
           <div className={styles.linksMobile}>
             <a target="_blank" href="https://web.telegram.org/a/#5162024826">
-              <Image src={tgIcon} alt="" />
+              <Image src={tgIcon} alt="Логотип Telegram" />
             </a>
             <a target="_blank" href="https://wa.me/79526896473">
-              <Image src={waIcon} alt="" />
+              <Image src={waIcon} alt="Логотип Whatsapp" />
             </a>
           </div>
           <div className={styles.policyAndAgreementMobile}>
