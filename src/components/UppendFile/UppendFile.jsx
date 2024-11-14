@@ -95,7 +95,7 @@ const ExcelTc = () => {
   };
 
   return (
-    <div>
+    <div className={styles.main}>
       <h1>Выберите Excel файл</h1>
       <div
         ref={dropRef}

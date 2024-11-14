@@ -1,13 +1,18 @@
 // pages/admin.tsx
 import { GetServerSideProps } from "next";
 import { verify } from "jsonwebtoken";
-import ExcelTc from "@/components/UppendFile/UppendFile";
 import nookies from "nookies";
+
+import ExcelTc from "@/components/UppendFile/UppendFile";
+import Header from "@/components/Header/Header";
+import PartnerReport from "@/components/PartnerReport/PartnerReport";
 
 const Admin = () => {
   return (
     <>
+      <Header />
       <ExcelTc />
+      <PartnerReport />
     </>
   );
 };

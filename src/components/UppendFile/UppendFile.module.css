@@ -1,5 +1,7 @@
 /* UppendFile.module.css */
-
+.main {
+  margin-top: 150px;
+}
 .dropZone {
   border: 2px dashed #ccc;
   border-radius: 10px;
