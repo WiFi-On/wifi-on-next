@@ -19,11 +19,10 @@ const sitemapConfig = {
       { userAgent: "*", disallow: "/auth" },
       { userAgent: "*", disallow: "/admin" },
       { userAgent: "*", disallow: "/imgs/*" },
-      { userAgent: "*", disallow: "/sitemap.xml" },
-      { userAgent: "*", disallow: "/robots.txt" },
-      { userAgent: "*", disallow: "/sitemap-0.xml" },
     ],
+    additionalSitemaps: ["https://on-wifi.ru/sitemap.xml"],
   },
+
   additionalPaths: async (config) => {
     // Пример списка городов для создания динамических URL
     const response = await fetch(`${api}/aggregator/get/allDistricts`, {

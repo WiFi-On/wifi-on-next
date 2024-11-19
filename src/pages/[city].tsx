@@ -81,36 +81,57 @@ const CityPage = ({
 };
 
 export async function getStaticPaths() {
-  const response = await fetch(`${api}/aggregator/get/allDistricts`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
-    },
-  });
-  const cities = await response.json();
+  try {
+    const response = await fetch(`${api}/aggregator/get/allDistricts`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
+      },
+    });
+    const cities = await response.json();
 
-  const paths = cities.map((city: string) => ({
-    params: { city },
-  }));
+    const paths = cities.map((city: any) => ({
+      params: { city },
+    }));
 
-  return {
-    paths,
-    fallback: false,
-  };
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error("Ошибка при загрузке списка городов:", error);
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 }
-export async function getStaticProps({ params }: any) {
-  const districtInfoData = await getInfoCity(params.city);
-  const tariffsData = await getTariffs(params.city);
-  const providersData = await getProviders(params.city);
 
-  return {
-    props: {
-      districtInfoData,
-      tariffsData,
-      providersData,
-    },
-  };
+export async function getStaticProps({ params }: any) {
+  try {
+    const districtInfoData = await getInfoCity(params.city);
+    const tariffsData = await getTariffs(params.city);
+    const providersData = await getProviders(params.city);
+
+    return {
+      props: {
+        districtInfoData,
+        tariffsData,
+        providersData,
+      },
+    };
+  } catch (error) {
+    console.error(
+      `Ошибка при загрузке данных для города: ${params.city}`,
+      error
+    );
+
+    // Можно возвращать пустые данные для страницы с fallback: true
+    return {
+      notFound: true,
+    };
+  }
 }
 
 async function getInfoCity(district: string) {
