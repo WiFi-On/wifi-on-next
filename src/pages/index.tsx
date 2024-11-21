@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const HomePage = () => {
   const router = useRouter();
@@ -31,7 +32,18 @@ const HomePage = () => {
     fetchIp();
   }, [router]);
 
-  return <></>;
+  return (
+    <>
+      <Head>
+        <title>On-wifi</title>
+        <meta
+          name="google-site-verification"
+          content="jHJirAJdbatlAU98ZA3iyQByH09vndy8VePzSk9PMjA"
+        />
+        <meta name="yandex-verification" content="afd8dc656fe38ac2" />
+      </Head>
+    </>
+  );
 };
 
 export default HomePage;

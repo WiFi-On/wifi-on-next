@@ -69,7 +69,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
       ]);
 
       try {
-        const res = await fetch("/api/chechTHV", {
+        const res = await fetch("/api/checkTHV", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

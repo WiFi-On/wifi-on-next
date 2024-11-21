@@ -14,7 +14,6 @@ export default async function handler(req, res) {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          "x-api-key": "g2H3Ym90U3nmhStLikyWOLM662xaiG6BK3l41pYq",
         },
       }
     );

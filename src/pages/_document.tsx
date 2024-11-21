@@ -3,11 +3,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html lang="ru">
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-
+      <Head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -34,6 +30,10 @@ export default function Document() {
             />
           </div>
         </noscript>
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
       </body>
     </Html>
   );
