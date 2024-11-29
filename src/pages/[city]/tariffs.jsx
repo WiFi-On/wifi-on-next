@@ -104,7 +104,7 @@ const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
 
     const { address } = router.query;
     address && fetchTariffsRTK(address);
-  }, [router.query]);
+  }, []);
 
   useEffect(() => {
     if (tariffsFilter.length > 0) {

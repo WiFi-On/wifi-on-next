@@ -4,7 +4,7 @@ import cn from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const CardProvider = ({ img, id }) => {
+const CardProvider = ({ img, id, download }) => {
   const [on, setOn] = useState(false);
   const router = useRouter();
 
@@ -12,7 +12,7 @@ const CardProvider = ({ img, id }) => {
     const { providers } = router.query;
     if (providers) {
       const providerIds = providers.split(",").map((pid) => parseInt(pid, 10));
-      setOn(providerIds.includes(id));
+      setOn(id != 0 && providerIds.includes(id));
     } else {
       setOn(false);
     }
@@ -45,7 +45,10 @@ const CardProvider = ({ img, id }) => {
   };
 
   return (
-    <div onClick={handleClick} className={cn(styles.main, { [styles.on]: on })}>
+    <div
+      onClick={id !== 0 ? handleClick : undefined}
+      className={cn(styles.main, { [styles.on]: on })}
+    >
       <div className={styles.wrapper}>
         <Image height={100} width={100} src={img} alt="Логотип провайдера" />
       </div>

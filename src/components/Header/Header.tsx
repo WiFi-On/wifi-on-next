@@ -61,9 +61,9 @@ const Header: React.FC<HeaderProps> = () => {
           </div>
           <div className={styles.bot}>
             <AddressClient mobile={false}></AddressClient>
-            <h5 className={styles.number}>
+            <p className={styles.number}>
               <a href="tel:+78003332450">+7 (800) 333-24-50</a>
-            </h5>
+            </p>
           </div>
         </div>
       </header>

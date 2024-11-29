@@ -129,7 +129,7 @@
   color: #1d1d1d;
 }
 
-.numberAndLinks p {
+.numberAndLinks .cons {
   max-width: 212px;
 
   font-family: Raleway;
@@ -234,7 +234,7 @@
   flex-direction: column;
   align-items: flex-end;
 }
-.numberAndLinksTablet p {
+.numberAndLinksTablet .consTablet {
   max-width: 212px;
   margin: 0;
   opacity: 0.6;
@@ -385,7 +385,7 @@
   display: flex;
   flex-direction: column;
 }
-.numberAndLinksMobile p {
+.numberAndLinksMobile .consMobile {
   font-family: Raleway;
   font-size: 14px;
   font-weight: 400;

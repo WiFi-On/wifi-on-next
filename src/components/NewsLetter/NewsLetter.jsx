@@ -9,8 +9,10 @@ const Newsletter = () => {
   return (
     <div className={styles.main}>
       <div className={styles.containerText}>
-        <h2>Подпишись</h2>
-        <p>Чтобы быть в курсе всех специальных предложений</p>
+        <p className={styles.title}>Подпишись</p>
+        <p className={styles.desc}>
+          Чтобы быть в курсе всех специальных предложений
+        </p>
       </div>
       <div className={styles.inputAndText}>
         <div className={styles.inputAndButton}>

@@ -41,21 +41,21 @@ const AboutUs = (props) => {
               <td className={styles.mobileBlock}>
                 <Image src={calendarImg} alt="Календарь" />
                 <div className={styles.blockText}>
-                  <h2>10 лет</h2>
+                  <p>10 лет</p>
                   <p>сотрудничаем с ведущими интернет — провайдерами страны</p>
                 </div>
               </td>
               <td className={cn(styles.mobileBlock, styles.mobileBlock2)}>
                 <Image src={groupImg} alt="Группа людей" />
                 <div className={styles.blockText}>
-                  <h2>31452</h2>Группа людей
+                  <p>31452</p>Группа людей
                   <p>подключённых клиентов через наш сервис</p>
                 </div>
               </td>
               <td className={styles.mobileBlock}>
                 <Image src={mapImg} alt="Карта" />
                 <div className={styles.blockText}>
-                  <h2>89</h2>
+                  <p>89</p>
                   <p>регионов, в которых мы подключаем Интернет и ТВ</p>
                 </div>
               </td>
@@ -83,7 +83,7 @@ const AboutUs = (props) => {
                 <Image src={calendarImg} alt="Календарь" />
               </td>
               <td className={styles.block}>
-                <h2>10 лет</h2>
+                <p>10 лет</p>
                 <p>сотрудничаем с ведущими интернет — провайдерами страны</p>
               </td>
               <td className={cn(styles.block, styles.block3)}>
@@ -92,14 +92,14 @@ const AboutUs = (props) => {
             </tr>
             <tr>
               <td className={cn(styles.block, styles.block4)}>
-                <h2>31452</h2>
+                <p>31452</p>
                 <p>подключённых клиентов через наш сервис</p>
               </td>
               <td className={styles.block}>
                 <Image src={groupImg} alt="Группа людей" />
               </td>
               <td className={cn(styles.block, styles.block6)}>
-                <h2>89</h2>
+                <p>89</p>
                 <p>регионов, в которых мы подключаем Интернет и ТВ</p>
               </td>
             </tr>

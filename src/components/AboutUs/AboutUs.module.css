@@ -40,7 +40,7 @@
 .block6 {
   border-radius: 0 0 47px 0;
 }
-.block h2 {
+.block p:nth-child(1) {
   font-family: Raleway;
   font-size: 44px;
   font-weight: 700;
@@ -51,7 +51,7 @@
   -webkit-background-clip: text; /* для поддержки вебкитовских браузеров */
   -webkit-text-fill-color: transparent; /* чтобы текст оставался видимым */
 }
-.block p {
+.block p:nth-child(2) {
   margin: 0;
 
   font-family: Raleway;
@@ -130,7 +130,7 @@
   height: 52px;
   width: 52px;
 }
-.blockText h2 {
+.blockText p:nth-child(1) {
   margin: 0;
 
   font-family: Raleway;
@@ -143,7 +143,7 @@
   -webkit-background-clip: text; /* для поддержки вебкитовских браузеров */
   -webkit-text-fill-color: transparent; /* чтобы текст оставался видимым */
 }
-.blockText p {
+.blockText p:nth-child(2) {
   margin: 0;
 
   font-family: Raleway;
@@ -201,7 +201,7 @@
   .block6 {
     border-radius: 0 0 47px 0;
   }
-  .block h2 {
+  .block p:nth-child(1) {
     font-family: Raleway;
     font-size: 32px;
     font-weight: 700;
@@ -212,7 +212,7 @@
     -webkit-background-clip: text; /* для поддержки вебкитовских браузеров */
     -webkit-text-fill-color: transparent; /* чтобы текст оставался видимым */
   }
-  .block p {
+  .block p:nth-child(2) {
     margin: 0;
 
     font-family: Raleway;

@@ -36,7 +36,7 @@ const CardTypeConnect = (props) => {
             />
           </div>
 
-          <h4>Интернет+ТВ</h4>
+          <p>Интернет+ТВ</p>
         </Link>
       );
     case "Internet":
@@ -61,7 +61,7 @@ const CardTypeConnect = (props) => {
             />
           </div>
 
-          <h4>Домашний интернет</h4>
+          <p>Домашний интернет</p>
         </Link>
       );
     case "TV":
@@ -82,7 +82,7 @@ const CardTypeConnect = (props) => {
             <Image fetchPriority="high" src={iconTV} alt="Интернет+Связь" />
           </div>
 
-          <h4>Интернет+Связь</h4>
+          <p>Интернет+Связь</p>
         </Link>
       );
     case "Internet+Connection+TV":
@@ -106,7 +106,7 @@ const CardTypeConnect = (props) => {
               alt="Связь+Интернет+ТВ"
             />
           </div>
-          <h4>Связь+Интернет+ТВ</h4>
+          <p>Связь+Интернет+ТВ</p>
         </Link>
       );
   }

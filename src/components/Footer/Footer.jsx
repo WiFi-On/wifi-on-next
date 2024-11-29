@@ -71,10 +71,12 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.numberAndLinks}>
-          <h5 className={styles.number}>
+          <p className={styles.number}>
             <a href="tel:+78003332450">+7 (800) 333-24-50</a>
-          </h5>
-          <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
+          </p>
+          <p className={styles.cons}>
+            Бесплатная консультация Ежедневно с 9 до 22 часов
+          </p>
           <div className={styles.links}>
             <a target="_blank" href="https://web.telegram.org/a/#5162024826">
               <Image src={tgIcon} alt="Логотип Telegram" />
@@ -131,10 +133,12 @@ const Footer = () => {
             </div>
           </div>
           <div className={styles.numberAndLinksTablet}>
-            <h5 className={styles.numberTablet}>
+            <p className={styles.numberTablet}>
               <a href="tel:+78003332450">+7 (800) 333-24-50</a>
-            </h5>
-            <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
+            </p>
+            <p className={styles.consTablet}>
+              Бесплатная консультация Ежедневно с 9 до 22 часов
+            </p>
           </div>
         </div>
         <div className={styles.botTablet}>
@@ -199,10 +203,12 @@ const Footer = () => {
         </div>
         <div className={styles.botOrRight}>
           <div className={styles.numberAndLinksMobile}>
-            <h5 className={styles.numberMobile}>
+            <p className={styles.numberMobile}>
               <a href="tel:+78003332450">+7 (800) 333-24-50</a>
-            </h5>
-            <p>Бесплатная консультация Ежедневно с 9 до 22 часов</p>
+            </p>
+            <p className={styles.consMobile}>
+              Бесплатная консультация Ежедневно с 9 до 22 часов
+            </p>
           </div>
           <div className={styles.linksMobile}>
             <a target="_blank" href="https://web.telegram.org/a/#5162024826">

@@ -28,8 +28,10 @@ const ConnectionSteps = () => {
           <div className={styles.steps}>
             <div className={styles.step1}>
               <div className={styles.text}>
-                <h5>Оставьте заявку</h5>
-                <p>Сделайте это прямо на сайте или позвоните нам</p>
+                <p className={styles.title}>Оставьте заявку</p>
+                <p className={styles.desc}>
+                  Сделайте это прямо на сайте или позвоните нам
+                </p>
               </div>
               <Image src={diod} alt="Диод" />
               <span>1</span>
@@ -38,8 +40,8 @@ const ConnectionSteps = () => {
               <span>2</span>
               <Image src={diod} alt="Диод" />
               <div className={styles.text}>
-                <h5>Звонок менеджера</h5>
-                <p>
+                <p className={styles.title}>Звонок менеджера</p>
+                <p className={styles.desc}>
                   Наш оператор ответит на все интересующие вас вопросы и оформит
                   заявку на подключение
                 </p>
@@ -47,8 +49,8 @@ const ConnectionSteps = () => {
             </div>
             <div className={styles.step3}>
               <div className={styles.text}>
-                <h5>Подключение</h5>
-                <p>
+                <p className={styles.title}>Подключение</p>
+                <p className={styles.desc}>
                   В удобное для вас время техник приедет на ваш адрес
                   и подключит выбранные услуги
                 </p>
@@ -70,8 +72,10 @@ const ConnectionSteps = () => {
             <Image src={diod} alt="Диод" />
             <span>1</span>
             <div className={styles.textMobile}>
-              <h5>Оставьте заявку</h5>
-              <p>Сделайте это прямо на сайте или позвоните нам</p>
+              <p className={styles.title}>Оставьте заявку</p>
+              <p className={styles.desc}>
+                Сделайте это прямо на сайте или позвоните нам
+              </p>
             </div>
           </div>
           <div className={styles.stepsMobile}>
@@ -79,8 +83,8 @@ const ConnectionSteps = () => {
               <Image src={diod} alt="Диод" />
               <span>2</span>
               <div className={styles.textMobile}>
-                <h5>Звонок менеджера</h5>
-                <p>
+                <p className={styles.title}>Звонок менеджера</p>
+                <p className={styles.desc}>
                   Наш оператор ответит на все интересующие вас вопросы и оформит
                   заявку на подключение
                 </p>
@@ -92,8 +96,8 @@ const ConnectionSteps = () => {
               <Image src={diod} alt="Диод" />
               <span>3</span>
               <div className={styles.textMobile}>
-                <h5>Подключение</h5>
-                <p>
+                <p className={styles.title}>Подключение</p>
+                <p className={styles.desc}>
                   В удобное для вас время техник приедет на ваш адрес
                   и подключит выбранные услуги
                 </p>

@@ -24,8 +24,8 @@ const Advantage = ({ title, text, jsonLottie, children }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={styles.text}>
-        <h5>{title}</h5>
-        <p>{text}</p>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.description}>{text}</p>
       </div>
       {showAnimation ? <AnimationSetting animation={jsonLottie} /> : children}
     </div>

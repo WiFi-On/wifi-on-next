@@ -17,7 +17,7 @@
   justify-content: space-between;
   padding: 10px 20px;
 }
-.question h4 {
+.question p {
   font-family: Raleway;
   font-size: 22px;
   font-weight: 500;
@@ -27,7 +27,7 @@
   color: #284fdc;
   margin: 0;
 }
-.activeColor h4 {
+.activeColor p {
   color: #fff;
 }
 .activeBackground {
@@ -60,7 +60,7 @@
     justify-content: space-between;
     padding: 10px 20px;
   }
-  .question h4 {
+  .question p {
     font-family: Raleway;
     font-size: 16px;
     font-weight: 700;
@@ -71,7 +71,7 @@
     color: #284fdc;
     margin: 0;
   }
-  .activeColor h4 {
+  .activeColor p {
     color: #fff;
   }
   .activeBackground {
@@ -100,7 +100,7 @@
     justify-content: space-between;
     padding: 10px 20px;
   }
-  .question h4 {
+  .question p {
     font-family: Raleway;
     font-size: 14px;
     font-weight: 600;
@@ -110,7 +110,7 @@
     color: #284fdc;
     margin: 0;
   }
-  .activeColor h4 {
+  .activeColor p {
     color: #fff;
   }
   .activeBackground {

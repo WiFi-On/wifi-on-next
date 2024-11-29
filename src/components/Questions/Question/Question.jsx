@@ -23,7 +23,7 @@ const Question = ({ question, answer }) => {
           [styles.activeColor]: isOpen,
         })}
       >
-        <h4>{question}</h4>
+        <p>{question}</p>
         <Image src={isOpen ? iconMinus : iconPlus} alt="Закрыть или открыть" />
       </div>
       <div

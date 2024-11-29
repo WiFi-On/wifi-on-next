@@ -9,66 +9,66 @@ const Cities = () => {
         <div className={styles.container}>
           <div className={styles.cities}>
             <Link href="/Moscow">
-              <h4>Москва</h4>
+              <p>Москва</p>
             </Link>
             <Link href="/Saint-Petersburg">
-              <h4>Санкт-Петербург</h4>
+              <p>Санкт-Петербург</p>
             </Link>
             <Link href="/Novosibirsk">
-              <h4>Новосибирск</h4>
+              <p>Новосибирск</p>
             </Link>
             <Link href="/Yekaterinburg">
-              <h4>Екатеринбург</h4>
+              <p>Екатеринбург</p>
             </Link>
             <Link href="/NizhnyNovgorod">
-              <h4>Нижний Новгород</h4>
+              <p>Нижний Новгород</p>
             </Link>
             <Link href="/Kazan">
-              <h4>Казань</h4>
+              <p>Казань</p>
             </Link>
             <Link href="/Samara">
-              <h4>Самара</h4>
+              <p>Самара</p>
             </Link>
             <Link href="/Chelyabinsk">
-              <h4>Челябинск</h4>
+              <p>Челябинск</p>
             </Link>
             <Link href="/NaberezhnyeChelny">
-              <h4>Набережные Челны</h4>
+              <p>Набережные Челны</p>
             </Link>
             <Link href="/Rostov-on-Don">
-              <h4>Ростов-на-Дону</h4>
+              <p>Ростов-на-Дону</p>
             </Link>
           </div>
           <div className={styles.cities}>
             <Link href="/Ufa">
-              <h4>Уфа</h4>
+              <p>Уфа</p>
             </Link>
             <Link href="/Krasnoyarsk">
-              <h4>Красноярск</h4>
+              <p>Красноярск</p>
             </Link>
             <Link href="/Perm">
-              <h4>Пермь</h4>
+              <p>Пермь</p>
             </Link>
             <Link href="/Volgograd">
-              <h4>Волгоград</h4>
+              <p>Волгоград</p>
             </Link>
             <Link href="/Voronezh">
-              <h4>Воронеж</h4>
+              <p>Воронеж</p>
             </Link>
             <Link href="/Saratov">
-              <h4>Саратов</h4>
+              <p>Саратов</p>
             </Link>
             <Link href="/Krasnodar">
-              <h4>Краснодар</h4>
+              <p>Краснодар</p>
             </Link>
             <Link href="/Tobolsk">
-              <h4>Тобольск</h4>
+              <p>Тобольск</p>
             </Link>
             <Link href="/Tyumen">
-              <h4>Тюмень</h4>
+              <p>Тюмень</p>
             </Link>
             <Link href="/Izhevsk">
-              <h4>Ижевск</h4>
+              <p>Ижевск</p>
             </Link>
           </div>
         </div>
@@ -76,66 +76,66 @@ const Cities = () => {
           {" "}
           <div className={styles.cities}>
             <Link href="/Barnaul">
-              <h4>Барнаул</h4>
+              <p>Барнаул</p>
             </Link>
             <Link href="/Ulyanovsk">
-              <h4>Ульяновск</h4>
+              <p>Ульяновск</p>
             </Link>
             <Link href="/Pervomaysky.g-Irkutsk">
-              <h4>Иркутск</h4>
+              <p>Иркутск</p>
             </Link>
             <Link href="/Vladivostok">
-              <h4>Владивосток</h4>
+              <p>Владивосток</p>
             </Link>
             <Link href="/Yaroslavl">
-              <h4>Ярославль</h4>
+              <p>Ярославль</p>
             </Link>
             <Link href="/Khabarovsk">
-              <h4>Хабаровск</h4>
+              <p>Хабаровск</p>
             </Link>
             <Link href="/Magadan">
-              <h4>Магадан</h4>
+              <p>Магадан</p>
             </Link>
             <Link href="/Orenburg">
-              <h4>Оренбург</h4>
+              <p>Оренбург</p>
             </Link>
             <Link href="/Tomsk">
-              <h4>Томск</h4>
+              <p>Томск</p>
             </Link>
             <Link href="/Central.g-Novokuznetsk">
-              <h4>Новокузнецк</h4>
+              <p>Новокузнецк</p>
             </Link>
           </div>
           <div className={styles.cities}>
             <Link href="/Kemerovo">
-              <h4>Кемерово</h4>
+              <p>Кемерово</p>
             </Link>
             <Link href="/Astrakhan">
-              <h4>Астрахань</h4>
+              <p>Астрахань</p>
             </Link>
             <Link href="/Ryazan">
-              <h4>Рязань</h4>
+              <p>Рязань</p>
             </Link>
             <Link href="/Kaliningrad">
-              <h4>Калининград</h4>
+              <p>Калининград</p>
             </Link>
             <Link href="/Penza">
-              <h4>Пенза</h4>
+              <p>Пенза</p>
             </Link>
             <Link href="/Lipetsk">
-              <h4>Липецк</h4>
+              <p>Липецк</p>
             </Link>
             <Link href="/Tula">
-              <h4>Тула</h4>
+              <p>Тула</p>
             </Link>
             <Link href="/Kirov">
-              <h4>Киров</h4>
+              <p>Киров</p>
             </Link>
             <Link href="/Cheboksary">
-              <h4>Чебоксары</h4>
+              <p>Чебоксары</p>
             </Link>
             <Link href="/Omsk">
-              <h4>Омск</h4>
+              <p>Омск</p>
             </Link>
           </div>
         </div>

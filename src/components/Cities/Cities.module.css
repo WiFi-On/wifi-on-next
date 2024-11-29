@@ -37,7 +37,7 @@
   text-decoration: none;
   color: #000;
 }
-.citiesWrapper h4 {
+.citiesWrapper p {
   margin: 0;
 
   font-family: Raleway;
@@ -58,7 +58,7 @@
     line-height: 44.8px;
     text-align: center;
   }
-  .citiesWrapper h4 {
+  .citiesWrapper p {
     font-family: Raleway;
     font-size: 16px;
     font-weight: 700;
@@ -86,7 +86,7 @@
     width: 144px;
     align-items: center;
   }
-  .citiesWrapper h4 {
+  .citiesWrapper p {
     font-family: Raleway;
     font-size: 14px;
     font-weight: 600;

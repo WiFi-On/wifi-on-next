@@ -51,7 +51,7 @@
   flex-direction: column;
   gap: 7px;
 }
-.containerText h2 {
+.containerText .title {
   margin: 0;
 
   font-family: Raleway;
@@ -62,7 +62,7 @@
 
   color: #fff;
 }
-.containerText p {
+.containerText .desc {
   margin: 0;
 
   font-family: Raleway;
@@ -119,14 +119,14 @@
   .inputAndButton {
     gap: 10px;
   }
-  .containerText h2 {
+  .containerText .title {
     font-family: Raleway;
     font-size: 32px;
     font-weight: 700;
     line-height: 44.8px;
     text-align: left;
   }
-  .containerText p {
+  .containerText .desc {
     font-family: Raleway;
     font-size: 14px;
     font-weight: 400;
@@ -166,14 +166,14 @@
     flex-direction: column;
     gap: 7px;
   }
-  .containerText h2 {
+  .containerText .title {
     font-family: Raleway;
     font-size: 20px;
     font-weight: 700;
     line-height: 28px;
     text-align: center;
   }
-  .containerText p {
+  .containerText .desc {
     font-family: Raleway;
     font-size: 14px;
     font-weight: 400;
