@@ -3,15 +3,24 @@ import { GetServerSideProps } from "next";
 import { verify } from "jsonwebtoken";
 import nookies from "nookies";
 
-import ExcelTc from "@/components/UppendFile/UppendFile";
 import Header from "@/components/Header/Header";
 import PartnerReport from "@/components/PartnerReport/PartnerReport";
+import SendExcel from "@/components/UppendFile/UppendFile";
 
 const Admin = () => {
   return (
     <>
       <Header />
-      <ExcelTc />
+      <SendExcel
+        urlApi="https://on-wifi.ru/api/v1/excel/upload"
+        title="Получение тхв по адресам"
+        filename="excels.zip"
+      />
+      <SendExcel
+        urlApi="https://on-wifi.ru/api/v1/excel/leadsEissd"
+        title="Заведение заявок в eissd"
+        filename="leads.xlsx"
+      />
       <PartnerReport />
     </>
   );

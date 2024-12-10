@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import isTokenValid from "../../auth/is-token-valid.js";
 import { useRouter } from "next/router";
 
-const ExcelTc = () => {
+const SendExcel = ({ urlApi, title, filename }) => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -65,7 +65,7 @@ const ExcelTc = () => {
     setMessage("");
 
     try {
-      const response = await fetch(`https://on-wifi.ru/api/v1/excel/upload`, {
+      const response = await fetch(urlApi, {
         method: "POST",
         body: formData,
         headers: {
@@ -78,7 +78,7 @@ const ExcelTc = () => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "archive.zip";
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -96,7 +96,7 @@ const ExcelTc = () => {
 
   return (
     <div className={styles.main}>
-      <h1>Выберите Excel файл</h1>
+      <h1>{title}</h1>
       <div
         ref={dropRef}
         onDragOver={handleDragOver}
@@ -126,4 +126,4 @@ const ExcelTc = () => {
   );
 };
 
-export default ExcelTc;
+export default SendExcel;
