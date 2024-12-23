@@ -14,8 +14,9 @@ import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import NotTariffs from "@/components/NotTariffs/NotTariffs";
 import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 import Head from "next/head";
-import { api } from "../../../public/host/host.js";
 import PopUpComparison from "@/components/PopUpComparison/PopUpComparison";
+
+const api = process.env.URL_SERVER;
 
 const Tariffs = ({ tariffs, providers, loading, cityApi }) => {
   const router = useRouter();

@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
         <div className={styles.numberAndLinks}>
           <p className={styles.number}>
-            <a href="tel:+78003332450">+7 (800) 333-24-50</a>
+            <a href="tel:+79587764952">+7 (958) 776-49-52</a>
           </p>
           <p className={styles.cons}>
             Бесплатная консультация Ежедневно с 9 до 22 часов
@@ -134,7 +134,7 @@ const Footer = () => {
           </div>
           <div className={styles.numberAndLinksTablet}>
             <p className={styles.numberTablet}>
-              <a href="tel:+78003332450">+7 (800) 333-24-50</a>
+              <a href="tel:+79587764952">+7 (958) 776-49-52</a>
             </p>
             <p className={styles.consTablet}>
               Бесплатная консультация Ежедневно с 9 до 22 часов
@@ -204,7 +204,7 @@ const Footer = () => {
         <div className={styles.botOrRight}>
           <div className={styles.numberAndLinksMobile}>
             <p className={styles.numberMobile}>
-              <a href="tel:+78003332450">+7 (800) 333-24-50</a>
+              <a href="tel:+79587764952">+7 (958) 776-49-52</a>
             </p>
             <p className={styles.consMobile}>
               Бесплатная консультация Ежедневно с 9 до 22 часов

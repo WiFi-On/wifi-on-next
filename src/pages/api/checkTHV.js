@@ -1,4 +1,4 @@
-import { api } from "../../../public/host/host.js";
+const api = process.env.URL_SERVER;
 export default async function handler(req, res) {
   const { address } = req.body;
 

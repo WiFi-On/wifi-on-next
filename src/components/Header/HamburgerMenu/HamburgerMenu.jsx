@@ -25,8 +25,9 @@ const HamburgerMenu = (props) => {
       </div>
       <Nav mobile="true"></Nav>
       <ComparisonButton mobile={mobile}></ComparisonButton>
-      <a className={styles.number} href="tel:+78003332450">
-        +7 (800) 333-24-50
+
+      <a className={styles.number} href="tel:+79587764952">
+        +7 (958) 776-49-52
       </a>
       <AddressClient mobile="true"></AddressClient>
     </div>

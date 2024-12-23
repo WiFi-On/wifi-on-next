@@ -23,7 +23,7 @@ const ContactsBlock = () => {
             <Image src={tel} alt="Телефон" />
             <div className={styles.text}>
               <p>Телефон для подключения</p>
-              <a href="tel:+78003332450">+7 (800) 333-24-50</a>
+              <a href="tel:+79587764952">+7 (958) 776-49-52</a>
             </div>
             <ScrollLink to="help" smooth={true} duration={700} offset={-200}>
               <button className={styles.button}>Заказать звонок</button>

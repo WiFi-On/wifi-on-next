@@ -1,4 +1,4 @@
-import { api } from "./public/host/host.js"; // Импорт API
+const api = process.env.URL_SERVER;
 
 /** @type {import('next-sitemap').IConfig} */
 const sitemapConfig = {

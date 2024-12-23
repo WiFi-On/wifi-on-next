@@ -16,13 +16,14 @@ import PopUpLead from "@/components/PopUpLead/PopUpLead";
 import PopUpAgreement from "@/components/PopUpAgreement/PopUpAgreement";
 import PopUpPolicy from "@/components/PopUpPolicy/PopUpPolicy";
 import Head from "next/head";
-import { api } from "../../public/host/host.js";
 import CookieAgreement from "@/components/CookieAgreement/CookieAgreement";
 import PopUpComparison from "@/components/PopUpComparison/PopUpComparison";
 
 const Advantages = dynamic(() => import("@/components/Advantages/Advantages"), {
   ssr: false, // Отключаем серверный рендеринг
 });
+
+const api = process.env.URL_SERVER;
 
 const CityPage = ({
   districtInfoData,
