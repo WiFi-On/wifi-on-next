@@ -20,6 +20,7 @@
     "formidable": "^3.5.2",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "lottie-react": "^2.4.0",
     "next": "^15.0.3",
     "next-sitemap": "^4.2.3",

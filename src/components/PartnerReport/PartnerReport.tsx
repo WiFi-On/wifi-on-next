@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import styles from "./PartnerReport.module.css";
 import { PartnerReportRegI } from "./PartnerReport.interfaces";
+import { useRouter } from "next/router";
 
 const companies = [
   { id: 1, name: "gdelu.ru" },
@@ -9,6 +10,7 @@ const companies = [
 ];
 
 const PartnerReport = () => {
+  const router = useRouter();
   const [selectedCompanyId, setSelectedCompanyId] = useState<
     string | undefined
   >("");
@@ -41,14 +43,14 @@ const PartnerReport = () => {
           method: "POST",
           body: JSON.stringify(requestBody),
           headers: {
-            Authorization: `Bearer ${Cookies.get("token")}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json",
           },
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Failed to download Excel file");
+      if (response.status === 401 || response.status === 403) {
+        router.push("/auth");
       }
 
       const blob = await response.blob();

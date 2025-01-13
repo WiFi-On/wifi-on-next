@@ -30,7 +30,10 @@ function AuthForm() {
     e.preventDefault();
     setError("");
     try {
-      await loginUser(email, password);
+      const { token } = await loginUser(email, password);
+
+      localStorage.setItem("token", token);
+
       router.push("/admin");
     } catch (error) {
       setError(error.message);

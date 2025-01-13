@@ -1,13 +1,36 @@
 // pages/admin.tsx
-import { GetServerSideProps } from "next";
-import { verify } from "jsonwebtoken";
-import nookies from "nookies";
-
-import Header from "@/components/Header/Header";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { jwtDecode } from "jwt-decode"; // Установите через npm install jwt-decode
+import Header from "../components/Header/Header";
 import PartnerReport from "@/components/PartnerReport/PartnerReport";
 import SendExcel from "@/components/UppendFile/UppendFile";
 
 const Admin = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      // Перенаправляем на страницу авторизации, если токен отсутствует
+      router.push("/auth");
+      return;
+    }
+
+    try {
+      const decoded = jwtDecode(token);
+      const now = Math.floor(Date.now() / 1000);
+
+      if (!decoded.exp || decoded.exp < now) {
+        router.push("/auth");
+      }
+    } catch (error) {
+      console.error("Ошибка при проверке токена", error);
+      router.push("/auth"); // Перенаправляем при ошибке
+    }
+  }, [router]);
+
   return (
     <>
       <Header />
@@ -27,31 +50,3 @@ const Admin = () => {
 };
 
 export default Admin;
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // Получаем cookies с помощью nookies
-  const cookies = nookies.get(context);
-  const token = cookies.token; // Получаем токен из cookie
-
-  if (!token) {
-    return {
-      redirect: {
-        destination: "/auth", // Перенаправляем на страницу логина
-        permanent: false,
-      },
-    };
-  }
-
-  try {
-    // Проверяем токен (SECRET замените на ваш секретный ключ)
-    verify(token, process.env.JWT_SECRET_KEY!);
-    return { props: {} }; // Возвращаем props, если токен валиден
-  } catch (error) {
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-  }
-};

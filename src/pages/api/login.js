@@ -15,10 +15,6 @@ export default async function handler(req, res) {
   });
 
   const data = await response.json();
-  const cookies = response.headers.get("set-cookie");
-  if (cookies) {
-    res.setHeader("Set-Cookie", cookies);
-  }
 
   res.status(response.status).json(data);
 }

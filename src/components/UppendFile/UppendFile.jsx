@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./UppendFile.module.css";
 import Cookies from "js-cookie";
-import isTokenValid from "../../auth/is-token-valid.js";
 import { useRouter } from "next/router";
 
 const SendExcel = ({ urlApi, title, filename }) => {
@@ -53,12 +52,6 @@ const SendExcel = ({ urlApi, title, filename }) => {
       return;
     }
 
-    if (!isTokenValid()) {
-      setMessage("Срок действия токена истек. Пожалуйста, войдите снова.");
-      router.push("/auth"); // Перенаправление на страницу авторизации
-      return;
-    }
-
     const formData = new FormData();
     formData.append("file", file);
     setLoading(true);
@@ -69,9 +62,13 @@ const SendExcel = ({ urlApi, title, filename }) => {
         method: "POST",
         body: formData,
         headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+
+      if (response.status === 401 || response.status === 403) {
+        router.push("/auth");
+      }
 
       if (response.ok) {
         const blob = await response.blob();
