@@ -137,7 +137,7 @@ const Filter = ({
 
   return (
     <div className={styles.mainContainer}>
-      <h2>Тарифы</h2>
+      <h1>Тарифы</h1>
       <div className={styles.main}>
         <div
           className={styles.top}

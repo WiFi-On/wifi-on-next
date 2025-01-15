@@ -59,7 +59,7 @@
   justify-content: space-between;
   margin-bottom: 30px;
 }
-.nameAndPrice h2 {
+.nameAndPrice h1 {
   display: inline-block;
   font-family: Raleway;
   font-size: 32px;
@@ -140,7 +140,7 @@
 .nameAndCompareMobile svg {
   cursor: pointer;
 }
-.nameAndCompareMobile h2 {
+.nameAndCompareMobile h1 {
   font-family: Raleway;
   font-size: 20px;
   font-weight: 700;
@@ -186,7 +186,7 @@
     line-height: 33.8px;
     text-align: left;
   }
-  .nameAndPrice h2 {
+  .nameAndPrice h1 {
     font-family: Raleway;
     font-size: 32px;
     font-weight: 700;

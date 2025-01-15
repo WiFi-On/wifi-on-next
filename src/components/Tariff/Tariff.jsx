@@ -160,7 +160,7 @@ function Tariff({ tariffInfo }) {
           </div>
         </div>
         <div className={styles.nameAndPrice}>
-          <h2>{tariffInfo.name}</h2>
+          <h1>{tariffInfo.name}</h1>
           <div className={styles.priceWrapper}>
             <p className={styles.textPrice}>Абонентская плата</p>
             <p className={styles.price}>
@@ -324,7 +324,7 @@ function Tariff({ tariffInfo }) {
           <button onClick={handleConnectClick}>Подключить</button>
         </div>
         <div className={styles.nameAndCompareMobile}>
-          <h2>{tariffInfo.name}</h2>
+          <h1>{tariffInfo.name}</h1>
           <svg
             width="23"
             height="25"

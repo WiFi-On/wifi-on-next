@@ -14,10 +14,16 @@ const compare = () => {
   return (
     <>
       <Head>
-        <title>Сравнение</title>
+        <title>
+          📊 Сравнение тарифов - On-wifi: Найдите лучший интернет-план!
+        </title>
         <link rel="icon" href="imgs/favicon.ico"></link>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Узнайте, как тарифы On-wifi сравниваются с другими провайдерами! 🚀 Сравните скорость, стоимость и условия и выберите лучший вариант для себя. "
+        />
       </Head>
       <Header></Header>
       <ComparisonBlock></ComparisonBlock>

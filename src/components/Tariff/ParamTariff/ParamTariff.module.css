@@ -22,7 +22,7 @@
   width: 25px;
   flex-shrink: 0;
 }
-.top h5 {
+.top h2 {
   font-family: Raleway;
   font-size: 17px;
   font-weight: 700;
@@ -102,7 +102,7 @@
   .botEquipment {
     padding: 10px 20px;
   }
-  .top h5 {
+  .top h2 {
     font-family: Raleway;
     font-size: 15px;
     font-weight: 700;

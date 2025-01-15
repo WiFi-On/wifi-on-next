@@ -15,7 +15,11 @@ const Contacts = () => {
   return (
     <>
       <Head>
-        <title>Контакты</title>
+        <title>📞 Контакты - On-wifi: Интернет оборудование и провайдер</title>
+        <meta
+          name="description"
+          content="Свяжитесь с нами! 🚀 On-wifi предлагает интернет оборудование и услуги провайдера. Узнайте, как мы можем помочь вам."
+        ></meta>
         <link rel="icon" href="imgs/favicon.ico"></link>
         <meta name="apple-mobile-web-app-title" content="On-wifi" />
       </Head>

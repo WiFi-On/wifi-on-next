@@ -19,7 +19,7 @@ function ParamTariff({ title, params, img, equipmen = false }) {
             src={`/imgs/paramsTariff/${img}`}
             alt="Параметр"
           />
-          <h5>{title}</h5>
+          <h2>{title}</h2>
         </div>
         <div className={styles.botEquipment}>
           {params.map((param, i) => (
@@ -46,7 +46,7 @@ function ParamTariff({ title, params, img, equipmen = false }) {
             src={`/imgs/paramsTariff/${img}`}
             alt="Параметр"
           />
-          <h5>{title}</h5>
+          <h2>{title}</h2>
         </div>
         <div className={styles.bot}>
           {params.map((param, i) => (
